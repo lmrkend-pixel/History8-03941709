@@ -35,52 +35,80 @@ export default function Index() {
       {/* Header with Logo */}
       <header className="sticky top-0 z-50 bg-[#f7ead5] border-b-4 border-[#d4a574] shadow-xl">
         <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-4">
+            {/* Left side - Logo and Title */}
             <div className="flex items-center gap-3">
               {/* Logo - Books and Globe */}
               <div className="flex items-center gap-2">
                 <div className="relative">
-                  <BookOpen className="h-12 w-12 text-[#8b5a2b] transform -rotate-12" />
-                  <div className="absolute -top-1 -right-1 h-10 w-10 rounded-full bg-gradient-to-br from-green-600 to-blue-600 flex items-center justify-center text-white text-xl">
+                  <BookOpen className="h-10 w-10 md:h-12 md:w-12 text-[#8b5a2b] transform -rotate-12" />
+                  <div className="absolute -top-1 -right-1 h-8 w-8 md:h-10 md:w-10 rounded-full bg-gradient-to-br from-green-600 to-blue-600 flex items-center justify-center text-white text-lg md:text-xl">
                     🌍
                   </div>
                 </div>
-                <Landmark className="h-10 w-10 text-[#c77d3a]" />
+                <Landmark className="h-8 w-8 md:h-10 md:w-10 text-[#c77d3a]" />
               </div>
               <div>
-                <h1 className="text-2xl md:text-4xl font-bold text-[#8b5a2b] tracking-wide">
-                  SOCIAL STUDIES <span className="text-[#c77d3a]">HUB</span>
+                <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-[#8b5a2b] tracking-wide whitespace-nowrap">
+                  SOCIAL STUDIES EXPLORERS <span className="text-[#c77d3a]">HUB</span>
                 </h1>
               </div>
             </div>
+            
+            {/* Right side - Navigation */}
+            <nav className="hidden lg:flex gap-2">
+              {[
+                { id: 'home', label: 'Home' },
+                { id: 'videos', label: 'Videos' },
+                { id: 'games', label: 'Games' },
+                { id: 'quizzes', label: 'Quizzes' },
+                { id: 'trivia', label: 'Trivia Corner' },
+                { id: 'about', label: 'About Us' },
+              ].map((item) => (
+                <Button
+                  key={item.id}
+                  onClick={() => setActiveSection(item.id)}
+                  variant="ghost"
+                  className={`text-sm font-bold px-3 py-2 ${
+                    activeSection === item.id
+                      ? 'bg-[#8b5a2b] text-white hover:bg-[#7a4d26]'
+                      : 'text-[#8b5a2b] hover:bg-[#e8d4ba]'
+                  } rounded-md border-b-4 ${
+                    activeSection === item.id ? 'border-[#5a3618]' : 'border-transparent'
+                  }`}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </nav>
+
+            {/* Mobile Navigation - Below on small screens */}
+            <nav className="lg:hidden absolute left-0 right-0 top-full bg-[#f7ead5] border-t-2 border-[#d4a574] px-4 py-2 flex flex-wrap gap-2 shadow-lg">
+              {[
+                { id: 'home', label: 'Home' },
+                { id: 'videos', label: 'Videos' },
+                { id: 'games', label: 'Games' },
+                { id: 'quizzes', label: 'Quizzes' },
+                { id: 'trivia', label: 'Trivia Corner' },
+                { id: 'about', label: 'About Us' },
+              ].map((item) => (
+                <Button
+                  key={item.id}
+                  onClick={() => setActiveSection(item.id)}
+                  variant="ghost"
+                  className={`text-sm font-bold ${
+                    activeSection === item.id
+                      ? 'bg-[#8b5a2b] text-white hover:bg-[#7a4d26]'
+                      : 'text-[#8b5a2b] hover:bg-[#e8d4ba]'
+                  } rounded-md border-b-4 ${
+                    activeSection === item.id ? 'border-[#5a3618]' : 'border-transparent'
+                  }`}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </nav>
           </div>
-          
-          {/* Navigation */}
-          <nav className="mt-4 flex flex-wrap gap-2 border-t-2 border-[#d4a574] pt-3">
-            {[
-              { id: 'home', label: 'Home' },
-              { id: 'videos', label: 'Videos' },
-              { id: 'games', label: 'Games' },
-              { id: 'quizzes', label: 'Quizzes' },
-              { id: 'trivia', label: 'Trivia Corner' },
-              { id: 'about', label: 'About Us' },
-            ].map((item) => (
-              <Button
-                key={item.id}
-                onClick={() => setActiveSection(item.id)}
-                variant="ghost"
-                className={`text-base md:text-lg font-bold ${
-                  activeSection === item.id
-                    ? 'bg-[#8b5a2b] text-white hover:bg-[#7a4d26]'
-                    : 'text-[#8b5a2b] hover:bg-[#e8d4ba]'
-                } rounded-none border-b-4 ${
-                  activeSection === item.id ? 'border-[#5a3618]' : 'border-transparent'
-                }`}
-              >
-                {item.label}
-              </Button>
-            ))}
-          </nav>
         </div>
       </header>
 
