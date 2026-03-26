@@ -440,6 +440,40 @@ export default function QuizzesSection() {
 
   const topic = quizTopics.find((t) => t.id === selectedTopic);
 
+  // Check if quiz data is empty
+  if (currentQuizData.length === 0) {
+    const quizTypeLabel = quizType === 'mcq' ? 'Multiple Choice' : quizType === 'tf' ? 'Tama o Mali' : 'Identification';
+    return (
+      <div className="space-y-6">
+        <Button
+          onClick={() => setSelectedTopic(null)}
+          variant="outline"
+          className="border-2 border-[#8b5a2b] text-[#8b5a2b] hover:bg-[#f5e6d3]"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Topics
+        </Button>
+
+        <Card className="border-4 border-[#d49240] bg-white p-12 text-center shadow-xl rounded-xl">
+          <div className="text-6xl mb-6">📝</div>
+          <h2 className="text-3xl font-bold text-[#8b5a2b] mb-4">No Questions Available</h2>
+          <p className="text-xl text-[#5a3618] mb-8">
+            {quizTypeLabel} questions are not available for this topic yet.
+          </p>
+          <p className="text-lg text-[#5a3618] mb-8">
+            Please try another quiz type or topic.
+          </p>
+          <Button
+            onClick={() => setSelectedTopic(null)}
+            className="bg-gradient-to-r from-[#d49240] to-[#b87835] hover:from-[#c28437] hover:to-[#a66c2f] text-white font-bold text-lg px-8 py-6"
+          >
+            Choose Another Topic
+          </Button>
+        </Card>
+      </div>
+    );
+  }
+
   if (quizComplete) {
     const percentage = Math.round((score / currentQuizData.length) * 100);
     return (
