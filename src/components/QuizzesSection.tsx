@@ -19,7 +19,7 @@ const quizTopics = [
 const availableQuizTypes: Record<string, Array<'mcq' | 'tf' | 'identification'>> = {
   imp: ['mcq', 'identification'],
   ww1: ['mcq', 'tf'],
-  ww2: ['mcq', 'tf'],
+  ww2: ['mcq', 'identification'],
   cold: ['mcq', 'tf'],
   glob: ['mcq', 'tf'],
 };
@@ -151,9 +151,64 @@ const mcqData = {
   ],
   ww2: [
     {
-      q: 'Ano ang nagpalakas ng suporta kay Hitler?',
-      options: ['Pag-unlad ng ekonomiya', 'Pagkakaisa ng Allied Powers', 'Kahirapan at kahihiyang dulot ng Treaty of Versailles', 'Pagkatalo ng Japan'],
+      q: 'Aling sitwasyon ang pinakamahusay na nagpapakita kung bakit lumakas ang suporta kay Hitler?',
+      options: ['Pag-unlad ng ekonomiya ng Germany', 'Pagkakaisa ng Allied Powers', 'Kahirapan at kahihiyang dulot ng Treaty of Versailles', 'Pagkatalo ng Japan'],
       answer: 2,
+      explanation: 'Pinagsamang krisis at kahihiyan ang nagbunsod ng paghahanap ng radikal na lider.'
+    },
+    {
+      q: 'Paano nakaimpluwensya ang Great Depression sa politika ng Europe?',
+      options: ['Pinatatag ang demokrasya', 'Pinalakas ang tradisyunal na lider', 'Nagbukas ng daan sa awtoritaryanismo', 'Naging neutral ang mga bansa'],
+      answer: 2,
+      explanation: 'Krisis sa ekonomiya → pagkawala ng tiwala → pagtanggap sa diktador.'
+    },
+    {
+      q: 'Ano ang implikasyon ng totalitarianismo sa ugnayang pandaigdig?',
+      options: ['Mas maraming kompromiso', 'Mas kontroladong desisyon ng iisang lider', 'Mas bukas na komunikasyon', 'Mas mabagal na aksyon'],
+      answer: 1,
+      explanation: 'Iisang lider ang mabilis magpasya, kaya tumataas ang tensyon.'
+    },
+    {
+      q: 'Bakit nagkaroon ng alitan sa pagitan ng Axis at Allied Powers?',
+      options: ['Dahil sa pagkakaiba ng klima', 'Dahil sa magkasalungat na layunin at ideolohiya', 'Dahil sa kakulangan sa lider', 'Dahil sa neutralidad'],
+      answer: 1,
+      explanation: 'Expansion vs. pagpigil sa pananakop ang ugat ng alitan.'
+    },
+    {
+      q: 'Ano ang agarang bunga ng pagsalakay sa Poland noong 1939?',
+      options: ['Pagbuo ng UN', 'Pagdeklara ng digmaan ng UK at France', 'Pagsuko ng Germany', 'Pagpasok ng U.S.'],
+      answer: 1,
+      explanation: 'Tinupad ng UK at France ang kasunduang ipagtanggol ang Poland.'
+    },
+    {
+      q: 'Ano ang ipinapakita ng blitzkrieg strategy tungkol sa modernong digmaan?',
+      options: ['Nakatuon sa depensa', 'Umaasa sa bilis at koordinasyon', 'Mabagal na paglusob', 'Diplomasya ang sandata'],
+      answer: 1,
+      explanation: 'Pinagsamang lakas at bilis ang nagpapabagsak ng kalaban.'
+    },
+    {
+      q: 'Ano ang estratehikong kahalagahan ng D-Day sa digmaan?',
+      options: ['Nagpatigil sa digmaan sa Asya', 'Nagbukas ng bagong front laban sa Germany', 'Nagpatibay sa Axis', 'Nagpasuko sa Japan'],
+      answer: 1,
+      explanation: 'Nagbigay-daan sa paglaya ng Kanlurang Europe.'
+    },
+    {
+      q: 'Ano ang ipinahihiwatig ng pagbagsak ng Berlin noong 1945?',
+      options: ['Paglakas ng Axis', 'Katapusan ng digmaan sa Europe', 'Simula ng Cold War', 'Pagkapanalo ng Japan'],
+      answer: 1,
+      explanation: 'Bumagsak ang sentro ng Nazi power.'
+    },
+    {
+      q: 'Bakit naging kritikal ang paggamit ng atomic bomb sa Japan?',
+      options: ['Nagpalakas sa militar ng Japan', 'Nagdulot ng agarang pagsuko', 'Nagpahaba ng digmaan', 'Nagpatibay sa Axis'],
+      answer: 1,
+      explanation: 'Malawakang pinsala ang pumilit sa Japan na tumigil.'
+    },
+    {
+      q: 'Alin ang pinakamahalagang pagbabagong dulot ng WWII sa pandaigdigang kaayusan?',
+      options: ['Pagkawala ng alyansa', 'Pag-usbong ng U.S. at USSR bilang superpowers', 'Pagkakapantay ng lahat ng bansa', 'Pagwawakas ng lahat ng digmaan'],
+      answer: 1,
+      explanation: 'Nagbago ang balanse ng kapangyarihan sa mundo.'
     },
   ],
   cold: [
@@ -312,10 +367,60 @@ const identificationData = {
   ],
   ww2: [
     {
-      q: 'Diktador ng Germany na namuno sa Nazi Party',
+      q: 'Kasunduang nagparusa sa Germany',
+      answer: 'Treaty of Versailles',
+      explanation: 'Nagpataw ng mabigat na parusa at limitasyon na nagdulot ng galit sa Germany.'
+    },
+    {
+      q: 'Pandaigdigang krisis sa ekonomiya noong 1930s',
+      answer: 'Great Depression',
+      explanation: 'Nagdulot ng malawakang kahirapan at pagkawala ng tiwala sa pamahalaan.'
+    },
+    {
+      q: 'Sistemang may ganap na kontrol ng estado',
+      answer: 'Totalitarianismo',
+      alternatives: ['Totalitarianism'],
+      explanation: 'Lahat ng aspeto ng buhay ay kontrolado ng pamahalaan o lider.'
+    },
+    {
+      q: 'Pinuno ng Nazi Germany',
       answer: 'Adolf Hitler',
       alternatives: ['Hitler'],
-      explanation: 'Siya ang pangunahing sanhi ng Ikalawang Digmaang Pandaigdig.'
+      explanation: 'Pinamunuan ang Germany sa agresibong pananakop at digmaan.'
+    },
+    {
+      q: 'Pinuno ng Fascist Italy',
+      answer: 'Benito Mussolini',
+      alternatives: ['Mussolini'],
+      explanation: 'Nagpatupad ng fascism at nakipag-alyansa sa Germany.'
+    },
+    {
+      q: 'Alyansa ng Germany, Italy, Japan',
+      answer: 'Axis Powers',
+      alternatives: ['Axis'],
+      explanation: 'Mga bansang naghangad palawakin ang kanilang teritoryo at impluwensya.'
+    },
+    {
+      q: 'Alyansa laban sa Axis',
+      answer: 'Allied Powers',
+      alternatives: ['Allies', 'Allied'],
+      explanation: 'Mga bansang nagtulungan upang pigilan ang pananakop ng Axis.'
+    },
+    {
+      q: 'Biglaang pag-atake ng Japan sa U.S.',
+      answer: 'Pearl Harbor',
+      explanation: 'Inatake ang base ng U.S. na nagdulot ng pagpasok nito sa digmaan.'
+    },
+    {
+      q: 'Paglusob ng Allied sa Normandy',
+      answer: 'D-Day',
+      explanation: 'Mahalaga sa pagbawi ng Europe mula sa kontrol ng Germany.'
+    },
+    {
+      q: 'Pandaigdigang organisasyon para sa kapayapaan',
+      answer: 'United Nations',
+      alternatives: ['UN'],
+      explanation: 'Itinatag upang mapanatili ang kapayapaan at maiwasan ang digmaan.'
     },
   ],
   cold: [
