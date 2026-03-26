@@ -284,10 +284,42 @@ const identificationData = {
       explanation: 'Sistemang gumagamit ng lokal na lider upang mapanatili ang kontrol ng mananakop nang hindi direktang namamahala.'
     },
   ],
-  ww1: [],
-  ww2: [],
-  cold: [],
-  glob: [],
+  ww1: [
+    {
+      q: 'Dahilan ng WWI na tumutukoy sa Militarism, Alliances, Imperialism, Nationalism',
+      answer: 'MAIN',
+      explanation: 'Acronym para sa pangunahing sanhi ng Unang Digmaang Pandaigdig.'
+    },
+    {
+      q: 'Arkiduke ng Austria-Hungary na pinaslang noong 1914',
+      answer: 'Franz Ferdinand',
+      alternatives: ['Archduke Franz Ferdinand'],
+      explanation: 'Ang kanyang pagkamatay ang naging trigger ng WWI.'
+    },
+  ],
+  ww2: [
+    {
+      q: 'Diktador ng Germany na namuno sa Nazi Party',
+      answer: 'Adolf Hitler',
+      alternatives: ['Hitler'],
+      explanation: 'Siya ang pangunahing sanhi ng Ikalawang Digmaang Pandaigdig.'
+    },
+  ],
+  cold: [
+    {
+      q: 'Tensyon sa pagitan ng US at USSR matapos ang WWII',
+      answer: 'Cold War',
+      explanation: 'Panahon ng matinding kompetisyon ngunit walang direktang digmaan.'
+    },
+  ],
+  glob: [
+    {
+      q: 'Proseso ng pagkonekta ng mga bansa sa buong mundo',
+      answer: 'Globalisasyon',
+      alternatives: ['Globalization'],
+      explanation: 'Pag-uugnay ng mga bansa sa pamamagitan ng kalakalan, teknolohiya, at kultura.'
+    },
+  ],
 };
 
 export default function QuizzesSection() {
