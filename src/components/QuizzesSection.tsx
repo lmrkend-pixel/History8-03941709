@@ -80,9 +80,64 @@ const mcqData = {
   ],
   ww1: [
     {
-      q: 'Bakit lumawak sa pandaigdigang digmaan ang lokal na alitan?',
-      options: ['Teknolohiya', 'Alyansa ng mga bansa', 'Relihiyon', 'Kalakalan'],
+      q: 'Alin sa sumusunod ang pinakamahusay na nagpapaliwanag kung bakit naging pandaigdigan ang digmaan mula sa isang lokal na alitan?',
+      options: ['Dahil sa teknolohiya', 'Dahil sa alyansa ng mga bansa', 'Dahil sa relihiyon', 'Dahil sa kalakalan'],
       answer: 1,
+      explanation: 'Dahil sa sistema ng alyansa, ang alitan ng Austria-Hungary at Serbia ay nadamay ang kanilang mga kaalyado, kaya lumawak ang digmaan.'
+    },
+    {
+      q: 'Paano nakaapekto ang militarismo sa pagsiklab ng digmaan?',
+      options: ['Nagpahina ng hukbo', 'Nagpalakas ng ekonomiya', 'Nagdulot ng takot at kompetisyon sa armas', 'Nagpababa ng tensyon'],
+      answer: 2,
+      explanation: 'Ang arms race ay nagpalala ng tensyon at hinala sa pagitan ng mga bansa.'
+    },
+    {
+      q: 'Ano ang naging papel ng nasyonalismo sa digmaan?',
+      options: ['Nagdulot ng pagkakaisa ng lahat', 'Nagpalala ng tunggalian at pagnanais ng kapangyarihan', 'Nagpahinto ng digmaan', 'Nagpaunlad ng ekonomiya'],
+      answer: 1,
+      explanation: 'Ang matinding pagmamahal sa bansa ay nag-udyok ng kompetisyon at hidwaan.'
+    },
+    {
+      q: 'Bakit mahalaga ang pagpaslang kay Archduke Franz Ferdinand?',
+      options: ['Dahil siya ang hari', 'Dahil ito ang direktang nagpasiklab ng digmaan', 'Dahil ito ang huling labanan', 'Dahil ito ang kasunduan'],
+      answer: 1,
+      explanation: 'Ito ang naging "spark" o mitsa ng digmaan na nagpasimula ng chain reaction.'
+    },
+    {
+      q: 'Ano ang pangunahing katangian ng trench warfare?',
+      options: ['Mabilis na laban', 'Labanan sa himpapawid', 'Mabagal at patagalan na labanan', 'Walang depensa'],
+      answer: 2,
+      explanation: 'Nagdulot ito ng stalemate kung saan walang panig ang makausad.'
+    },
+    {
+      q: 'Ano ang ipinapakita ng paggamit ng poison gas at machine guns?',
+      options: ['Pag-unlad ng agrikultura', 'Modernisasyon ng digmaan', 'Pagbaba ng pinsala', 'Pagkawala ng digmaan'],
+      answer: 1,
+      explanation: 'Ipinakita nito ang epekto ng industriyalisasyon sa pakikidigma.'
+    },
+    {
+      q: 'Bakit tinawag na "total war" ang digmaan?',
+      options: ['Dahil maikli ito', 'Dahil lahat ng yaman at mamamayan ay kasali', 'Dahil walang sundalo', 'Dahil tahimik'],
+      answer: 1,
+      explanation: 'Lahat ng aspeto ng lipunan ay ginamit para sa digmaan.'
+    },
+    {
+      q: 'Ano ang pangunahing dahilan ng pagsuko ng Germany noong 1918?',
+      options: ['Panalo sila', 'Pagod na hukbo at kakulangan sa suplay', 'Pagkapanalo ng Russia', 'Pagkawala ng teknolohiya'],
+      answer: 1,
+      explanation: 'Naubos ang lakas at suporta ng Germany kaya napilitang sumuko.'
+    },
+    {
+      q: 'Ano ang epekto ng Treaty of Versailles sa Germany?',
+      options: ['Paglakas ng ekonomiya', 'Pagkakaroon ng kolonya', 'Mabigat na parusa at kahihiyan', 'Pagkapanalo'],
+      answer: 2,
+      explanation: 'Pinatawan ito ng malaking bayad at limitasyon sa militar.'
+    },
+    {
+      q: 'Paano nakaapekto ang digmaan sa pandaigdigang politika?',
+      options: ['Walang pagbabago', 'Pagbagsak ng mga imperyo at pag-usbong ng bagong bansa', 'Pagkawala ng bansa', 'Pag-unti ng populasyon lamang'],
+      answer: 1,
+      explanation: 'Nagbago ang mapa ng mundo at nabuo ang mga bagong bansa.'
     },
   ],
   ww2: [
@@ -110,58 +165,7 @@ const mcqData = {
 };
 
 const tfData = {
-  imp: [
-    { 
-      q: 'Ang imperyalismo at kolonyalismo ay may parehong kahulugan.', 
-      answer: false,
-      explanation: 'Ang kolonyalismo ay direktang pamamahala habang ang imperyalismo ay maaaring impluwensya lamang sa ekonomiya o politika.'
-    },
-    { 
-      q: 'Ang pangunahing dahilan ng imperyalismo ay pangangailangan ng hilaw na materyales at pamilihan.', 
-      answer: true,
-      explanation: 'Ang industriya sa Europa ay nangangailangan ng hilaw na materyales at lugar upang ipagbili ang kanilang produkto.'
-    },
-    { 
-      q: 'Ang Treaty of Tordesillas ay naghati ng mundo sa pagitan ng Spain at Portugal.', 
-      answer: true,
-      explanation: 'Ang kasunduang ito noong 1494 ay nagtakda kung aling bahagi ng mundo ang maaaring sakupin ng dalawang bansa.'
-    },
-    { 
-      q: 'Ang Dutch East India Company ay isang simbahan na nag-abot ng tulong sa Asya.', 
-      answer: false,
-      explanation: 'Ito ay kumpanya na kumontrol sa kalakalan ng Netherlands sa Asya, lalo na sa rekado.'
-    },
-    { 
-      q: 'Ang pagkatalo ng Russia sa Japan noong 1905 ay nagpakita na kayang talunin ng bansang Asyano ang kapangyarihang Europeo.', 
-      answer: true,
-      explanation: 'Ang Digmaang Ruso-Hapon ay nagpatunay na ang Japan ay maaaring maging makapangyarihan din tulad ng mga bansang Europeo.'
-    },
-    { 
-      q: 'Ang "civilizing mission" ay layuning magbigay ng kalayaan sa mga kolonya.', 
-      answer: false,
-      explanation: 'Ito ay ginamit bilang dahilan upang bigyang-katwiran ang pananakop at pagpapakalat ng kanilang kultura at relihiyon.'
-    },
-    { 
-      q: 'Ang direktang pamamahala ay nangangahulugang ang kolonyal na bansa mismo ang namamahala sa teritoryo.', 
-      answer: true,
-      explanation: 'Sa sistemang ito, ang kolonyal na bansa ay gumagamit ng sariling opisyal upang mamahala ng direkta sa kolonya.'
-    },
-    { 
-      q: 'Ang imperyalismo ay nagdulot ng pagkakaisa ng mga kolonya sa pandaigdigang kalakalan.', 
-      answer: true,
-      explanation: 'Ang mga kolonya ay naging bahagi ng global trade system bilang tagapagbigay ng hilaw na materyales at pamilihan.'
-    },
-    { 
-      q: 'Ang United States ay hindi kailanman naging bahagi ng imperyalismo.', 
-      answer: false,
-      explanation: 'Matapos ang Spanish-American War, nakuha ng US ang ilang teritoryo tulad ng Pilipinas, Guam, at Puerto Rico.'
-    },
-    { 
-      q: 'Ang paglaban at kilusang nasyonalismo ay tugon ng mga mamamayan sa kolonyalismo.', 
-      answer: true,
-      explanation: 'Maraming mamamayan sa mga kolonya ang nag-organisa ng mga kilusan upang makamit ang kalayaan.'
-    },
-  ],
+  imp: [],
   ww1: [
     { 
       q: 'Ang Unang Digmaang Pandaigdig ay nagsimula dahil lamang sa isang dahilan.', 
