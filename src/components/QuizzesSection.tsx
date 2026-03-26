@@ -111,8 +111,56 @@ const mcqData = {
 
 const tfData = {
   imp: [
-    { q: 'Ang kolonyalismo ay direktang pananakop at pamamahala sa ibang lupain.', answer: true },
-    { q: 'Ang Treaty of Tordesillas ay kasunduan ng Germany at Russia.', answer: false },
+    { 
+      q: 'Ang imperyalismo at kolonyalismo ay may parehong kahulugan.', 
+      answer: false,
+      explanation: 'Ang kolonyalismo ay direktang pamamahala habang ang imperyalismo ay maaaring impluwensya lamang sa ekonomiya o politika.'
+    },
+    { 
+      q: 'Ang pangunahing dahilan ng imperyalismo ay pangangailangan ng hilaw na materyales at pamilihan.', 
+      answer: true,
+      explanation: 'Ang industriya sa Europa ay nangangailangan ng hilaw na materyales at lugar upang ipagbili ang kanilang produkto.'
+    },
+    { 
+      q: 'Ang Treaty of Tordesillas ay naghati ng mundo sa pagitan ng Spain at Portugal.', 
+      answer: true,
+      explanation: 'Ang kasunduang ito noong 1494 ay nagtakda kung aling bahagi ng mundo ang maaaring sakupin ng dalawang bansa.'
+    },
+    { 
+      q: 'Ang Dutch East India Company ay isang simbahan na nag-abot ng tulong sa Asya.', 
+      answer: false,
+      explanation: 'Ito ay kumpanya na kumontrol sa kalakalan ng Netherlands sa Asya, lalo na sa rekado.'
+    },
+    { 
+      q: 'Ang pagkatalo ng Russia sa Japan noong 1905 ay nagpakita na kayang talunin ng bansang Asyano ang kapangyarihang Europeo.', 
+      answer: true,
+      explanation: 'Ang Digmaang Ruso-Hapon ay nagpatunay na ang Japan ay maaaring maging makapangyarihan din tulad ng mga bansang Europeo.'
+    },
+    { 
+      q: 'Ang "civilizing mission" ay layuning magbigay ng kalayaan sa mga kolonya.', 
+      answer: false,
+      explanation: 'Ito ay ginamit bilang dahilan upang bigyang-katwiran ang pananakop at pagpapakalat ng kanilang kultura at relihiyon.'
+    },
+    { 
+      q: 'Ang direktang pamamahala ay nangangahulugang ang kolonyal na bansa mismo ang namamahala sa teritoryo.', 
+      answer: true,
+      explanation: 'Sa sistemang ito, ang kolonyal na bansa ay gumagamit ng sariling opisyal upang mamahala ng direkta sa kolonya.'
+    },
+    { 
+      q: 'Ang imperyalismo ay nagdulot ng pagkakaisa ng mga kolonya sa pandaigdigang kalakalan.', 
+      answer: true,
+      explanation: 'Ang mga kolonya ay naging bahagi ng global trade system bilang tagapagbigay ng hilaw na materyales at pamilihan.'
+    },
+    { 
+      q: 'Ang United States ay hindi kailanman naging bahagi ng imperyalismo.', 
+      answer: false,
+      explanation: 'Matapos ang Spanish-American War, nakuha ng US ang ilang teritoryo tulad ng Pilipinas, Guam, at Puerto Rico.'
+    },
+    { 
+      q: 'Ang paglaban at kilusang nasyonalismo ay tugon ng mga mamamayan sa kolonyalismo.', 
+      answer: true,
+      explanation: 'Maraming mamamayan sa mga kolonya ang nag-organisa ng mga kilusan upang makamit ang kalayaan.'
+    },
   ],
   ww1: [
     { 
