@@ -1,50 +1,78 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BookOpen, Gamepad2, Video, Brain, Trophy, Users } from 'lucide-react';
 import GamesSection from '@/components/GamesSection';
+import QuizzesSection from '@/components/QuizzesSection';
+import TriviaSection from '@/components/TriviaSection';
+import AboutSection from '@/components/AboutSection';
+import { BookOpen, GraduationCap, Landmark } from 'lucide-react';
 
 export default function Index() {
   const [activeSection, setActiveSection] = useState('home');
 
-  const sections = {
-    home: <HomeSection onNavigate={setActiveSection} />,
-    games: <GamesSection />,
-    videos: <VideosSection />,
-    quizzes: <QuizzesSection />,
-    trivia: <TriviaSection />,
-    about: <AboutSection />
+  const renderSection = () => {
+    switch (activeSection) {
+      case 'home':
+        return <HomeSection onNavigate={setActiveSection} />;
+      case 'games':
+        return <GamesSection />;
+      case 'quizzes':
+        return <QuizzesSection />;
+      case 'trivia':
+        return <TriviaSection />;
+      case 'about':
+        return <AboutSection />;
+      default:
+        return <HomeSection onNavigate={setActiveSection} />;
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100">
-      <header className="sticky top-0 z-50 border-b-4 border-amber-800 bg-gradient-to-r from-amber-100 to-orange-100 shadow-lg backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
+    <div className="min-h-screen bg-gradient-to-b from-[#f5e6d3] via-[#ead5bb] to-[#e8d4ba]">
+      {/* Header with Logo */}
+      <header className="sticky top-0 z-50 bg-[#f7ead5] border-b-4 border-[#d4a574] shadow-xl">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="text-4xl">🌍</div>
+              {/* Logo - Books and Globe */}
+              <div className="flex items-center gap-2">
+                <div className="relative">
+                  <BookOpen className="h-12 w-12 text-[#8b5a2b] transform -rotate-12" />
+                  <div className="absolute -top-1 -right-1 h-10 w-10 rounded-full bg-gradient-to-br from-green-600 to-blue-600 flex items-center justify-center text-white text-xl">
+                    🌍
+                  </div>
+                </div>
+                <Landmark className="h-10 w-10 text-[#c77d3a]" />
+              </div>
               <div>
-                <h1 className="text-2xl font-bold text-amber-900 md:text-3xl">
-                  SOCIAL STUDIES EXPLORERS <span className="text-orange-700">HUB</span>
+                <h1 className="text-2xl md:text-4xl font-bold text-[#8b5a2b] tracking-wide">
+                  SOCIAL STUDIES <span className="text-[#c77d3a]">HUB</span>
                 </h1>
-                <p className="text-sm text-amber-800">Explore History & Society</p>
               </div>
             </div>
           </div>
-          <nav className="mt-4 flex flex-wrap gap-2">
-            {Object.keys(sections).map((key) => (
+          
+          {/* Navigation */}
+          <nav className="mt-4 flex flex-wrap gap-2 border-t-2 border-[#d4a574] pt-3">
+            {[
+              { id: 'home', label: 'Home' },
+              { id: 'quizzes', label: 'Quizzes' },
+              { id: 'trivia', label: 'Trivia Corner' },
+              { id: 'about', label: 'About Us' },
+            ].map((item) => (
               <Button
-                key={key}
-                onClick={() => setActiveSection(key)}
-                variant={activeSection === key ? "default" : "outline"}
-                className={`capitalize ${
-                  activeSection === key
-                    ? 'bg-gradient-to-r from-amber-700 to-orange-700 text-white'
-                    : 'border-amber-300 bg-amber-50 text-amber-900 hover:bg-amber-100'
+                key={item.id}
+                onClick={() => setActiveSection(item.id)}
+                variant="ghost"
+                className={`text-base md:text-lg font-bold ${
+                  activeSection === item.id
+                    ? 'bg-[#8b5a2b] text-white hover:bg-[#7a4d26]'
+                    : 'text-[#8b5a2b] hover:bg-[#e8d4ba]'
+                } rounded-none border-b-4 ${
+                  activeSection === item.id ? 'border-[#5a3618]' : 'border-transparent'
                 }`}
               >
-                {key}
+                {item.label}
               </Button>
             ))}
           </nav>
@@ -52,11 +80,11 @@ export default function Index() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        {sections[activeSection as keyof typeof sections]}
+        {renderSection()}
       </main>
 
-      <footer className="border-t-4 border-amber-800 bg-gradient-to-r from-amber-200 to-orange-200 py-6 text-center">
-        <p className="text-amber-900 font-semibold">
+      <footer className="border-t-4 border-[#8b5a2b] bg-[#d4a574] py-6 text-center mt-12">
+        <p className="text-[#5a3618] font-bold text-lg">
           Social Studies Explorers Hub — Grade 8 World History · For educational use
         </p>
       </footer>
@@ -66,276 +94,124 @@ export default function Index() {
 
 function HomeSection({ onNavigate }: { onNavigate: (section: string) => void }) {
   return (
-    <div className="space-y-6">
-      <Card className="border-4 border-amber-300 bg-gradient-to-br from-amber-900 to-orange-900 p-8 text-white shadow-2xl">
-        <h2 className="text-4xl font-bold mb-4">Video Discussions</h2>
-        <p className="text-xl mb-6">Explore History & Society</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="space-y-8">
+      {/* Video Discussions Section */}
+      <Card className="border-4 border-[#8b5a2b] bg-gradient-to-b from-[#8b5a2b] to-[#6b4423] p-8 shadow-2xl rounded-xl">
+        <div className="text-center mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#f5e6d3] mb-2 border-b-2 border-[#d4a574] pb-4 inline-block px-8">
+            Video Discussions
+          </h2>
+          <p className="text-2xl text-[#f5e6d3] mt-4">Explore History & Society</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            'Ancient Civilizations',
-            'American Revolution',
-            'World War II',
-            'Civics & Government'
-          ].map((title) => (
+            { title: 'Ancient Civilizations', emoji: '🏛️', bg: 'from-amber-300 to-yellow-500' },
+            { title: 'American Revolution', emoji: '⚔️', bg: 'from-red-400 to-orange-500' },
+            { title: 'World War II', emoji: '🪖', bg: 'from-gray-500 to-slate-600' },
+            { title: 'Civics & Government', emoji: '🏛️', bg: 'from-blue-400 to-indigo-500' },
+          ].map((video) => (
             <div
-              key={title}
-              className="group relative h-40 cursor-pointer overflow-hidden rounded-lg border-2 border-amber-200 bg-gradient-to-br from-amber-600 to-orange-700 transition-transform hover:scale-105"
-              onClick={() => onNavigate('videos')}
+              key={video.title}
+              className={`group relative h-52 overflow-hidden rounded-xl border-4 border-[#f5e6d3] shadow-lg cursor-pointer transition-transform hover:scale-105 bg-gradient-to-br ${video.bg}`}
             >
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-16 w-16 rounded-full border-4 border-white bg-black/70 flex items-center justify-center text-3xl">
+                <div className="text-7xl opacity-30">{video.emoji}</div>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="h-20 w-20 rounded-full bg-black/70 border-4 border-white flex items-center justify-center text-4xl text-white group-hover:scale-110 transition-transform">
                   ▶
                 </div>
               </div>
-              <p className="absolute bottom-0 left-0 right-0 bg-black/70 p-2 text-center font-bold">
-                {title}
-              </p>
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 p-3">
+                <p className="text-white font-bold text-center text-lg">{video.title}</p>
+              </div>
             </div>
           ))}
         </div>
       </Card>
 
+      {/* Interactive Sections Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Interactive Games */}
         <Card
-          className="border-4 border-orange-400 bg-gradient-to-br from-orange-50 to-amber-100 p-6 text-center cursor-pointer transition-transform hover:scale-105"
           onClick={() => onNavigate('games')}
+          className="group border-4 border-[#c77d3a] bg-gradient-to-b from-white to-[#f5e6d3] p-6 cursor-pointer transition-transform hover:scale-105 shadow-xl rounded-xl"
         >
-          <div className="mb-4 flex justify-center">
-            <Gamepad2 className="h-16 w-16 text-orange-600" />
+          <div className="border-b-4 border-[#c77d3a] pb-3 mb-4">
+            <h3 className="text-2xl font-bold text-[#c77d3a] text-center">Interactive Games</h3>
           </div>
-          <h3 className="text-2xl font-bold text-amber-900 mb-2">Interactive Games</h3>
-          <p className="text-amber-800 mb-4">Learn through fun activities!</p>
-          <Button className="bg-gradient-to-r from-orange-600 to-amber-600 text-white hover:from-orange-700 hover:to-amber-700">
+          <p className="text-center text-[#5a3618] font-semibold mb-6 text-lg">
+            Learn through fun activities!
+          </p>
+          <div className="flex justify-center mb-6">
+            <div className="text-8xl">🗺️</div>
+          </div>
+          <Button className="w-full bg-gradient-to-r from-[#c77d3a] to-[#a0642e] hover:from-[#b36e31] hover:to-[#8f5626] text-white font-bold text-lg py-6 rounded-xl shadow-lg border-2 border-[#8b5a2b]">
             Play Now
           </Button>
         </Card>
 
+        {/* Quizzes */}
         <Card
-          className="border-4 border-amber-400 bg-gradient-to-br from-amber-50 to-yellow-100 p-6 text-center cursor-pointer transition-transform hover:scale-105"
           onClick={() => onNavigate('quizzes')}
+          className="group border-4 border-[#d49240] bg-gradient-to-b from-white to-[#f5e6d3] p-6 cursor-pointer transition-transform hover:scale-105 shadow-xl rounded-xl"
         >
-          <div className="mb-4 flex justify-center">
-            <Brain className="h-16 w-16 text-amber-600" />
+          <div className="border-b-4 border-[#d49240] pb-3 mb-4">
+            <h3 className="text-2xl font-bold text-[#d49240] text-center">Quizzes & Challenges</h3>
           </div>
-          <h3 className="text-2xl font-bold text-amber-900 mb-2">Quizzes</h3>
-          <p className="text-amber-800 mb-4">Test your Social Studies Knowledge!</p>
-          <Button className="bg-gradient-to-r from-amber-600 to-yellow-600 text-white hover:from-amber-700 hover:to-yellow-700">
+          <p className="text-center text-[#5a3618] font-semibold mb-6 text-lg">
+            Test Your Social Studies Knowledge!
+          </p>
+          <div className="flex justify-center mb-6">
+            <div className="text-8xl">📋</div>
+          </div>
+          <Button className="w-full bg-gradient-to-r from-[#d49240] to-[#b87835] hover:from-[#c28437] hover:to-[#a66c2f] text-white font-bold text-lg py-6 rounded-xl shadow-lg border-2 border-[#8b5a2b]">
             Take a Quiz
           </Button>
         </Card>
 
+        {/* Trivia Corner */}
         <Card
-          className="border-4 border-green-400 bg-gradient-to-br from-green-50 to-emerald-100 p-6 text-center cursor-pointer transition-transform hover:scale-105"
           onClick={() => onNavigate('trivia')}
+          className="group border-4 border-[#7e9f4d] bg-gradient-to-b from-white to-[#f5e6d3] p-6 cursor-pointer transition-transform hover:scale-105 shadow-xl rounded-xl"
         >
-          <div className="mb-4 flex justify-center">
-            <Trophy className="h-16 w-16 text-green-600" />
+          <div className="border-b-4 border-[#7e9f4d] pb-3 mb-4">
+            <h3 className="text-2xl font-bold text-[#7e9f4d] text-center">Trivia Corner</h3>
           </div>
-          <h3 className="text-2xl font-bold text-amber-900 mb-2">Trivia Corner</h3>
-          <p className="text-amber-800 mb-4">Fun Facts & History Challenges!</p>
-          <Button className="bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700">
+          <p className="text-center text-[#5a3618] font-semibold mb-6 text-lg">
+            Fun Facts & History Challenges!
+          </p>
+          <div className="flex justify-center mb-6">
+            <div className="relative">
+              <div className="text-7xl">🌍</div>
+              <GraduationCap className="absolute -top-2 -right-2 h-10 w-10 text-[#7e9f4d]" />
+            </div>
+          </div>
+          <Button className="w-full bg-gradient-to-r from-[#7e9f4d] to-[#6a8742] hover:from-[#708f44] hover:to-[#5d7639] text-white font-bold text-lg py-6 rounded-xl shadow-lg border-2 border-[#5a7036]">
             Explore Trivia
           </Button>
         </Card>
       </div>
 
-      <Card className="border-4 border-amber-300 bg-gradient-to-r from-amber-50 to-orange-50 p-6">
-        <div className="flex items-center gap-4">
-          <BookOpen className="h-12 w-12 text-amber-700" />
-          <div className="flex-1">
-            <h3 className="text-2xl font-bold text-amber-900">About Us</h3>
-            <p className="text-amber-800">Learn More About Our Mission</p>
+      {/* About Us Section */}
+      <Card className="border-4 border-[#8b5a2b] bg-gradient-to-r from-[#f5e6d3] to-[#ead5bb] p-8 shadow-xl rounded-xl">
+        <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="text-8xl">🏫</div>
+          <div className="flex-1 text-center md:text-left">
+            <div className="border-b-4 border-[#8b5a2b] inline-block pb-2 mb-3">
+              <h3 className="text-3xl font-bold text-[#8b5a2b]">About Us</h3>
+            </div>
+            <p className="text-xl text-[#5a3618] font-semibold">Learn More About Our Mission</p>
           </div>
           <Button
             onClick={() => onNavigate('about')}
-            className="bg-gradient-to-r from-amber-600 to-orange-600"
+            className="bg-gradient-to-r from-[#8b5a2b] to-[#6b4423] hover:from-[#7a4d26] hover:to-[#5a3618] text-white font-bold text-lg px-8 py-6 rounded-xl shadow-lg"
           >
             Read More
           </Button>
+          <div className="text-8xl">🚌</div>
         </div>
-      </Card>
-    </div>
-  );
-}
-
-function VideosSection() {
-  const videos = [
-    { topic: 'Imperialism and Colonialism', description: 'Understand causes, methods of control, and effects on colonies.' },
-    { topic: 'World War I', description: 'Learn MAIN causes, trench warfare, and Treaty of Versailles impacts.' },
-    { topic: 'World War II', description: 'Explore totalitarianism, major battles, and post-war world order.' },
-    { topic: 'Cold War', description: 'Study proxy wars, nuclear tension, and the fall of the Soviet Union.' }
-  ];
-
-  return (
-    <div className="space-y-6">
-      <h2 className="text-4xl font-bold text-center text-amber-900">Video Lessons</h2>
-      <p className="text-center text-amber-800 text-lg">
-        Select a topic to explore short learning videos and key focus areas.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {videos.map((video) => (
-          <Card key={video.topic} className="border-2 border-amber-300 bg-white p-6 hover:shadow-xl transition-shadow">
-            <div className="h-40 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg mb-4 flex items-center justify-center">
-              <Video className="h-16 w-16 text-white" />
-            </div>
-            <h3 className="font-bold text-amber-900 mb-2">{video.topic}</h3>
-            <span className="inline-block bg-amber-200 text-amber-900 text-xs px-2 py-1 rounded-full mb-2">
-              Lesson Topic
-            </span>
-            <p className="text-sm text-amber-800">{video.description}</p>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function QuizzesSection() {
-  return (
-    <div className="space-y-6">
-      <Card className="border-4 border-amber-300 bg-white p-8">
-        <div className="inline-block bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-2 rounded-full mb-4">
-          Quizzes
-        </div>
-        <h2 className="text-4xl font-bold text-amber-900 mb-4">Test Your Knowledge</h2>
-        <p className="text-amber-800 text-lg">
-          Answer topic-based quizzes with instant feedback and clear explanations.
-        </p>
-      </Card>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          'Imperyalismo at Kolonyalismo',
-          'Unang Digmaang Pandaigdig',
-          'Ikalawang Digmaang Pandaigdig',
-          'Cold War',
-          'Globalisasyon'
-        ].map((topic, index) => (
-          <Card
-            key={topic}
-            className="border-2 border-amber-300 bg-gradient-to-br from-white to-amber-50 p-6 cursor-pointer transition-transform hover:scale-105 hover:shadow-xl"
-          >
-            <div className="flex items-start justify-between mb-4">
-              <div className="h-12 w-12 rounded-full bg-gradient-to-br from-amber-600 to-orange-600 text-white flex items-center justify-center font-bold text-xl">
-                {index + 1}
-              </div>
-              <span className="bg-amber-200 text-amber-900 text-xs px-3 py-1 rounded-full font-bold">
-                AVAILABLE
-              </span>
-            </div>
-            <h3 className="text-xl font-bold text-amber-900 mb-2">{topic}</h3>
-            <p className="text-amber-700 text-sm mb-4">Start this module</p>
-            <Button className="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white">
-              Start Quiz
-            </Button>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function TriviaSection() {
-  const trivia = [
-    {
-      topic: 'Christmas Truce (1914)',
-      fact: 'Noong Unang Digmaang Pandaigdig, nagkaroon ng pansamantalang tigil-putukan na kilala bilang Christmas Truce noong 1914.'
-    },
-    {
-      topic: 'Messenger Pigeons sa WWI',
-      fact: 'Gumamit ng mga kalapati bilang tagapagdala ng mensahe noong WWI dahil mas maaasahan sila kaysa sa ibang paraan ng komunikasyon.'
-    },
-    {
-      topic: 'Berlin Wall',
-      fact: 'Ang Berlin Wall ay simbolo ng paghahati ng mundo sa panahon ng Cold War. Pinaghiwalay nito ang East at West Germany hanggang sa ito ay bumagsak noong 1989.'
-    }
-  ];
-
-  return (
-    <div className="space-y-6">
-      <Card className="border-4 border-amber-300 bg-white p-8 text-center">
-        <div className="inline-block h-16 w-16 rounded-xl bg-gradient-to-br from-amber-600 to-orange-600 text-white flex items-center justify-center text-3xl mb-4">
-          📚
-        </div>
-        <h2 className="text-4xl font-bold text-amber-900 mb-4">Trivia Corner</h2>
-        <p className="text-amber-800 text-lg">
-          <strong>Trivia</strong> means interesting facts that make you curious.
-        </p>
-      </Card>
-
-      <h3 className="text-3xl font-bold text-amber-900">Did you know?</h3>
-
-      <div className="grid gap-6">
-        {trivia.map((item) => (
-          <Card key={item.topic} className="border-2 border-amber-300 bg-white p-6 hover:shadow-xl transition-shadow">
-            <h4 className="text-xl font-bold text-orange-700 mb-2">{item.topic}</h4>
-            <p className="text-amber-900">{item.fact}</p>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function AboutSection() {
-  return (
-    <div className="space-y-6">
-      <Card className="border-4 border-amber-300 bg-white p-8">
-        <div className="inline-block h-16 w-16 rounded-xl bg-gradient-to-br from-amber-600 to-orange-600 text-white flex items-center justify-center text-3xl mb-4">
-          📘
-        </div>
-        <h2 className="text-4xl font-bold text-amber-900 mb-4">About Us</h2>
-        <p className="text-xl text-amber-800">
-          This page summarizes the <strong>research background</strong>, <strong>purpose</strong>, and{' '}
-          <strong>researcher profiles</strong> for the Social Studies Explorers Hub.
-        </p>
-      </Card>
-
-      <Card className="border-2 border-amber-300 bg-white p-8">
-        <h3 className="text-3xl font-bold text-teal-700 mb-4">Researcher's Background</h3>
-        <p className="text-xl text-amber-900 mb-4">
-          Hi! We are third-year students from Batangas State University ARASOF Nasugbu Campus, majoring in Social
-          Studies. We created this website as part of our research about how social media can help improve students'
-          learning in Social Studies.
-        </p>
-        <p className="text-xl text-amber-900">
-          Based on our study, we discovered that platforms like videos and online content can make learning more fun,
-          engaging, and easier to understand.
-        </p>
-      </Card>
-
-      <Card className="border-2 border-amber-300 bg-white p-8">
-        <h3 className="text-3xl font-bold text-teal-700 mb-4">Purpose</h3>
-        <p className="text-xl text-amber-900 mb-4">The Social Studies Explorers Hub was built as a space where learners can:</p>
-        <ul className="list-disc list-inside space-y-2 text-xl text-amber-900">
-          <li>Watch video lessons</li>
-          <li>Play interactive games</li>
-          <li>Answer quizzes</li>
-          <li>Explore fun history trivia</li>
-        </ul>
-      </Card>
-
-      <Card className="border-2 border-amber-300 bg-white p-8">
-        <h3 className="text-3xl font-bold text-teal-700 mb-4">Our Mission</h3>
-        <p className="text-2xl font-bold text-amber-900 mb-4">
-          "Explore the Past, Engage the Present, Learn for the Future"
-        </p>
-        <div className="flex flex-wrap gap-3 mb-6">
-          <span className="bg-amber-100 border border-amber-300 text-amber-900 px-4 py-2 rounded-full font-bold">
-            Future Educators
-          </span>
-          <span className="bg-amber-100 border border-amber-300 text-amber-900 px-4 py-2 rounded-full font-bold">
-            Interactive Learning
-          </span>
-          <span className="bg-amber-100 border border-amber-300 text-amber-900 px-4 py-2 rounded-full font-bold">
-            Technology-Driven
-          </span>
-        </div>
-        <p className="text-xl text-amber-900">
-          We hope this platform helps learners enjoy World History while improving their knowledge. As future
-          educators, our goal is to transform traditional learning into a more interactive, engaging, and
-          technology-driven experience that supports better academic performance.
-        </p>
       </Card>
     </div>
   );
