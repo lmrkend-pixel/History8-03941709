@@ -278,7 +278,61 @@ const mcqData = {
       q: 'Ano ang pinakamalapit na kahulugan ng globalisasyon?',
       options: ['Pagkakahiwalay ng mga bansa', 'Pagsasama-sama ng ekonomiya, kultura, at politika ng mga bansa', 'Pagkontrol ng isang bansa sa lahat', 'Pagbawas ng teknolohiya'],
       answer: 1,
-      explanation: 'Ang globalisasyon ay proseso ng pag-uugnay ng mga bansa sa aspeto ng ekonomiya, kultura, at politika.'
+      explanation: 'Ang globalisasyon ay proseso ng pag-uugnay ng mga bansa sa aspeto ng ekonomiya, kultura, at politika sa pamamagitan ng teknolohiya at kalakalan.'
+    },
+    {
+      q: 'Alin sa sumusunod ang halimbawa ng political globalization?',
+      options: ['Pag-usbong ng K-pop', 'Pagbuo ng ASEAN', 'Pagtaas ng export', 'Pagkain ng fusion food'],
+      answer: 1,
+      explanation: 'Ang ASEAN ay isang pandaigdigang organisasyon na nagpapakita ng kooperasyong politikal sa pagitan ng mga bansa.'
+    },
+    {
+      q: 'Bakit sinasabing may epekto ang globalisasyon sa soberanya ng estado?',
+      options: ['Nawawala ang kultura', 'Tumataas ang populasyon', 'Naiimpluwensyahan ng pandaigdigang kasunduan ang desisyon ng bansa', 'Lahat ng bansa ay nagiging pareho'],
+      answer: 2,
+      explanation: 'Dahil sa treaties at international agreements, may mga desisyong kailangang iayon ng bansa sa pandaigdigang pamantayan.'
+    },
+    {
+      q: 'Ano ang pangunahing layunin ng free trade?',
+      options: ['Pataas ang presyo ng produkto', 'Pigilan ang kalakalan', 'Palayain ang daloy ng produkto sa pagitan ng bansa', 'Limitahan ang import'],
+      answer: 2,
+      explanation: 'Layunin ng free trade na alisin ang hadlang tulad ng tariffs upang mapadali ang palitan ng produkto.'
+    },
+    {
+      q: 'Alin ang pinakamainam na halimbawa ng outsourcing?',
+      options: ['Pagbili ng lokal na produkto', 'Paglipat ng produksyon sa ibang bansa para makatipid', 'Pagtaas ng buwis', 'Pag-aaral ng kultura'],
+      answer: 1,
+      explanation: 'Ang outsourcing ay pag-delegate ng trabaho o produksyon sa ibang bansa upang mabawasan ang gastos.'
+    },
+    {
+      q: 'Ano ang maaaring negatibong epekto ng economic globalization?',
+      options: ['Pagdami ng trabaho', 'Pagbaba ng presyo', 'Pagkalugi ng lokal na negosyo', 'Pag-unlad ng teknolohiya'],
+      answer: 2,
+      explanation: 'Dahil sa kompetisyon mula sa murang imported goods, nahihirapan ang lokal na negosyo na makipagsabayan.'
+    },
+    {
+      q: 'Ano ang ibig sabihin ng hybridization ng kultura?',
+      options: ['Pagkawala ng kultura', 'Pagkopya ng banyagang kultura', 'Paghahalo ng lokal at banyagang kultura', 'Pag-iwas sa ibang kultura'],
+      answer: 2,
+      explanation: 'Nagkakaroon ng bagong anyo ng kultura mula sa pagsasanib ng lokal at dayuhang impluwensya.'
+    },
+    {
+      q: 'Alin ang halimbawa ng homogenization?',
+      options: ['Pagkakaiba-iba ng kultura', 'Pagkakaroon ng natatanging tradisyon', 'Pagiging magkakatulad ng kultura dahil sa global influence', 'Pag-unlad ng lokal na wika'],
+      answer: 2,
+      explanation: 'Ang homogenization ay nagreresulta sa pagkakapareho ng kultura dahil sa malakas na impluwensya ng global media at brands.'
+    },
+    {
+      q: 'Paano nakakatulong ang globalisasyon sa global citizenship?',
+      options: ['Nagiging makasarili ang tao', 'Lumalawak ang responsibilidad sa kapwa-tao sa buong mundo', 'Nawawala ang komunikasyon', 'Nababawasan ang kaalaman'],
+      answer: 1,
+      explanation: 'Dahil sa globalisasyon, mas nagiging mulat ang tao sa isyu ng ibang bansa at nagkakaroon ng pakikiisa.'
+    },
+    {
+      q: 'Ano ang pinakamainam na solusyon sa hamon ng globalisasyon?',
+      options: ['Iwasan ang ibang bansa', 'Itigil ang kalakalan', 'Isulong ang sustainable lifestyle at ethical consumption', 'Isara ang internet'],
+      answer: 2,
+      explanation: 'Ang responsableng pamumuhay ay tumutulong upang mabawasan ang negatibong epekto ng globalisasyon.'
     },
   ],
 };
@@ -393,7 +447,56 @@ const tfData = {
     },
   ],
   glob: [
-    { q: 'Ang globalisasyon ay nag-uugnay sa mga bansa sa pamamagitan ng teknolohiya at kalakalan.', answer: true },
+    { 
+      q: 'Ang globalisasyon ay nag-uugnay sa mga bansa sa pamamagitan ng teknolohiya at kalakalan.', 
+      answer: true,
+      explanation: 'Ito ang pangunahing mekanismo kung paano nagiging konektado ang mga bansa.'
+    },
+    { 
+      q: 'Walang epekto ang globalisasyon sa lokal na trabaho.', 
+      answer: false,
+      explanation: 'Maaaring makalikha o makabawas ito ng trabaho depende sa sitwasyon.'
+    },
+    { 
+      q: 'Ang multinational corporations ay nag-ooperate sa iisang bansa lamang.', 
+      answer: false,
+      explanation: 'Ang MNCs ay kumikilos sa maraming bansa upang palawakin ang negosyo.'
+    },
+    { 
+      q: 'Ang global supply chain ay kinabibilangan ng produksyon sa iba\'t ibang bansa.', 
+      answer: true,
+      explanation: 'Iba\'t ibang bahagi ng produkto ay ginagawa sa iba\'t ibang bansa.'
+    },
+    { 
+      q: 'Ang cultural globalization ay nagpapalaganap ng media at internet culture.', 
+      answer: true,
+      explanation: 'Media at internet ang pangunahing daluyan ng pagkalat ng kultura.'
+    },
+    { 
+      q: 'Ang homogenization ay nagpapalakas ng lokal na identidad.', 
+      answer: false,
+      explanation: 'Ito ay nagdudulot ng pagkawala o paghina ng lokal na kultura.'
+    },
+    { 
+      q: 'Ang globalisasyon ay maaaring magdulot ng hindi pantay na distribusyon ng yaman.', 
+      answer: true,
+      explanation: 'Mas nakikinabang ang mayayamang bansa kaysa sa umuunlad.'
+    },
+    { 
+      q: 'Ang global citizenship ay nangangahulugang responsibilidad lamang sa sariling bansa.', 
+      answer: false,
+      explanation: 'Saklaw nito ang pananagutan sa buong mundo.'
+    },
+    { 
+      q: 'Ang transnational advocacy networks ay tumutulong sa global issues tulad ng climate change.', 
+      answer: true,
+      explanation: 'Pinag-uugnay nito ang mga tao para sa sama-samang aksyon.'
+    },
+    { 
+      q: 'Ang sustainable lifestyle ay walang kinalaman sa globalisasyon.', 
+      answer: false,
+      explanation: 'Ito ay mahalagang tugon upang mabawasan ang epekto ng globalisasyon.'
+    },
   ],
 };
 
