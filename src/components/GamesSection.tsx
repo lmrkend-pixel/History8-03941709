@@ -200,16 +200,16 @@ function FlagGameCard() {
   const [gameOver, setGameOver] = useState(false);
 
   const countries = [
-    { name: 'Philippines', emoji: '🇵🇭' },
-    { name: 'United Kingdom', emoji: '🇬🇧' },
-    { name: 'France', emoji: '🇫🇷' },
-    { name: 'Argentina', emoji: '🇦🇷' },
-    { name: 'Australia', emoji: '🇦🇺' },
-    { name: 'China', emoji: '🇨🇳' },
-    { name: 'United States', emoji: '🇺🇸' },
-    { name: 'Thailand', emoji: '🇹🇭' },
-    { name: 'South Korea', emoji: '🇰🇷' },
-    { name: 'Japan', emoji: '🇯🇵' },
+    { name: 'Philippines', image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/a83d.png' },
+    { name: 'United Kingdom', image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/b5ef.png' },
+    { name: 'France', image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/4d8f.png' },
+    { name: 'Argentina', image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/082b.png' },
+    { name: 'Australia', image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/1b03.png' },
+    { name: 'China', image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/993c.png' },
+    { name: 'Estados Unidos', image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/4e74.png' },
+    { name: 'Thailand', image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/3fbb.png' },
+    { name: 'South Korea', image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/f893.png' },
+    { name: 'Japan', image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/1ad9.png' },
   ];
 
   const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
@@ -286,7 +286,14 @@ function FlagGameCard() {
           <p className="text-sm text-[#8b5a2b] font-semibold mb-4">
             Round {round + 1} of {countries.length}
           </p>
-          <div className="text-8xl mb-4">{answer.emoji}</div>
+          <div className="flex justify-center mb-4">
+            <img 
+              src={answer.image} 
+              alt="Country Flag" 
+              className="w-64 h-40 object-cover rounded-lg border-4 border-[#8b5a2b] shadow-lg"
+              crossOrigin="anonymous"
+            />
+          </div>
           <p className="text-xl font-bold text-[#8b5a2b]">Which country is this?</p>
         </div>
 
