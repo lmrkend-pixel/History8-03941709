@@ -213,9 +213,64 @@ const mcqData = {
   ],
   cold: [
     {
-      q: 'Bakit iniwasan ng US at USSR ang direktang digmaan?',
-      options: ['Kakulangan sa sundalo', 'Takot sa mutual destruction ng nuclear weapons', 'Kawalan ng interes', 'Pagkakaibigan ng lider'],
+      q: 'Ano ang pangunahing dahilan kung bakit iniwasan ng US at USSR ang direktang digmaan sa Cold War?',
+      options: ['Kakulangan sa sundalo', 'Takot sa mutual destruction dulot ng nuclear weapons', 'Kawalan ng interes sa digmaan', 'Pagkakaibigan ng mga lider'],
       answer: 1,
+      explanation: 'Parehong may nuclear weapons ang dalawang bansa, kaya ang direktang digmaan ay maaaring magdulot ng malawakang pagkawasak sa magkabilang panig (MAD).'
+    },
+    {
+      q: 'Ano ang ipinapahiwatig ng "domino theory"?',
+      options: ['Pagbagsak ng ekonomiya', 'Pagkalat ng komunismo mula sa isang bansa patungo sa iba', 'Pagkakaisa ng mga bansa', 'Pagwawakas ng digmaan'],
+      answer: 1,
+      explanation: 'Pinaniniwalaan ng US na kapag naging komunista ang isang bansa, susunod ang mga kalapit nito.'
+    },
+    {
+      q: 'Ano ang naging epekto ng Berlin Blockade sa relasyon ng mga bansa?',
+      options: ['Nagkaroon ng pagkakaisa', 'Lalong tumindi ang tensyon sa pagitan ng US at USSR', 'Natapos ang Cold War', 'Naging neutral ang Germany'],
+      answer: 1,
+      explanation: 'Isa ito sa unang krisis ng Cold War na nagpalala ng hidwaan ng dalawang panig.'
+    },
+    {
+      q: 'Ano ang pangunahing layunin ng propaganda sa Cold War?',
+      options: ['Magturo ng agham', 'Hikayatin ang suporta at sirain ang kalaban', 'Magbigay ng trabaho', 'Magpalago ng ekonomiya'],
+      answer: 1,
+      explanation: 'Ginamit ito upang impluwensyahan ang isip ng mamamayan at palakasin ang ideolohiya.'
+    },
+    {
+      q: 'Paano nakaapekto ang Space Race sa Cold War?',
+      options: ['Nagdulot ng digmaan', 'Naging sukatan ng teknolohikal na kapangyarihan', 'Nagpababa ng tensyon', 'Nagwakas ng alyansa'],
+      answer: 1,
+      explanation: 'Ang tagumpay sa kalawakan ay simbolo ng superioridad ng isang ideolohiya.'
+    },
+    {
+      q: 'Ano ang naging epekto ng pagkatalo ng US sa Vietnam War?',
+      options: ['Lumakas ang kapitalismo sa Asya', 'Lumaganap ang komunismo sa rehiyon', 'Natapos ang Cold War', 'Nagkaroon ng kapayapaan'],
+      answer: 1,
+      explanation: 'Nagbigay ito ng daan sa paglawak ng impluwensyang komunista sa Timog-Silangang Asya.'
+    },
+    {
+      q: 'Ano ang pangunahing dahilan ng pagbagsak ng Soviet Union?',
+      options: ['Pananakop ng US', 'Panloob na kahinaan at reporma', 'Pagkatalo sa digmaan', 'Pagkawala ng alyansa'],
+      answer: 1,
+      explanation: 'Ang Glasnost at Perestroika ay naglantad ng kahinaan ng sistema at nagdulot ng pagbagsak nito.'
+    },
+    {
+      q: 'Ano ang kahalagahan ng Cuban Missile Crisis?',
+      options: ['Ito ang unang digmaan', 'Ito ang pinakamalapit sa nuclear war', 'Ito ang huling laban', 'Ito ang kasunduan'],
+      answer: 1,
+      explanation: 'Halos humantong ito sa nuclear war kaya naging kritikal na yugto ng Cold War.'
+    },
+    {
+      q: 'Ano ang naging epekto ng Unang Digmaang Pandaigdig sa Gitnang Silangan?',
+      options: ['Walang pagbabago', 'Pagkontrol ng Britain at France sa dating teritoryo ng Ottoman', 'Paglakas ng Ottoman Empire', 'Pagkakaroon ng iisang bansa'],
+      answer: 1,
+      explanation: 'Nahati ang mga teritoryo at napunta sa kontrol ng Kanluran.'
+    },
+    {
+      q: 'Ano ang pangunahing kahinaan ng League of Nations?',
+      options: ['Maraming miyembro', 'Walang sariling puwersang militar', 'May labis na kapangyarihan', 'Kontrolado ng Germany'],
+      answer: 1,
+      explanation: 'Dahil wala itong kakayahang magpatupad ng desisyon, naging mahina ito sa pagpigil ng digmaan.'
     },
   ],
   glob: [
@@ -286,7 +341,56 @@ const tfData = {
     { q: 'Nagsimula ang WWII sa Europe matapos salakayin ng Germany ang Poland.', answer: true },
   ],
   cold: [
-    { q: 'Direktang naglaban sa malaking digmaan ang US at USSR sa Cold War.', answer: false },
+    { 
+      q: 'Ang Cold War ay isang direktang digmaan sa pagitan ng US at USSR.', 
+      answer: false,
+      explanation: 'Ito ay hindi direktang labanan kundi ideolohikal at proxy wars lamang.'
+    },
+    { 
+      q: 'Ang arms race ay nagdulot ng pagtaas ng bilang ng nuclear weapons.', 
+      answer: true,
+      explanation: 'Nagkaroon ng kompetisyon sa paggawa ng mas malalakas na armas.'
+    },
+    { 
+      q: 'Ang Sputnik ay inilunsad ng United States.', 
+      answer: false,
+      explanation: 'Ito ay unang satellite na inilunsad ng USSR.'
+    },
+    { 
+      q: 'Ang Berlin Airlift ay tugon sa blockade ng Soviet Union.', 
+      answer: true,
+      explanation: 'Nagpadala ng suplay ang US upang suportahan ang West Berlin.'
+    },
+    { 
+      q: 'Ang Perestroika ay patakarang militar.', 
+      answer: false,
+      explanation: 'Ito ay repormang pang-ekonomiya.'
+    },
+    { 
+      q: 'Ang Cold War ay nagdulot ng paghahati ng mundo sa dalawang ideolohiya.', 
+      answer: true,
+      explanation: 'Nahati ang mundo sa kapitalismo at komunismo.'
+    },
+    { 
+      q: 'Ang Treaty of Versailles ay nagdulot ng galit sa Germany.', 
+      answer: true,
+      explanation: 'Dahil sa mabigat na parusa, nagkaroon ng sama ng loob ang Germany.'
+    },
+    { 
+      q: 'Ang NATO ay alyansa ng mga komunistang bansa.', 
+      answer: false,
+      explanation: 'Ito ay alyansa ng mga bansang kapitalista.'
+    },
+    { 
+      q: 'Ang pagbagsak ng Berlin Wall ay simbolo ng pagtatapos ng Cold War.', 
+      answer: true,
+      explanation: 'Ipinakita nito ang pagbagsak ng komunismo sa Eastern Europe.'
+    },
+    { 
+      q: 'Ang WWI ay walang naging epekto sa hinaharap na digmaan.', 
+      answer: false,
+      explanation: 'Ito ay naging isa sa mga sanhi ng WWII dahil sa mga kasunduang ipinataw.'
+    },
   ],
   glob: [
     { q: 'Ang globalisasyon ay nag-uugnay sa mga bansa sa pamamagitan ng teknolohiya at kalakalan.', answer: true },
