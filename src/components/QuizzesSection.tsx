@@ -136,9 +136,6 @@ export default function QuizzesSection() {
     return (
       <div className="space-y-8">
         <Card className="border-4 border-[#d49240] bg-white p-8 shadow-xl rounded-xl">
-          <Badge className="bg-gradient-to-r from-[#d49240] to-[#b87835] text-white px-6 py-2 text-lg mb-4">
-            Quizzes
-          </Badge>
           <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4">
             📝 Test Your Knowledge
           </h2>

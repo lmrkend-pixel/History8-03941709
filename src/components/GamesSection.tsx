@@ -9,9 +9,6 @@ export default function GamesSection() {
   return (
     <div className="space-y-8">
       <Card className="border-4 border-[#c77d3a] bg-white p-8 shadow-xl rounded-xl">
-        <Badge className="bg-gradient-to-r from-[#c77d3a] to-[#a0642e] text-white px-6 py-2 text-lg mb-4">
-          Interactive Games
-        </Badge>
         <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4">
           🎮 Interactive Games
         </h2>

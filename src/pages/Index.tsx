@@ -281,9 +281,6 @@ function VideosSection() {
   return (
     <div className="space-y-8">
       <Card className="border-4 border-[#8b5a2b] bg-white p-8 shadow-xl rounded-xl">
-        <Badge className="bg-gradient-to-r from-[#8b5a2b] to-[#6b4423] text-white px-6 py-2 text-lg mb-4">
-          Video Lessons
-        </Badge>
         <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4">
           📹 Video Lessons
         </h2>
