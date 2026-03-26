@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import GamesSection from '@/components/GamesSection';
 import QuizzesSection from '@/components/QuizzesSection';
 import TriviaSection from '@/components/TriviaSection';
 import AboutSection from '@/components/AboutSection';
-import { BookOpen, GraduationCap, Landmark } from 'lucide-react';
+import { BookOpen, GraduationCap, Landmark, Video, Play } from 'lucide-react';
 
 export default function Index() {
   const [activeSection, setActiveSection] = useState('home');
@@ -14,6 +15,8 @@ export default function Index() {
     switch (activeSection) {
       case 'home':
         return <HomeSection onNavigate={setActiveSection} />;
+      case 'videos':
+        return <VideosSection />;
       case 'games':
         return <GamesSection />;
       case 'quizzes':
@@ -56,6 +59,8 @@ export default function Index() {
           <nav className="mt-4 flex flex-wrap gap-2 border-t-2 border-[#d4a574] pt-3">
             {[
               { id: 'home', label: 'Home' },
+              { id: 'videos', label: 'Videos' },
+              { id: 'games', label: 'Games' },
               { id: 'quizzes', label: 'Quizzes' },
               { id: 'trivia', label: 'Trivia Corner' },
               { id: 'about', label: 'About Us' },
@@ -211,6 +216,90 @@ function HomeSection({ onNavigate }: { onNavigate: (section: string) => void }) 
             Read More
           </Button>
           <div className="text-8xl">🚌</div>
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+function VideosSection() {
+  const videos = [
+    { 
+      topic: 'Imperialism and Colonialism', 
+      description: 'Understand causes, methods of control, and effects on colonies.',
+      emoji: '🏛️',
+      color: 'from-amber-300 to-yellow-500'
+    },
+    { 
+      topic: 'World War I', 
+      description: 'Learn MAIN causes, trench warfare, and Treaty of Versailles impacts.',
+      emoji: '⚔️',
+      color: 'from-red-400 to-orange-500'
+    },
+    { 
+      topic: 'World War II', 
+      description: 'Explore totalitarianism, major battles, and post-war world order.',
+      emoji: '🪖',
+      color: 'from-gray-500 to-slate-600'
+    },
+    { 
+      topic: 'Cold War', 
+      description: 'Study proxy wars, nuclear tension, and the fall of the Soviet Union.',
+      emoji: '❄️',
+      color: 'from-blue-400 to-indigo-500'
+    }
+  ];
+
+  return (
+    <div className="space-y-8">
+      <Card className="border-4 border-[#8b5a2b] bg-white p-8 shadow-xl rounded-xl">
+        <Badge className="bg-gradient-to-r from-[#8b5a2b] to-[#6b4423] text-white px-6 py-2 text-lg mb-4">
+          Video Lessons
+        </Badge>
+        <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4">
+          Video Lessons
+        </h2>
+        <p className="text-xl text-[#5a3618]">
+          Select a topic to explore short learning videos and key focus areas.
+        </p>
+      </Card>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {videos.map((video) => (
+          <Card 
+            key={video.topic} 
+            className="group border-4 border-[#8b5a2b] bg-white p-6 hover:shadow-2xl transition-all hover:scale-105 rounded-xl"
+          >
+            <div className={`h-48 bg-gradient-to-br ${video.color} rounded-xl mb-4 flex flex-col items-center justify-center relative overflow-hidden shadow-lg`}>
+              <div className="absolute inset-0 flex items-center justify-center opacity-30 text-8xl">
+                {video.emoji}
+              </div>
+              <div className="relative z-10 h-20 w-20 rounded-full bg-black/70 border-4 border-white flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-xl">
+                <Play className="h-10 w-10 ml-1" fill="white" />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <h3 className="font-bold text-[#8b5a2b] text-xl group-hover:text-[#c77d3a] transition-colors">
+                {video.topic}
+              </h3>
+              <Badge className="bg-[#f5e6d3] text-[#8b5a2b] border border-[#d4a574]">
+                Lesson Topic
+              </Badge>
+              <p className="text-[#5a3618] leading-relaxed">{video.description}</p>
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      {/* Additional Video Categories */}
+      <Card className="border-4 border-[#d49240] bg-gradient-to-br from-white to-[#f5e6d3] p-8 shadow-xl rounded-xl">
+        <div className="text-center">
+          <div className="text-6xl mb-4">📚</div>
+          <h3 className="text-3xl font-bold text-[#8b5a2b] mb-4">More Topics Coming Soon!</h3>
+          <p className="text-xl text-[#5a3618] max-w-2xl mx-auto">
+            We're continuously adding more video lessons to help you explore World History. 
+            Stay tuned for Geography, Economics, and Culture lessons!
+          </p>
         </div>
       </Card>
     </div>
