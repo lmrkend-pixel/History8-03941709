@@ -37,6 +37,7 @@ function HistoryUnmaskedGame() {
   const [result, setResult] = useState('');
   const [score, setScore] = useState(0);
   const [attempts, setAttempts] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   const people = [
     { 
@@ -91,10 +92,46 @@ function HistoryUnmaskedGame() {
   };
 
   const nextQuestion = () => {
-    setCurrentIndex((currentIndex + 1) % people.length);
+    if (currentIndex + 1 >= people.length) {
+      setGameOver(true);
+    } else {
+      setCurrentIndex(currentIndex + 1);
+      setAnswer('');
+      setResult('');
+    }
+  };
+
+  const restart = () => {
+    setCurrentIndex(0);
     setAnswer('');
     setResult('');
+    setScore(0);
+    setAttempts(0);
+    setGameOver(false);
   };
+
+  if (gameOver) {
+    const percentage = Math.round((score / people.length) * 100);
+    return (
+      <Card className="border-4 border-[#c77d3a] bg-gradient-to-br from-white to-[#f5e6d3] p-8 shadow-2xl rounded-xl">
+        <div className="text-center space-y-6">
+          <div className="text-8xl">🏆</div>
+          <h3 className="text-4xl font-bold text-[#8b5a2b]">Game Complete!</h3>
+          <div>
+            <p className="text-6xl font-bold text-[#c77d3a] mb-2">{score}/{people.length}</p>
+            <p className="text-2xl text-[#8b5a2b]">{percentage}% Correct!</p>
+            <p className="text-xl text-[#8b5a2b] mt-2">Total Attempts: {attempts}</p>
+          </div>
+          <Button
+            onClick={restart}
+            className="bg-gradient-to-r from-[#c77d3a] to-[#a0642e] hover:from-[#b36e31] hover:to-[#8f5626] text-white font-bold text-lg px-8 py-6 rounded-xl shadow-lg"
+          >
+            Play Again
+          </Button>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <Card className="border-4 border-[#c77d3a] bg-gradient-to-br from-white to-[#f5e6d3] p-6 shadow-2xl rounded-xl">
@@ -358,6 +395,7 @@ function DecodePastGame() {
   const [result, setResult] = useState('');
   const [score, setScore] = useState(0);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
 
   const puzzles = [
     { 
@@ -419,13 +457,40 @@ function DecodePastGame() {
       setShowExplanation(false);
     } else {
       // Game complete
-      setCurrentIndex(0);
-      setAnswer('');
-      setResult('');
-      setShowExplanation(false);
-      setScore(0);
+      setGameOver(true);
     }
   };
+
+  const restart = () => {
+    setCurrentIndex(0);
+    setAnswer('');
+    setResult('');
+    setShowExplanation(false);
+    setScore(0);
+    setGameOver(false);
+  };
+
+  if (gameOver) {
+    const percentage = Math.round((score / puzzles.length) * 100);
+    return (
+      <Card className="border-4 border-[#c77d3a] bg-gradient-to-br from-white to-[#f5e6d3] p-8 shadow-2xl rounded-xl">
+        <div className="text-center space-y-6">
+          <div className="text-8xl">🏆</div>
+          <h3 className="text-4xl font-bold text-[#8b5a2b]">Game Complete!</h3>
+          <div>
+            <p className="text-6xl font-bold text-[#c77d3a] mb-2">{score}/{puzzles.length}</p>
+            <p className="text-2xl text-[#8b5a2b]">{percentage}% Correct!</p>
+          </div>
+          <Button
+            onClick={restart}
+            className="bg-gradient-to-r from-[#c77d3a] to-[#a0642e] hover:from-[#b36e31] hover:to-[#8f5626] text-white font-bold text-lg px-8 py-6 rounded-xl shadow-lg"
+          >
+            Play Again
+          </Button>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <Card className="border-4 border-[#c77d3a] bg-gradient-to-br from-white to-[#f5e6d3] p-8 shadow-2xl rounded-xl">
