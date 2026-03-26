@@ -115,7 +115,56 @@ const tfData = {
     { q: 'Ang Treaty of Tordesillas ay kasunduan ng Germany at Russia.', answer: false },
   ],
   ww1: [
-    { q: 'Ang assassination ni Archduke Franz Ferdinand ay may kaugnayan sa pagsiklab ng WWI.', answer: true },
+    { 
+      q: 'Ang Unang Digmaang Pandaigdig ay nagsimula dahil lamang sa isang dahilan.', 
+      answer: false,
+      explanation: 'Maraming sanhi (MAIN) ang nagdulot nito, hindi iisa lamang.'
+    },
+    { 
+      q: 'Ang alyansa ang nagpalawak ng digmaan.', 
+      answer: true,
+      explanation: 'Nadamay ang maraming bansa dahil sa kasunduan.'
+    },
+    { 
+      q: 'Ang trench warfare ay nagresulta sa mabilis na panalo.', 
+      answer: false,
+      explanation: 'Nagdulot ito ng matagal na stalemate.'
+    },
+    { 
+      q: 'Ang United States ay agad na sumali sa digmaan mula 1914.', 
+      answer: false,
+      explanation: 'Sumali lamang ito noong 1917.'
+    },
+    { 
+      q: 'Ang Treaty of Versailles ay nagbigay gantimpala sa Germany.', 
+      answer: false,
+      explanation: 'Nagpataw ito ng mabigat na parusa.'
+    },
+    { 
+      q: 'Ang militarismo ay nagpalala ng tensyon sa Europa.', 
+      answer: true,
+      explanation: 'Ang arms race ay nagdulot ng takot at kompetisyon.'
+    },
+    { 
+      q: 'Ang League of Nations ay naging ganap na epektibo.', 
+      answer: false,
+      explanation: 'Nabigo ito dahil sa kakulangan ng kapangyarihan.'
+    },
+    { 
+      q: 'Ang pagpaslang kay Franz Ferdinand ay direktang sanhi ng digmaan.', 
+      answer: true,
+      explanation: 'Ito ang nag-trigger ng sunod-sunod na deklarasyon ng digmaan.'
+    },
+    { 
+      q: 'Ang total war ay nangangahulugang limitado lamang ang partisipasyon ng mamamayan.', 
+      answer: false,
+      explanation: 'Lahat ng sektor ng lipunan ay kasali.'
+    },
+    { 
+      q: 'Ang WWI ay nagdulot ng pagbagsak ng ilang imperyo.', 
+      answer: true,
+      explanation: 'Bumagsak ang German, Ottoman, Austro-Hungarian, at Russian Empires.'
+    },
   ],
   ww2: [
     { q: 'Nagsimula ang WWII sa Europe matapos salakayin ng Germany ang Poland.', answer: true },
