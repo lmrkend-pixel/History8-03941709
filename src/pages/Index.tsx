@@ -253,6 +253,13 @@ function HomeSection({ onNavigate }: { onNavigate: (section: string) => void }) 
 function VideosSection() {
   const videos = [
     { 
+      topic: 'Ancient Civilization', 
+      description: 'Discover the foundations of early human societies and cultures.',
+      emoji: '🏺',
+      color: 'from-amber-600 to-orange-700',
+      videoUrl: 'https://youtu.be/CsVxR3Rsso0?si=LyapKh3MhCIjTAHk'
+    },
+    { 
       topic: 'Imperialism and Colonialism', 
       description: 'Understand causes, methods of control, and effects on colonies.',
       emoji: '🏛️',
@@ -289,11 +296,12 @@ function VideosSection() {
         </p>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
         {videos.map((video) => (
           <Card 
             key={video.topic} 
-            className="group border-4 border-[#8b5a2b] bg-white p-6 hover:shadow-2xl transition-all hover:scale-105 rounded-xl"
+            onClick={() => video.videoUrl && window.open(video.videoUrl, '_blank')}
+            className={`group border-4 border-[#8b5a2b] bg-white p-6 hover:shadow-2xl transition-all hover:scale-105 rounded-xl ${video.videoUrl ? 'cursor-pointer' : ''}`}
           >
             <div className={`h-48 bg-gradient-to-br ${video.color} rounded-xl mb-4 flex flex-col items-center justify-center relative overflow-hidden shadow-lg`}>
               <div className="absolute inset-0 flex items-center justify-center opacity-30 text-8xl">
@@ -308,7 +316,7 @@ function VideosSection() {
                 {video.topic}
               </h3>
               <Badge className="bg-[#f5e6d3] text-[#8b5a2b] border border-[#d4a574]">
-                Lesson Topic
+                {video.videoUrl ? 'Watch Now' : 'Coming Soon'}
               </Badge>
               <p className="text-[#5a3618] leading-relaxed">{video.description}</p>
             </div>
