@@ -15,6 +15,15 @@ const quizTopics = [
   { id: 'glob', title: 'Globalisasyon', index: 5 },
 ];
 
+// Define available quiz types for each topic
+const availableQuizTypes: Record<string, Array<'mcq' | 'tf' | 'identification'>> = {
+  imp: ['mcq', 'identification'],
+  ww1: ['mcq', 'tf'],
+  ww2: ['mcq', 'tf'],
+  cold: ['mcq', 'tf'],
+  glob: ['mcq', 'tf'],
+};
+
 const mcqData = {
   imp: [
     {
@@ -346,6 +355,9 @@ export default function QuizzesSection() {
 
   const handleTopicSelect = (topicId: string) => {
     setSelectedTopic(topicId);
+    // Set quiz type to the first available type for this topic
+    const availableTypes = availableQuizTypes[topicId] || ['mcq'];
+    setQuizType(availableTypes[0]);
     setCurrentQuestion(0);
     setScore(0);
     setSelectedAnswer(null);
@@ -540,60 +552,66 @@ export default function QuizzesSection() {
         <h2 className="text-3xl font-bold text-[#8b5a2b] mb-6">{topic?.title}</h2>
 
         <div className="flex gap-2 mb-6">
-          <Button
-            onClick={() => {
-              setQuizType('mcq');
-              setCurrentQuestion(0);
-              setScore(0);
-              setSelectedAnswer(null);
-              setUserInput('');
-              setShowResult(false);
-              setQuizComplete(false);
-            }}
-            className={`flex-1 ${
-              quizType === 'mcq'
-                ? 'bg-gradient-to-r from-[#d49240] to-[#b87835] text-white'
-                : 'bg-[#f5e6d3] text-[#8b5a2b] hover:bg-[#ead5bb]'
-            }`}
-          >
-            Multiple Choice
-          </Button>
-          <Button
-            onClick={() => {
-              setQuizType('tf');
-              setCurrentQuestion(0);
-              setScore(0);
-              setSelectedAnswer(null);
-              setUserInput('');
-              setShowResult(false);
-              setQuizComplete(false);
-            }}
-            className={`flex-1 ${
-              quizType === 'tf'
-                ? 'bg-gradient-to-r from-[#d49240] to-[#b87835] text-white'
-                : 'bg-[#f5e6d3] text-[#8b5a2b] hover:bg-[#ead5bb]'
-            }`}
-          >
-            Tama o Mali
-          </Button>
-          <Button
-            onClick={() => {
-              setQuizType('identification');
-              setCurrentQuestion(0);
-              setScore(0);
-              setSelectedAnswer(null);
-              setUserInput('');
-              setShowResult(false);
-              setQuizComplete(false);
-            }}
-            className={`flex-1 ${
-              quizType === 'identification'
-                ? 'bg-gradient-to-r from-[#d49240] to-[#b87835] text-white'
-                : 'bg-[#f5e6d3] text-[#8b5a2b] hover:bg-[#ead5bb]'
-            }`}
-          >
-            Identification
-          </Button>
+          {availableQuizTypes[selectedTopic]?.includes('mcq') && (
+            <Button
+              onClick={() => {
+                setQuizType('mcq');
+                setCurrentQuestion(0);
+                setScore(0);
+                setSelectedAnswer(null);
+                setUserInput('');
+                setShowResult(false);
+                setQuizComplete(false);
+              }}
+              className={`flex-1 ${
+                quizType === 'mcq'
+                  ? 'bg-gradient-to-r from-[#d49240] to-[#b87835] text-white'
+                  : 'bg-[#f5e6d3] text-[#8b5a2b] hover:bg-[#ead5bb]'
+              }`}
+            >
+              Multiple Choice
+            </Button>
+          )}
+          {availableQuizTypes[selectedTopic]?.includes('tf') && (
+            <Button
+              onClick={() => {
+                setQuizType('tf');
+                setCurrentQuestion(0);
+                setScore(0);
+                setSelectedAnswer(null);
+                setUserInput('');
+                setShowResult(false);
+                setQuizComplete(false);
+              }}
+              className={`flex-1 ${
+                quizType === 'tf'
+                  ? 'bg-gradient-to-r from-[#d49240] to-[#b87835] text-white'
+                  : 'bg-[#f5e6d3] text-[#8b5a2b] hover:bg-[#ead5bb]'
+              }`}
+            >
+              Tama o Mali
+            </Button>
+          )}
+          {availableQuizTypes[selectedTopic]?.includes('identification') && (
+            <Button
+              onClick={() => {
+                setQuizType('identification');
+                setCurrentQuestion(0);
+                setScore(0);
+                setSelectedAnswer(null);
+                setUserInput('');
+                setShowResult(false);
+                setQuizComplete(false);
+              }}
+              className={`flex-1 ${
+                quizType === 'identification'
+                  ? 'bg-gradient-to-r from-[#d49240] to-[#b87835] text-white'
+                  : 'bg-[#f5e6d3] text-[#8b5a2b] hover:bg-[#ead5bb]'
+              }`}
+            >
+              Identification
+            </Button>
+          )}
         </div>
 
         <div className="mb-6">
