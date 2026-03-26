@@ -79,19 +79,19 @@ export default function TriviaSection() {
   return (
     <div className="space-y-8">
       {/* Hero Card */}
-      <Card className="border-4 border-[#7e9f4d] bg-gradient-to-br from-white to-[#f5e6d3] p-12 shadow-2xl rounded-xl">
-        <h2 className="text-5xl font-bold text-[#7e9f4d] mb-6">
+      <Card className="border-4 border-[#d49240] bg-white p-8 shadow-xl rounded-xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4">
           📚 Trivia Corner
         </h2>
-        <p className="text-2xl text-[#5a3618] max-w-4xl">
-          <strong className="text-[#7e9f4d]">Trivia</strong> means interesting facts that make you curious. 
+        <p className="text-xl text-[#5a3618]">
+          <strong className="text-[#8b5a2b]">Trivia</strong> means interesting facts that make you curious. 
           Discover fascinating stories and surprising details from history!
         </p>
       </Card>
 
       {/* Section Title */}
       <div className="flex items-center gap-4">
-        <Lightbulb className="h-12 w-12 text-[#7e9f4d]" />
+        <Lightbulb className="h-12 w-12 text-[#d49240]" />
         <h3 className="text-4xl font-bold text-[#8b5a2b]">Did you know?</h3>
       </div>
 
@@ -100,7 +100,7 @@ export default function TriviaSection() {
         {triviaFacts.map((item, index) => (
           <Card
             key={index}
-            className="group border-4 border-[#7e9f4d] bg-gradient-to-br from-white to-[#f5e6d3] p-6 hover:shadow-2xl transition-all hover:scale-[1.02] rounded-xl"
+            className="group border-4 border-[#d49240] bg-gradient-to-br from-white to-[#f5e6d3] p-6 hover:shadow-2xl transition-all hover:scale-[1.02] rounded-xl"
           >
             <div className="flex items-start gap-4">
               <div className="text-6xl flex-shrink-0 group-hover:scale-110 transition-transform">

@@ -6,11 +6,11 @@ export default function AboutSection() {
   return (
     <div className="space-y-8">
       {/* Hero Card */}
-      <Card className="border-4 border-[#8b5a2b] bg-gradient-to-br from-white to-[#f5e6d3] p-12 shadow-2xl rounded-xl">
-        <h2 className="text-5xl font-bold text-[#8b5a2b] mb-6">
+      <Card className="border-4 border-[#d49240] bg-white p-8 shadow-xl rounded-xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4">
           📘 About Us
         </h2>
-        <p className="text-2xl text-[#5a3618] max-w-4xl">
+        <p className="text-xl text-[#5a3618]">
           This page summarizes the <strong className="text-[#8b5a2b]">research background</strong>,{' '}
           <strong className="text-[#8b5a2b]">purpose</strong>, and{' '}
           <strong className="text-[#8b5a2b]">researcher profiles</strong> for the Social Studies Explorers Hub.
@@ -18,7 +18,7 @@ export default function AboutSection() {
       </Card>
 
       {/* Researcher's Background */}
-      <Card className="border-4 border-[#8b5a2b] bg-white p-8 shadow-xl rounded-xl">
+      <Card className="border-4 border-[#d49240] bg-white p-8 shadow-xl rounded-xl">
         <div className="flex items-start gap-4 mb-6">
           <Users className="h-12 w-12 text-[#8b5a2b] flex-shrink-0" />
           <div>
@@ -141,7 +141,7 @@ export default function AboutSection() {
       </Card>
 
       {/* Research Impact */}
-      <Card className="border-4 border-[#8b5a2b] bg-gradient-to-r from-[#8b5a2b] to-[#6b4423] p-8 shadow-xl rounded-xl text-white text-center">
+      <Card className="border-4 border-[#d49240] bg-gradient-to-r from-[#d49240] to-[#b87835] p-8 shadow-xl rounded-xl text-white text-center">
         <div className="text-6xl mb-4">🌟</div>
         <h3 className="text-3xl font-bold mb-4">Our Research Impact</h3>
         <p className="text-xl max-w-3xl mx-auto leading-relaxed">
