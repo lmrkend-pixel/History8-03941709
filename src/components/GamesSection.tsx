@@ -40,34 +40,40 @@ function HistoryUnmaskedGame() {
 
   const people = [
     { 
-      clue: 'Arkiduke ng Austria-Hungary; pagkakapaslang niya noong 1914 ang mitsa ng WWI.', 
+      clue: 'Siya ang arkiduke ng Austria-Hungary na ang pagkakapaslang noong 1914 ang naging mitsa ng pagsisimula ng Unang Digmaang Pandaigdig.', 
       answer: 'Archduke Franz Ferdinand',
-      hint: 'Archduke'
+      hint: 'Archduke',
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/fcad.png'
     },
     { 
-      clue: 'Diktador ng Alemanya na namuno sa Nazi Party.', 
+      clue: 'Isang diktador ng Alemanya na namuno sa Nazi Party at naging pangunahing dahilan ng Ikalawang Digmaang Pandaigdig at Holocaust.', 
       answer: 'Adolf Hitler',
-      hint: 'Führer'
+      hint: 'Führer',
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/e5c9.png'
     },
     { 
-      clue: 'Pinuno ng Soviet Union noong WWII na may mahigpit na pamahalaan.', 
+      clue: 'Pinuno ng Soviet Union na nagpatupad ng mahigpit na pamahalaan at naging mahalagang lider sa panahon ng Ikalawang Digmaang Pandaigdig.', 
       answer: 'Joseph Stalin',
-      hint: 'Man of Steel'
+      hint: 'Man of Steel',
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/766a.png'
     },
     { 
-      clue: 'Pangulo ng US sa panahon ng Great Depression at WWII.', 
+      clue: 'Pangulo ng Estados Unidos na namuno sa bansa sa panahon ng Great Depression at Ikalawang Digmaang Pandaigdig.', 
       answer: 'Franklin Roosevelt',
-      hint: 'FDR'
+      hint: 'FDR',
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/24a1.png'
     },
     { 
-      clue: 'Pinuno ng Soviet Union noong Cold War at Cuban Missile Crisis.', 
+      clue: 'Pinuno ng Soviet Union noong Cold War na kilala sa Cuban Missile Crisis at sa paglayo sa istilo ni Stalin.', 
       answer: 'Nikita Khrushchev',
-      hint: 'Shoe incident UN'
+      hint: 'Shoe incident UN',
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/89b9.png'
     },
     { 
-      clue: 'Diktador ng Italya at tagapagtatag ng pasismo.', 
+      clue: 'Diktador ng Italya na nagtatag ng pasismo at nakipag-alyansa kay Hitler noong Ikalawang Digmaang Pandaigdig.', 
       answer: 'Benito Mussolini',
-      hint: 'Il Duce'
+      hint: 'Il Duce',
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/d402.png'
     }
   ];
 
@@ -108,7 +114,14 @@ function HistoryUnmaskedGame() {
       </div>
 
       <div className="text-center mb-6">
-        <div className="text-7xl mb-4">🎭</div>
+        <div className="flex justify-center mb-4">
+          <img 
+            src={current.image} 
+            alt="Historical Figure" 
+            className="w-48 h-48 object-cover rounded-xl border-4 border-[#c77d3a] shadow-lg"
+            crossOrigin="anonymous"
+          />
+        </div>
         <p className="text-sm text-[#8b5a2b] font-semibold">
           Question {currentIndex + 1} of {people.length}
         </p>

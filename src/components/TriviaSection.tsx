@@ -80,7 +80,7 @@ export default function TriviaSection() {
     <div className="space-y-8">
       {/* Hero Card */}
       <Card className="border-4 border-[#7e9f4d] bg-gradient-to-br from-white to-[#f5e6d3] p-12 shadow-2xl rounded-xl">
-        <h2 className="text-5xl font-bold text-[#7e9f4d] mb-6 border-b-4 border-[#7e9f4d] inline-block pb-3">
+        <h2 className="text-5xl font-bold text-[#7e9f4d] mb-6">
           📚 Trivia Corner
         </h2>
         <p className="text-2xl text-[#5a3618] max-w-4xl">

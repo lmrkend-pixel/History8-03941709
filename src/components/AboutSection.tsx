@@ -7,7 +7,7 @@ export default function AboutSection() {
     <div className="space-y-8">
       {/* Hero Card */}
       <Card className="border-4 border-[#8b5a2b] bg-gradient-to-br from-white to-[#f5e6d3] p-12 shadow-2xl rounded-xl">
-        <h2 className="text-5xl font-bold text-[#8b5a2b] mb-6 border-b-4 border-[#8b5a2b] inline-block pb-3">
+        <h2 className="text-5xl font-bold text-[#8b5a2b] mb-6">
           📘 About Us
         </h2>
         <p className="text-2xl text-[#5a3618] max-w-4xl">
