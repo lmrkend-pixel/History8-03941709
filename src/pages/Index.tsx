@@ -285,7 +285,7 @@ function VideosSection() {
           Video Lessons
         </Badge>
         <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4">
-          Video Lessons
+          📹 Video Lessons
         </h2>
         <p className="text-xl text-[#5a3618]">
           Select a topic to explore short learning videos and key focus areas.

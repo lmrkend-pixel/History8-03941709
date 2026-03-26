@@ -7,11 +7,8 @@ export default function AboutSection() {
     <div className="space-y-8">
       {/* Hero Card */}
       <Card className="border-4 border-[#8b5a2b] bg-gradient-to-br from-white to-[#f5e6d3] p-12 shadow-2xl rounded-xl">
-        <div className="inline-block h-24 w-24 rounded-2xl bg-gradient-to-br from-[#8b5a2b] to-[#6b4423] text-white flex items-center justify-center text-5xl mb-6 shadow-lg">
-          📘
-        </div>
-        <h2 className="text-5xl font-bold text-[#8b5a2b] mb-6 border-b-4 border-[#8b5a2b] inline-block pb-3 px-8">
-          About Us
+        <h2 className="text-5xl font-bold text-[#8b5a2b] mb-6 border-b-4 border-[#8b5a2b] inline-block pb-3">
+          📘 About Us
         </h2>
         <p className="text-2xl text-[#5a3618] max-w-4xl">
           This page summarizes the <strong className="text-[#8b5a2b]">research background</strong>,{' '}

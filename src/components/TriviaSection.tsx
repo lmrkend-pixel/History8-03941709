@@ -79,14 +79,11 @@ export default function TriviaSection() {
   return (
     <div className="space-y-8">
       {/* Hero Card */}
-      <Card className="border-4 border-[#7e9f4d] bg-gradient-to-br from-white to-[#f5e6d3] p-12 shadow-2xl rounded-xl text-center">
-        <div className="inline-block h-24 w-24 rounded-2xl bg-gradient-to-br from-[#7e9f4d] to-[#6a8742] text-white flex items-center justify-center text-5xl mb-6 shadow-lg">
-          📚
-        </div>
-        <h2 className="text-5xl font-bold text-[#7e9f4d] mb-6 border-b-4 border-[#7e9f4d] inline-block pb-3 px-8">
-          Trivia Corner
+      <Card className="border-4 border-[#7e9f4d] bg-gradient-to-br from-white to-[#f5e6d3] p-12 shadow-2xl rounded-xl">
+        <h2 className="text-5xl font-bold text-[#7e9f4d] mb-6 border-b-4 border-[#7e9f4d] inline-block pb-3">
+          📚 Trivia Corner
         </h2>
-        <p className="text-2xl text-[#5a3618] max-w-3xl mx-auto">
+        <p className="text-2xl text-[#5a3618] max-w-4xl">
           <strong className="text-[#7e9f4d]">Trivia</strong> means interesting facts that make you curious. 
           Discover fascinating stories and surprising details from history!
         </p>

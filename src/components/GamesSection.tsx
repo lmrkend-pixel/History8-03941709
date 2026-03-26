@@ -13,16 +13,11 @@ export default function GamesSection() {
           Interactive Games
         </Badge>
         <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4">
-          Interactive Games
+          🎮 Interactive Games
         </h2>
         <p className="text-xl text-[#5a3618]">
           Learn through fun activities! Practice key topics with short game-based activities.
         </p>
-        <div className="mt-4 flex items-center gap-6 justify-center text-6xl">
-          <span>🗺️</span>
-          <span>🔍</span>
-          <span>🎯</span>
-        </div>
       </Card>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

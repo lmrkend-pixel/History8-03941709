@@ -140,7 +140,7 @@ export default function QuizzesSection() {
             Quizzes
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4">
-            Test Your Knowledge
+            📝 Test Your Knowledge
           </h2>
           <p className="text-xl text-[#5a3618]">
             Answer topic-based quizzes with instant feedback and clear explanations.
