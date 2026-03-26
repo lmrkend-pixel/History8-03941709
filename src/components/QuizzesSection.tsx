@@ -18,14 +18,64 @@ const quizTopics = [
 const mcqData = {
   imp: [
     {
-      q: 'Ano ang pinakamahalagang dahilan ng paghangad ng kolonya ng mga bansang Europeo?',
+      q: 'Ano ang pinakamahalagang dahilan kung bakit naghangad ang mga bansang Europeo ng kolonya noong panahon ng imperyalismo?',
       options: ['Upang palaganapin ang wika', 'Upang makakuha ng hilaw na materyales at bagong pamilihan', 'Upang maiwasan ang digmaan', 'Upang magpalawak ng turismo'],
       answer: 1,
+      explanation: 'Malaki ang pangangailangan ng industriya sa Europa sa mga hilaw na materyales at merkado, kaya sinakop nila ang ibang lupain upang suportahan ang kanilang ekonomiya.'
     },
     {
-      q: 'Pangunahing pagkakaiba ng kolonyalismo at imperyalismo:',
-      options: ['Pareho lang ang kahulugan', 'Kolonyalismo ay direktang pamamahala; imperyalismo ay maaaring impluwensya', 'Imperyalismo ay walang kontrol', 'Kolonyalismo ay pansamantala'],
+      q: 'Ano ang pangunahing pagkakaiba ng kolonyalismo sa imperyalismo?',
+      options: ['Pareho lamang ang kahulugan nito', 'Ang kolonyalismo ay direktang pamamahala habang ang imperyalismo ay maaaring impluwensya lamang', 'Ang imperyalismo ay walang kontrol sa ibang bansa', 'Ang kolonyalismo ay pansamantala lamang'],
       answer: 1,
+      explanation: 'Sa kolonyalismo, direktang pinamamahalaan ang kolonya; sa imperyalismo, maaaring kontrol lamang sa ekonomiya o politika.'
+    },
+    {
+      q: 'Ano ang naging epekto ng Treaty of Tordesillas noong 1494?',
+      options: ['Pinag-isa ang Europe', 'Hinati ang mundo sa Spain at Portugal', 'Pinatigil ang eksplorasyon', 'Pinabagsak ang mga imperyo sa Asya'],
+      answer: 1,
+      explanation: 'Ang kasunduang ito ang nagtakda kung aling bahagi ng mundo ang maaaring sakupin ng dalawang bansa.'
+    },
+    {
+      q: 'Bakit naging mahalaga ang Dutch East India Company sa imperyalismo?',
+      options: ['Ito ay simbahan', 'Ito ay samahang pang-edukasyon', 'Ito ay kompanyang kumontrol sa kalakalan sa Asya', 'Ito ay hukbo ng Netherlands'],
+      answer: 2,
+      explanation: 'Ang kompanyang ito ang nagpalakas sa kontrol ng Netherlands sa kalakalan lalo na sa rekado.'
+    },
+    {
+      q: 'Ano ang ipinapakita ng pagkatalo ng Russia sa Japan noong 1905?',
+      options: ['Mahina ang Japan', 'Walang impluwensya ang Europa', 'Kayang talunin ng bansang Asyano ang kapangyarihang Europeo', 'Natapos ang imperyalismo'],
+      answer: 2,
+      explanation: 'Ito ay nagpakita na kaya ng isang bansang Asyano na maging makapangyarihan din.'
+    },
+    {
+      q: 'Ano ang layunin ng "civilizing mission" ng mga Europeo?',
+      options: ['Palaganapin ang kanilang kultura at relihiyon', 'Magtayo ng negosyo lamang', 'Mag-aral ng wika', 'Magtayo ng pamahalaan ng Asya'],
+      answer: 0,
+      explanation: 'Ginamit ito bilang dahilan upang bigyang-katwiran ang pananakop sa ibang bansa.'
+    },
+    {
+      q: 'Paano pinamahalaan ng Britain ang ilang bahagi ng India?',
+      options: ['Direktang pamamahala lamang', 'Di-direktang pamamahala gamit ang lokal na pinuno', 'Walang pamamahala', 'Militar lamang ang namahala'],
+      answer: 1,
+      explanation: 'Gumamit sila ng mga lokal na lider upang mas madaling makontrol ang teritoryo.'
+    },
+    {
+      q: 'Ano ang naging epekto ng imperyalismo sa ekonomiya ng mga kolonya?',
+      options: ['Lalong naging independent', 'Naging bahagi ng pandaigdigang kalakalan', 'Nawala ang kalakalan', 'Walang pagbabago'],
+      answer: 1,
+      explanation: 'Ginamit ang mga kolonya bilang tagapagbigay ng hilaw na materyales at pamilihan.'
+    },
+    {
+      q: 'Bakit nakilahok ang United States sa imperyalismo noong ika-19 na siglo?',
+      options: ['Upang maprotektahan ang kultura', 'Upang palawakin ang impluwensya matapos ang digmaan sa Spain', 'Upang sumunod sa Europa', 'Upang magtayo ng simbahan'],
+      answer: 1,
+      explanation: 'Matapos ang Spanish-American War, nakuha ng US ang ilang teritoryo tulad ng Pilipinas.'
+    },
+    {
+      q: 'Ano ang nagpapakita ng tugon ng mga mamamayan sa kolonyalismo?',
+      options: ['Pagtanggap lamang sa pamamahala', 'Pag-aalsa at kilusang nasyonalismo', 'Walang reaksyon', 'Paglipat sa ibang bansa'],
+      answer: 1,
+      explanation: 'Maraming mamamayan ang lumaban upang makamit ang kalayaan.'
     },
   ],
   ww1: [
@@ -78,19 +128,87 @@ const tfData = {
   ],
 };
 
+const identificationData = {
+  imp: [
+    {
+      q: 'Sistemang may direktang kontrol ng kolonyal na bansa',
+      answer: 'Direktang pamamahala',
+      explanation: 'Ito ay sistemang ang kolonyal na bansa mismo ang namamahala sa teritoryo gamit ang sariling opisyal, kaya mataas ang antas ng kontrol.'
+    },
+    {
+      q: 'Kasunduan na naghati sa mundo sa Spain at Portugal',
+      answer: 'Treaty of Tordesillas',
+      explanation: 'Isang kasunduan na naghati sa mundo sa pagitan ng Spain at Portugal upang maiwasan ang sigalot sa pag-aangkin ng lupain.'
+    },
+    {
+      q: 'Ideolohiyang nagsasabing tungkulin ng Europa na "paunlarin" ang iba',
+      answer: 'White man\'s burden',
+      alternatives: ['Civilizing mission'],
+      explanation: 'Ideolohiyang nagsasabing may moral na obligasyon ang mga Europeo na dalhin ang kanilang kultura at kaalaman sa ibang bansa.'
+    },
+    {
+      q: 'Kumpanyang ginamit ng England sa India',
+      answer: 'British East India Company',
+      explanation: 'Isang pribadong kompanya na ginamit ng England upang kontrolin ang kalakalan at pamamahala sa India.'
+    },
+    {
+      q: 'Sistemang ginamit ng Dutch sa Indonesia',
+      answer: 'Cultivation System',
+      explanation: 'Patakarang ipinatupad ng Dutch na nagpilit sa mga magsasaka na magtanim ng produktong pang-export, na nagdulot ng pagsasamantala.'
+    },
+    {
+      q: 'Digmaang nagpatunay na kayang talunin ng Asya ang Europa (Japan vs Russia)',
+      answer: 'Digmaang Ruso-Hapon',
+      alternatives: ['Russo-Japanese War'],
+      explanation: 'Digmaang nagpakita na kayang talunin ng Japan ang isang bansang Europeo, kaya nagbago ang pananaw sa kapangyarihan sa Asya.'
+    },
+    {
+      q: 'Pagmamahal sa bansa na nagtulak sa pananakop',
+      answer: 'Nasyonalismo',
+      alternatives: ['Nationalism'],
+      explanation: 'Malakas na damdamin ng pagmamahal sa bansa na nagtulak sa pagpapalawak ng kapangyarihan at kompetisyon sa ibang bansa.'
+    },
+    {
+      q: 'Pagpapalawak ng impluwensya ng isang bansa sa iba',
+      answer: 'Imperyalismo',
+      alternatives: ['Imperialism'],
+      explanation: 'Tumutukoy sa pagpapalawak ng impluwensya ng isang bansa sa iba, maaaring sa ekonomiya, politika, o kultura.'
+    },
+    {
+      q: 'Permanenteng paninirahan sa nasakop na lugar',
+      answer: 'Kolonyalismo',
+      alternatives: ['Colonialism'],
+      explanation: 'Isang anyo ng imperyalismo kung saan may direktang paninirahan at pamamahala sa nasakop na lugar.'
+    },
+    {
+      q: 'Sistemang gumagamit ng lokal na pinuno sa pamamahala',
+      answer: 'Di-direktang pamamahala',
+      alternatives: ['Indirect rule'],
+      explanation: 'Sistemang gumagamit ng lokal na lider upang mapanatili ang kontrol ng mananakop nang hindi direktang namamahala.'
+    },
+  ],
+  ww1: [],
+  ww2: [],
+  cold: [],
+  glob: [],
+};
+
 export default function QuizzesSection() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
-  const [quizType, setQuizType] = useState<'mcq' | 'tf'>('mcq');
+  const [quizType, setQuizType] = useState<'mcq' | 'tf' | 'identification'>('mcq');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | boolean | null>(null);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | boolean | string | null>(null);
+  const [userInput, setUserInput] = useState('');
   const [showResult, setShowResult] = useState(false);
   const [quizComplete, setQuizComplete] = useState(false);
 
   const currentQuizData = selectedTopic
     ? quizType === 'mcq'
       ? mcqData[selectedTopic as keyof typeof mcqData] || []
-      : tfData[selectedTopic as keyof typeof tfData] || []
+      : quizType === 'tf'
+      ? tfData[selectedTopic as keyof typeof tfData] || []
+      : identificationData[selectedTopic as keyof typeof identificationData] || []
     : [];
 
   const handleTopicSelect = (topicId: string) => {
@@ -98,15 +216,27 @@ export default function QuizzesSection() {
     setCurrentQuestion(0);
     setScore(0);
     setSelectedAnswer(null);
+    setUserInput('');
     setShowResult(false);
     setQuizComplete(false);
   };
 
   const handleAnswer = () => {
-    if (selectedAnswer === null) return;
+    if (quizType === 'identification' && !userInput.trim()) return;
+    if (quizType !== 'identification' && selectedAnswer === null) return;
 
     const question = currentQuizData[currentQuestion];
-    const isCorrect = selectedAnswer === question.answer;
+    let isCorrect = false;
+
+    if (quizType === 'identification') {
+      const userAnswer = userInput.trim().toLowerCase();
+      const correctAnswer = question.answer.toLowerCase();
+      const alternatives = question.alternatives?.map((alt: string) => alt.toLowerCase()) || [];
+      
+      isCorrect = userAnswer === correctAnswer || alternatives.some((alt: string) => userAnswer === alt);
+    } else {
+      isCorrect = selectedAnswer === question.answer;
+    }
 
     if (isCorrect) {
       setScore(score + 1);
@@ -120,6 +250,7 @@ export default function QuizzesSection() {
     } else {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswer(null);
+      setUserInput('');
       setShowResult(false);
     }
   };
@@ -128,6 +259,7 @@ export default function QuizzesSection() {
     setCurrentQuestion(0);
     setScore(0);
     setSelectedAnswer(null);
+    setUserInput('');
     setShowResult(false);
     setQuizComplete(false);
   };
@@ -242,7 +374,15 @@ export default function QuizzesSection() {
 
         <div className="flex gap-2 mb-6">
           <Button
-            onClick={() => setQuizType('mcq')}
+            onClick={() => {
+              setQuizType('mcq');
+              setCurrentQuestion(0);
+              setScore(0);
+              setSelectedAnswer(null);
+              setUserInput('');
+              setShowResult(false);
+              setQuizComplete(false);
+            }}
             className={`flex-1 ${
               quizType === 'mcq'
                 ? 'bg-gradient-to-r from-[#d49240] to-[#b87835] text-white'
@@ -252,7 +392,15 @@ export default function QuizzesSection() {
             Multiple Choice
           </Button>
           <Button
-            onClick={() => setQuizType('tf')}
+            onClick={() => {
+              setQuizType('tf');
+              setCurrentQuestion(0);
+              setScore(0);
+              setSelectedAnswer(null);
+              setUserInput('');
+              setShowResult(false);
+              setQuizComplete(false);
+            }}
             className={`flex-1 ${
               quizType === 'tf'
                 ? 'bg-gradient-to-r from-[#d49240] to-[#b87835] text-white'
@@ -260,6 +408,24 @@ export default function QuizzesSection() {
             }`}
           >
             Tama o Mali
+          </Button>
+          <Button
+            onClick={() => {
+              setQuizType('identification');
+              setCurrentQuestion(0);
+              setScore(0);
+              setSelectedAnswer(null);
+              setUserInput('');
+              setShowResult(false);
+              setQuizComplete(false);
+            }}
+            className={`flex-1 ${
+              quizType === 'identification'
+                ? 'bg-gradient-to-r from-[#d49240] to-[#b87835] text-white'
+                : 'bg-[#f5e6d3] text-[#8b5a2b] hover:bg-[#ead5bb]'
+            }`}
+          >
+            Identification
           </Button>
         </div>
 
@@ -292,7 +458,7 @@ export default function QuizzesSection() {
               </button>
             ))}
           </div>
-        ) : (
+        ) : quizType === 'tf' ? (
           <div className="grid grid-cols-2 gap-4">
             {[
               { label: 'Tama', value: true },
@@ -312,32 +478,71 @@ export default function QuizzesSection() {
               </button>
             ))}
           </div>
+        ) : (
+          <div>
+            <label className="block text-[#8b5a2b] font-semibold mb-3 text-lg">
+              Isulat ang iyong sagot:
+            </label>
+            <Input
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              disabled={showResult}
+              placeholder="Type your answer here..."
+              className="text-lg p-6 border-2 border-[#d4a574] focus:border-[#d49240] rounded-xl"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !showResult && userInput.trim()) {
+                  handleAnswer();
+                }
+              }}
+            />
+          </div>
         )}
 
         {showResult && (
           <div
             className={`mt-6 p-6 rounded-xl border-4 flex items-start gap-4 ${
-              selectedAnswer === question.answer
+              (quizType === 'identification' 
+                ? (userInput.trim().toLowerCase() === question.answer.toLowerCase() || 
+                   (question.alternatives?.some((alt: string) => userInput.trim().toLowerCase() === alt.toLowerCase())))
+                : selectedAnswer === question.answer)
                 ? 'bg-green-50 border-green-500'
                 : 'bg-red-50 border-red-500'
             }`}
           >
-            {selectedAnswer === question.answer ? (
+            {(quizType === 'identification' 
+              ? (userInput.trim().toLowerCase() === question.answer.toLowerCase() || 
+                 (question.alternatives?.some((alt: string) => userInput.trim().toLowerCase() === alt.toLowerCase())))
+              : selectedAnswer === question.answer) ? (
               <CheckCircle2 className="h-8 w-8 text-green-600 flex-shrink-0" />
             ) : (
               <XCircle className="h-8 w-8 text-red-600 flex-shrink-0" />
             )}
-            <div>
+            <div className="flex-1">
               <p className="font-bold text-lg mb-2">
-                {selectedAnswer === question.answer ? 'Correct!' : 'Incorrect'}
+                {(quizType === 'identification' 
+                  ? (userInput.trim().toLowerCase() === question.answer.toLowerCase() || 
+                     (question.alternatives?.some((alt: string) => userInput.trim().toLowerCase() === alt.toLowerCase())))
+                  : selectedAnswer === question.answer) ? 'Tama!' : 'Mali'}
               </p>
-              {selectedAnswer !== question.answer && (
-                <p className="text-gray-700">
-                  Correct answer: {quizType === 'mcq' ? ('options' in question ? question.options[question.answer as number] : '') : question.answer ? 'Tama' : 'Mali'}
+              {quizType === 'identification' && 
+               !(userInput.trim().toLowerCase() === question.answer.toLowerCase() || 
+                 (question.alternatives?.some((alt: string) => userInput.trim().toLowerCase() === alt.toLowerCase()))) && (
+                <>
+                  <p className="text-red-700 mb-2">
+                    <strong>Iyong sagot:</strong> {userInput}
+                  </p>
+                  <p className="text-green-700 mb-2">
+                    <strong>Tamang sagot:</strong> {question.answer}
+                  </p>
+                </>
+              )}
+              {quizType !== 'identification' && selectedAnswer !== question.answer && (
+                <p className="text-gray-700 mb-2">
+                  <strong>Tamang sagot:</strong> {quizType === 'mcq' ? ('options' in question ? question.options[question.answer as number] : '') : question.answer ? 'Tama' : 'Mali'}
                 </p>
               )}
               {'explanation' in question && question.explanation && (
-                <p className="mt-2 text-gray-700">{question.explanation}</p>
+                <p className="mt-2 text-gray-700"><strong>Paliwanag:</strong> {question.explanation}</p>
               )}
             </div>
           </div>
@@ -347,7 +552,7 @@ export default function QuizzesSection() {
           {!showResult ? (
             <Button
               onClick={handleAnswer}
-              disabled={selectedAnswer === null}
+              disabled={quizType === 'identification' ? !userInput.trim() : selectedAnswer === null}
               className="flex-1 bg-gradient-to-r from-[#d49240] to-[#b87835] hover:from-[#c28437] hover:to-[#a66c2f] text-white font-bold text-lg py-6"
             >
               Submit Answer
