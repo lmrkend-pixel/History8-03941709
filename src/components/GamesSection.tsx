@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { Trophy, Flag, Lightbulb, Shuffle, Clock, CheckCircle2, XCircle } from 'lucide-react';
+import { Trophy, Flag, Lightbulb, Shuffle, Clock, CheckCircle2, XCircle, X } from 'lucide-react';
 
 // Game card data
 const gameCards = [
@@ -97,10 +97,13 @@ function HistoryUnmaskedGame({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-center items-center">
+      <div className="flex justify-between items-center">
         <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
           Score: {score}/{questions.length}
         </div>
+        <Button onClick={onClose} variant="ghost" size="icon" className="text-[#8b5a2b] hover:bg-[#f5e6d3]">
+          <X className="w-6 h-6" />
+        </Button>
       </div>
 
       <div className="text-center space-y-4">
@@ -206,10 +209,13 @@ function FlagTasticGame({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-center items-center">
+      <div className="flex justify-between items-center">
         <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
           Score: {score}/{questions.length}
         </div>
+        <Button onClick={onClose} variant="ghost" size="icon" className="text-[#8b5a2b] hover:bg-[#f5e6d3]">
+          <X className="w-6 h-6" />
+        </Button>
       </div>
 
       <div className="text-center space-y-4">
@@ -263,52 +269,27 @@ function FlagTasticGame({ onClose }: { onClose: () => void }) {
 function DecodeThePastGame({ onClose }: { onClose: () => void }) {
   const puzzles = [
     {
-      images: [
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/dcd4.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/5d86.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/9f53.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/9f40.png'
-      ],
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/dcd4.png',
       answer: 'IMPERYALISMO',
       hint: 'Patakaran ng pagkontrol sa ibang bansa'
     },
     {
-      images: [
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/d31c.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/a2b0.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/5ce1.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/1a24.png'
-      ],
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/d31c.png',
       answer: 'NASYONALISMO',
       hint: 'Pagmamahal sa sariling bansa'
     },
     {
-      images: [
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/c9e4.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/6486.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/fc15.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/0a35.png'
-      ],
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/c9e4.png',
       answer: 'HOLOCAUST',
       hint: 'Masamang pangyayari sa WWII'
     },
     {
-      images: [
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/6f9b.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/92b8.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/e36a.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/e33d.png'
-      ],
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/6f9b.png',
       answer: 'KALAKALAN',
       hint: 'Pagpapalitan ng produkto at serbisyo'
     },
     {
-      images: [
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/5a7f.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/a54d.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/8b2f.png',
-        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/3fc6.png'
-      ],
+      image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/5a7f.png',
       answer: 'TEKNOLOHIYA',
       hint: 'Pag-unlad ng agham at makina'
     }
@@ -352,10 +333,13 @@ function DecodeThePastGame({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-center items-center">
+      <div className="flex justify-between items-center">
         <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
           Score: {score}/{puzzles.length}
         </div>
+        <Button onClick={onClose} variant="ghost" size="icon" className="text-[#8b5a2b] hover:bg-[#f5e6d3]">
+          <X className="w-6 h-6" />
+        </Button>
       </div>
 
       <div className="text-center">
@@ -363,16 +347,13 @@ function DecodeThePastGame({ onClose }: { onClose: () => void }) {
         <p className="text-[#5a3618]">{puzzles[currentQ].hint}</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        {puzzles[currentQ].images.map((img, idx) => (
-          <img 
-            key={idx}
-            src={img} 
-            alt={`Clue ${idx + 1}`}
-            className="w-full h-40 object-cover rounded-lg border-4 border-[#8b5a2b] shadow-lg"
-            crossOrigin="anonymous"
-          />
-        ))}
+      <div className="flex justify-center">
+        <img 
+          src={puzzles[currentQ].image} 
+          alt="4 Pics 1 Word Clue"
+          className="w-full max-w-md rounded-xl border-4 border-[#8b5a2b] shadow-2xl"
+          crossOrigin="anonymous"
+        />
       </div>
 
       <div className="space-y-4">
@@ -494,10 +475,13 @@ function MatchingGameComponent({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-center items-center">
+      <div className="flex justify-between items-center">
         <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
           Score: {score}/{pairs.length}
         </div>
+        <Button onClick={onClose} variant="ghost" size="icon" className="text-[#8b5a2b] hover:bg-[#f5e6d3]">
+          <X className="w-6 h-6" />
+        </Button>
       </div>
 
       <div className="text-center">
@@ -637,10 +621,13 @@ function TimelineChallengeGame({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-center items-center">
+      <div className="flex justify-between items-center">
         <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
           Score: {score}/1
         </div>
+        <Button onClick={onClose} variant="ghost" size="icon" className="text-[#8b5a2b] hover:bg-[#f5e6d3]">
+          <X className="w-6 h-6" />
+        </Button>
       </div>
 
       <div className="text-center space-y-2">
