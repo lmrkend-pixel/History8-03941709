@@ -10,41 +10,31 @@ const gameCards = [
     id: 'history-unmasked',
     title: 'History Unmasked',
     description: 'Guess the historical figures!',
-    icon: Trophy,
-    color: 'from-purple-500 to-pink-500',
-    bgPattern: '🎭'
+    icon: Trophy
   },
   {
     id: 'flag-tastic',
     title: 'Flag-tastic Game',
     description: 'Identify country flags!',
-    icon: Flag,
-    color: 'from-blue-500 to-cyan-500',
-    bgPattern: '🌍'
+    icon: Flag
   },
   {
     id: 'decode-past',
     title: 'Decode the Past',
     description: '4 pics 1 word challenge!',
-    icon: Lightbulb,
-    color: 'from-yellow-500 to-orange-500',
-    bgPattern: '💡'
+    icon: Lightbulb
   },
   {
     id: 'matching',
     title: 'Matching Game',
     description: 'Match terms with definitions!',
-    icon: Shuffle,
-    color: 'from-green-500 to-emerald-500',
-    bgPattern: '🎯'
+    icon: Shuffle
   },
   {
     id: 'timeline',
     title: 'Timeline Challenge',
     description: 'Arrange events in order!',
-    icon: Clock,
-    color: 'from-red-500 to-rose-500',
-    bgPattern: '⏰'
+    icon: Clock
   }
 ];
 
@@ -278,47 +268,51 @@ export default function GamesSection() {
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f5e6d3] to-[#ead5bb] py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-5xl font-bold text-[#8b5a2b]">🎮 Interactive Games</h2>
-          <p className="text-xl text-[#5a3618]">Choose a game and start learning!</p>
+    <div className="space-y-8">
+      {/* Header Card */}
+      <Card className="border-4 border-[#c77d3a] bg-[#f5e6d3] p-8 shadow-xl rounded-xl">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="text-5xl">🎮</div>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b]">
+            Interactive Games
+          </h2>
         </div>
+        <p className="text-xl text-[#5a3618]">
+          Choose a game and start learning!
+        </p>
+      </Card>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {gameCards.map((game) => {
-            const Icon = game.icon;
-            return (
-              <Card
-                key={game.id}
-                onClick={() => setSelectedGame(game.id)}
-                className="group relative overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-4 border-[#8b5a2b] bg-white"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${game.color} opacity-10 group-hover:opacity-20 transition-opacity`} />
-                <div className="absolute top-4 right-4 text-6xl opacity-20 group-hover:scale-110 transition-transform">
-                  {game.bgPattern}
+      {/* Game Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {gameCards.map((game) => {
+          const Icon = game.icon;
+          return (
+            <Card
+              key={game.id}
+              onClick={() => setSelectedGame(game.id)}
+              className="group relative overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-4 border-[#c77d3a] bg-white"
+            >
+              <div className="absolute inset-0 bg-[#f5e6d3] opacity-0 group-hover:opacity-20 transition-opacity" />
+              
+              <div className="relative p-8 space-y-6">
+                <div className="w-20 h-20 rounded-full bg-[#8b5a2b] flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-10 h-10 text-white" />
                 </div>
                 
-                <div className="relative p-8 space-y-6">
-                  <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${game.color} flex items-center justify-center mx-auto shadow-lg group-hover:rotate-12 transition-transform duration-300`}>
-                    <Icon className="w-10 h-10 text-white" />
-                  </div>
-                  
-                  <div className="text-center space-y-2">
-                    <h3 className="text-2xl font-bold text-[#8b5a2b] group-hover:text-[#d49240] transition-colors">
-                      {game.title}
-                    </h3>
-                    <p className="text-[#5a3618]">{game.description}</p>
-                  </div>
-
-                  <Button className={`w-full bg-gradient-to-r ${game.color} text-white py-6 text-lg font-bold hover:shadow-lg transition-all`}>
-                    Play Now!
-                  </Button>
+                <div className="text-center space-y-2">
+                  <h3 className="text-2xl font-bold text-[#8b5a2b] group-hover:text-[#d49240] transition-colors">
+                    {game.title}
+                  </h3>
+                  <p className="text-[#5a3618]">{game.description}</p>
                 </div>
-              </Card>
-            );
-          })}
-        </div>
+
+                <Button className="w-full bg-[#d49240] hover:bg-[#c77d3a] text-white py-6 text-lg font-bold transition-all">
+                  Play Now!
+                </Button>
+              </div>
+            </Card>
+          );
+        })}
       </div>
 
       {/* Game Modals */}
