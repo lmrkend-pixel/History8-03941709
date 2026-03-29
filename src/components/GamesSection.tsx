@@ -53,6 +53,21 @@ function HistoryUnmaskedGame({
     question: 'Pinuno ng Soviet Union na nagpatupad ng mahigpit na pamahalaan at naging mahalagang lider sa panahon ng Ikalawang Digmaang Pandaigdig.',
     options: ['Vladimir Lenin', 'Joseph Stalin', 'Nikita Khrushchev', 'Leon Trotsky'],
     answer: 1
+  }, {
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/7c2f.png',
+    question: 'Pangulo ng Estados Unidos na namuno sa bansa sa panahon ng Ikalawang Digmaang Pandaigdig at naglunsad ng New Deal programs.',
+    options: ['Harry Truman', 'Franklin D. Roosevelt', 'Dwight Eisenhower', 'Woodrow Wilson'],
+    answer: 1
+  }, {
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/95c6.png',
+    question: 'Lider ng Soviet Union pagkatapos ni Stalin na kilala sa panahon ng Cuban Missile Crisis.',
+    options: ['Mikhail Gorbachev', 'Leonid Brezhnev', 'Nikita Khrushchev', 'Yuri Andropov'],
+    answer: 2
+  }, {
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/c30e.png',
+    question: 'Diktador ng Italya na nag-alyado sa Nazi Germany sa panahon ng Ikalawang Digmaang Pandaigdig.',
+    options: ['Victor Emmanuel III', 'Benito Mussolini', 'Umberto II', 'Giuseppe Garibaldi'],
+    answer: 1
   }];
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(0);
@@ -139,6 +154,34 @@ function FlagTasticGame({
     image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/4d8f.png',
     options: ['Italy', 'Ireland', 'France', 'Belgium'],
     answer: 2
+  }, {
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/c5a3.png',
+    options: ['China', 'Japan', 'South Korea', 'North Korea'],
+    answer: 1
+  }, {
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/5e57.png',
+    options: ['Poland', 'Austria', 'Netherlands', 'Czech Republic'],
+    answer: 0
+  }, {
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/8e98.png',
+    options: ['Brazil', 'Argentina', 'Chile', 'Uruguay'],
+    answer: 0
+  }, {
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/ce2f.png',
+    options: ['Egypt', 'Saudi Arabia', 'UAE', 'Jordan'],
+    answer: 0
+  }, {
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/bfc9.png',
+    options: ['Canada', 'Australia', 'New Zealand', 'United States'],
+    answer: 0
+  }, {
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/3c8e.png',
+    options: ['Spain', 'Portugal', 'Mexico', 'Colombia'],
+    answer: 2
+  }, {
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/8a41.png',
+    options: ['South Africa', 'Kenya', 'Nigeria', 'Ghana'],
+    answer: 0
   }];
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(0);
@@ -326,76 +369,73 @@ function MatchingGameComponent({
   onClose: () => void;
 }) {
   const pairs = [{
-    term: 'Imperyalismo',
+    term: 'Nasyonalismo',
     definition: 'Patakaran ng pagkontrol sa ibang bansa'
   }, {
-    term: 'Kolonyalismo',
+    term: 'Holocaust',
     definition: 'Pag-aangkin ng lupain at pag-settle'
   }, {
-    term: 'Nasyonalismo',
+    term: 'Triple Alliance',
     definition: 'Pagmamahal sa sariling bansa'
   }, {
-    term: 'Triple Alliance',
+    term: 'United Nations',
     definition: 'Alemanya, Austria-Hungary, Italy'
   }, {
-    term: 'Triple Entente',
+    term: 'Kolonyalismo',
     definition: 'France, Russia, Great Britain'
   }, {
-    term: 'Treaty of Versailles',
+    term: 'Imperyalismo',
     definition: 'Kasunduan na nagtapos sa WWI'
   }, {
-    term: 'Holocaust',
+    term: 'Triple Entente',
     definition: 'Genocide ng mga Hudyo'
   }, {
-    term: 'United Nations',
+    term: 'Treaty of Versailles',
     definition: 'Organisasyong pandaigdig para sa kapayapaan'
   }];
-  const [terms] = useState(pairs.map(p => p.term).sort(() => Math.random() - 0.5));
-  const [definitions] = useState(pairs.map(p => ({
-    text: p.definition,
-    matched: false
-  })));
+  
+  const [terms] = useState(pairs.map(p => p.term));
+  const [definitions] = useState(pairs.map(p => p.definition));
   const [selectedTerm, setSelectedTerm] = useState<number | null>(null);
-  const [selectedDef, setSelectedDef] = useState<number | null>(null);
-  const [matches, setMatches] = useState<number[]>([]);
+  const [connections, setConnections] = useState<Array<{term: number, def: number}>>([]);
   const [score, setScore] = useState(0);
   const [showFeedback, setShowFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [gameComplete, setGameComplete] = useState(false);
+  
   const handleTermClick = (idx: number) => {
-    if (matches.includes(idx)) return;
+    const alreadyConnected = connections.find(c => c.term === idx);
+    if (alreadyConnected) return;
     setSelectedTerm(idx);
   };
+  
   const handleDefClick = (idx: number) => {
-    if (definitions[idx].matched) return;
-    setSelectedDef(idx);
+    const alreadyConnected = connections.find(c => c.def === idx);
+    if (alreadyConnected) return;
+    
     if (selectedTerm !== null) {
       const term = terms[selectedTerm];
-      const def = definitions[idx].text;
+      const def = definitions[idx];
       const correctPair = pairs.find(p => p.term === term && p.definition === def);
+      
+      setConnections([...connections, { term: selectedTerm, def: idx }]);
+      
       if (correctPair) {
         setShowFeedback('correct');
         setScore(score + 1);
-        setMatches([...matches, selectedTerm]);
-        const newDefs = [...definitions];
-        newDefs[idx].matched = true;
-        setTimeout(() => {
-          setShowFeedback(null);
-          setSelectedTerm(null);
-          setSelectedDef(null);
-          if (matches.length + 1 === pairs.length) {
-            setGameComplete(true);
-          }
-        }, 1000);
       } else {
         setShowFeedback('wrong');
-        setTimeout(() => {
-          setShowFeedback(null);
-          setSelectedTerm(null);
-          setSelectedDef(null);
-        }, 1500);
       }
+      
+      setTimeout(() => {
+        setShowFeedback(null);
+        setSelectedTerm(null);
+        if (connections.length + 1 === pairs.length) {
+          setGameComplete(true);
+        }
+      }, 1000);
     }
   };
+  
   if (gameComplete) {
     return <div className="text-center space-y-6 animate-in fade-in duration-500">
         <div className="text-6xl">🏆</div>
@@ -406,6 +446,7 @@ function MatchingGameComponent({
         </Button>
       </div>;
   }
+  
   return <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
@@ -421,19 +462,63 @@ function MatchingGameComponent({
         <p className="text-[#5a3618]">Select a term then its matching definition</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="relative grid grid-cols-[1fr_80px_1fr] gap-0">
+        {/* Terms Column */}
         <div className="space-y-2">
-          <h4 className="font-bold text-[#8b5a2b] text-center">Terms</h4>
-          {terms.map((term, idx) => <Button key={idx} onClick={() => handleTermClick(idx)} disabled={matches.includes(idx)} className={`w-full p-4 text-base font-semibold transition-all ${matches.includes(idx) ? 'bg-green-200 border-2 border-green-500 text-green-800' : selectedTerm === idx ? 'bg-[#d49240] border-2 border-[#8b5a2b] text-white' : 'bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3]'}`}>
-              {term}
-            </Button>)}
+          <h4 className="font-bold text-[#8b5a2b] text-center mb-4">Terms</h4>
+          {terms.map((term, idx) => {
+            const connection = connections.find(c => c.term === idx);
+            const isConnected = !!connection;
+            const isSelected = selectedTerm === idx;
+            return <div key={idx} id={`term-${idx}`} className="relative">
+                <Button onClick={() => handleTermClick(idx)} disabled={isConnected} className={`w-full p-4 text-base font-semibold transition-all ${isConnected ? 'bg-green-200 border-2 border-green-500 text-green-800 cursor-not-allowed' : isSelected ? 'bg-[#c77d3a] border-2 border-[#8b5a2b] text-white scale-105' : 'bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3]'}`}>
+                  {term}
+                </Button>
+              </div>;
+          })}
         </div>
 
+        {/* Arrow Column - SVG connections */}
+        <div className="relative" style={{pointerEvents: 'none'}}>
+          <svg className="absolute inset-0 w-full h-full" style={{overflow: 'visible'}}>
+            {connections.map((conn, idx) => {
+              const termEl = document.getElementById(`term-${conn.term}`);
+              const defEl = document.getElementById(`def-${conn.def}`);
+              if (!termEl || !defEl) return null;
+              
+              const termRect = termEl.getBoundingClientRect();
+              const defRect = defEl.getBoundingClientRect();
+              const svgRect = termEl.closest('svg')?.parentElement?.getBoundingClientRect();
+              
+              if (!svgRect) return null;
+              
+              const x1 = termRect.right - svgRect.left - 80;
+              const y1 = termRect.top + termRect.height / 2 - svgRect.top;
+              const x2 = defRect.left - svgRect.left + 80;
+              const y2 = defRect.top + defRect.height / 2 - svgRect.top;
+              
+              return <line key={idx} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#8b5a2b" strokeWidth="3" markerEnd="url(#arrowhead)" className="animate-in fade-in duration-300" />;
+            })}
+            <defs>
+              <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                <polygon points="0 0, 10 3, 0 6" fill="#8b5a2b" />
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Definitions Column */}
         <div className="space-y-2">
-          <h4 className="font-bold text-[#8b5a2b] text-center">Definitions</h4>
-          {definitions.map((def, idx) => <Button key={idx} onClick={() => handleDefClick(idx)} disabled={def.matched} className={`w-full p-4 text-base font-semibold transition-all ${def.matched ? 'bg-green-200 border-2 border-green-500 text-green-800' : selectedDef === idx ? 'bg-[#d49240] border-2 border-[#8b5a2b] text-white' : 'bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3]'}`}>
-              {def.text}
-            </Button>)}
+          <h4 className="font-bold text-[#8b5a2b] text-center mb-4">Definitions</h4>
+          {definitions.map((def, idx) => {
+            const connection = connections.find(c => c.def === idx);
+            const isConnected = !!connection;
+            return <div key={idx} id={`def-${idx}`} className="relative">
+                <Button onClick={() => handleDefClick(idx)} disabled={isConnected} className={`w-full p-4 text-sm font-semibold transition-all text-left ${isConnected ? 'bg-green-200 border-2 border-green-500 text-green-800 cursor-not-allowed' : 'bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3]'}`}>
+                  {def}
+                </Button>
+              </div>;
+          })}
         </div>
       </div>
 
@@ -472,39 +557,59 @@ function TimelineChallengeGame({
   }, {
     event: 'Pearl Harbor Attack',
     year: 1941
-  }, {
-    event: 'D-Day Invasion',
-    year: 1944
-  }, {
-    event: 'Ikalawang Digmaang Pandaigdig nagtapos',
-    year: 1945
-  }, {
-    event: 'United Nations itinatag',
-    year: 1945
   }];
-  const [shuffledEvents] = useState([...events].sort(() => Math.random() - 0.5).slice(0, 5));
-  const [userOrder, setUserOrder] = useState<number[]>([]);
+  
+  const [shuffledEvents] = useState([...events].sort(() => Math.random() - 0.5));
+  const [timelineSlots, setTimelineSlots] = useState<Array<number | null>>([null, null, null, null, null]);
+  const [draggedEvent, setDraggedEvent] = useState<number | null>(null);
   const [score, setScore] = useState(0);
   const [showFeedback, setShowFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [gameComplete, setGameComplete] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState<string>('');
-  const handleEventClick = (idx: number) => {
-    if (userOrder.includes(idx)) {
-      setUserOrder(userOrder.filter(i => i !== idx));
-    } else {
-      setUserOrder([...userOrder, idx]);
+  
+  const handleDragStart = (eventIdx: number) => {
+    setDraggedEvent(eventIdx);
+  };
+  
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+  
+  const handleDrop = (slotIdx: number) => {
+    if (draggedEvent !== null) {
+      const newSlots = [...timelineSlots];
+      // Remove event from any existing slot
+      const existingSlotIdx = newSlots.indexOf(draggedEvent);
+      if (existingSlotIdx !== -1) {
+        newSlots[existingSlotIdx] = null;
+      }
+      // Place in new slot
+      newSlots[slotIdx] = draggedEvent;
+      setTimelineSlots(newSlots);
+      setDraggedEvent(null);
     }
   };
+  
+  const handleRemoveFromSlot = (slotIdx: number) => {
+    const newSlots = [...timelineSlots];
+    newSlots[slotIdx] = null;
+    setTimelineSlots(newSlots);
+  };
+  
   const handleSubmit = () => {
-    const correctOrder = shuffledEvents.map((e, idx) => ({
-      ...e,
-      idx
-    })).sort((a, b) => a.year - b.year).map(e => e.idx);
+    const correctOrder = shuffledEvents
+      .map((e, idx) => ({ ...e, idx }))
+      .sort((a, b) => a.year - b.year)
+      .map(e => e.idx);
+    
+    const userOrder = timelineSlots.filter(slot => slot !== null) as number[];
     const isCorrect = JSON.stringify(userOrder) === JSON.stringify(correctOrder);
+    
     if (!isCorrect) {
-      const correctSequence = correctOrder.map(idx => shuffledEvents[idx].event).join(' → ');
+      const correctSequence = correctOrder.map(idx => `${shuffledEvents[idx].event} (${shuffledEvents[idx].year})`).join(' → ');
       setCorrectAnswer(correctSequence);
     }
+    
     setShowFeedback(isCorrect ? 'correct' : 'wrong');
     if (isCorrect) setScore(1);
   };
@@ -513,6 +618,9 @@ function TimelineChallengeGame({
     setShowFeedback(null);
     setGameComplete(true);
   };
+  
+  const usedEvents = timelineSlots.filter(slot => slot !== null);
+  
   if (gameComplete) {
     return <div className="text-center space-y-6 animate-in fade-in duration-500">
         <div className="text-6xl">🏆</div>
@@ -523,6 +631,7 @@ function TimelineChallengeGame({
         </Button>
       </div>;
   }
+  
   return <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
@@ -535,29 +644,48 @@ function TimelineChallengeGame({
 
       <div className="text-center space-y-2">
         <h3 className="text-2xl font-bold text-[#8b5a2b]">Timeline Challenge</h3>
-        <p className="text-[#5a3618]">Arrange the events from earliest to latest</p>
+        <p className="text-[#5a3618]">Drag events to arrange them from earliest to latest</p>
       </div>
 
+      {/* Available Events Pool */}
+      <div className="bg-[#f5e6d3] p-4 rounded-xl border-2 border-[#d49240]">
+        <h4 className="font-bold text-[#8b5a2b] mb-3 text-center">Available Events (Drag to Timeline)</h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          {shuffledEvents.map((event, idx) => {
+            const isUsed = usedEvents.includes(idx);
+            if (isUsed) return <div key={idx} className="h-16"></div>;
+            
+            return <div key={idx} draggable onDragStart={() => handleDragStart(idx)} className="p-4 bg-white border-2 border-[#d49240] rounded-lg font-semibold text-[#8b5a2b] cursor-move hover:bg-[#f5e6d3] hover:scale-105 transition-all text-center">
+                {event.event}
+              </div>;
+          })}
+        </div>
+      </div>
+
+      {/* Timeline Slots */}
       <div className="space-y-3">
-        {shuffledEvents.map((event, idx) => {
-        const position = userOrder.indexOf(idx);
-        return <Button key={idx} onClick={() => handleEventClick(idx)} className={`w-full p-6 text-left transition-all ${position >= 0 ? 'bg-[#d49240] border-2 border-[#8b5a2b] text-white' : 'bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3]'}`}>
-              <div className="flex items-center justify-between">
-                <span className="font-semibold">{event.event}</span>
-                {position >= 0 && <span className="bg-white text-[#8b5a2b] px-3 py-1 rounded-full font-bold">
-                    #{position + 1}
-                  </span>}
+        <h4 className="font-bold text-[#8b5a2b] text-center">Your Timeline (Earliest → Latest)</h4>
+        {timelineSlots.map((slot, idx) => <div key={idx} onDragOver={handleDragOver} onDrop={() => handleDrop(idx)} className={`min-h-[80px] p-4 border-4 border-dashed rounded-xl transition-all ${slot !== null ? 'bg-[#d49240] border-[#8b5a2b]' : 'bg-white border-[#d49240] hover:border-[#8b5a2b] hover:bg-[#f5e6d3]'}`}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#8b5a2b] text-white px-4 py-2 rounded-full font-bold text-lg">
+                  #{idx + 1}
+                </span>
+                {slot !== null ? <span className="font-bold text-white text-lg">{shuffledEvents[slot].event}</span> : <span className="text-[#a0826d] italic">Drop event here</span>}
               </div>
-            </Button>;
-      })}
+              {slot !== null && <Button onClick={() => handleRemoveFromSlot(idx)} variant="ghost" size="sm" className="text-white hover:bg-white/20">
+                  Remove
+                </Button>}
+            </div>
+          </div>)}
       </div>
 
-      <Button onClick={handleSubmit} disabled={userOrder.length !== shuffledEvents.length || showFeedback !== null} className="w-full bg-[#8b5a2b] hover:bg-[#6d4522] text-white py-6 text-lg font-bold">
+      <Button onClick={handleSubmit} disabled={timelineSlots.some(slot => slot === null) || showFeedback !== null} className="w-full bg-[#8b5a2b] hover:bg-[#6d4522] text-white py-6 text-lg font-bold">
         Submit Timeline
       </Button>
 
       {showFeedback && <div className={`fixed inset-0 flex items-center justify-center bg-black/50 z-50 animate-in fade-in zoom-in duration-300`}>
-          <div className={`p-12 rounded-3xl shadow-2xl text-center space-y-4 max-w-2xl ${showFeedback === 'correct' ? 'bg-green-500' : 'bg-red-500'}`}>
+          <div className={`p-12 rounded-3xl shadow-2xl text-center space-y-4 max-w-3xl ${showFeedback === 'correct' ? 'bg-green-500' : 'bg-red-500'}`}>
             {showFeedback === 'correct' ? <>
                 <CheckCircle2 className="w-24 h-24 mx-auto text-white animate-bounce" />
                 <h3 className="text-4xl font-bold text-white">Perfect Timeline!</h3>
@@ -565,7 +693,7 @@ function TimelineChallengeGame({
                 <XCircle className="w-24 h-24 mx-auto text-white animate-bounce" />
                 <h3 className="text-4xl font-bold text-white">Wrong Order!</h3>
                 <p className="text-lg text-white font-semibold">Correct Order:</p>
-                <p className="text-base text-white">{correctAnswer}</p>
+                <p className="text-base text-white leading-relaxed">{correctAnswer}</p>
               </>}
             <Button onClick={handleNext} className="bg-white text-[#8b5a2b] hover:bg-white/90 font-bold text-lg px-8 py-3 mt-4">
               Next
