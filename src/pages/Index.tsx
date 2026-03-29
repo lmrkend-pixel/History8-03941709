@@ -137,15 +137,17 @@ function HomeSection({ onNavigate }: { onNavigate: (section: string) => void }) 
           <p className="text-2xl text-[#f5e6d3] mt-4">Explore History & Society</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {[
-            { title: 'Ancient Civilizations', emoji: '🏛️', bg: 'from-amber-300 to-yellow-500' },
-            { title: 'American Revolution', emoji: '⚔️', bg: 'from-red-400 to-orange-500' },
-            { title: 'World War II', emoji: '🪖', bg: 'from-gray-500 to-slate-600' },
-            { title: 'Civics & Government', emoji: '🏛️', bg: 'from-blue-400 to-indigo-500' },
+            { title: 'Imperyalismo at Kolonyalismo', emoji: '🏛️', bg: 'from-amber-300 to-yellow-500', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5M1ts6gNSL2dLtdiyvulul&si=rxg0iz1VMmoaWPv0' },
+            { title: 'Unang Digmaang Pandaigdig', emoji: '⚔️', bg: 'from-red-400 to-orange-500', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5XL10eNOxLIM69zxAL-ev6&si=p0wV6K_rZV_Lw-aF' },
+            { title: 'Ikalawang Digmaang Pandaigdig', emoji: '🪖', bg: 'from-gray-500 to-slate-600', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5XL10eNOxLIM69zxAL-ev6&si=p0wV6K_rZV_Lw-aF' },
+            { title: 'Cold War', emoji: '❄️', bg: 'from-blue-400 to-indigo-500', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5FL-qFuaS6HktVD_LLkDzI&si=U09XqlzIl3j8Nd1Q' },
+            { title: 'Globalisasyon', emoji: '🌐', bg: 'from-green-400 to-teal-500', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY4VLTEZg_MDjOOfLy6Nf8BQ&si=32Iknoip44Mub6cO' },
           ].map((video) => (
             <div
               key={video.title}
+              onClick={() => window.open(video.link, '_blank')}
               className={`group relative h-52 overflow-hidden rounded-xl border-4 border-[#f5e6d3] shadow-lg cursor-pointer transition-transform hover:scale-105 bg-gradient-to-br ${video.bg}`}
             >
               <div className="absolute inset-0 flex items-center justify-center">
