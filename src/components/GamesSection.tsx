@@ -62,14 +62,15 @@ function HistoryUnmaskedGame({
     const correct = selected === questions[currentQ].answer;
     setShowFeedback(correct ? 'correct' : 'wrong');
     if (correct) setScore(score + 1);
-    setTimeout(() => {
-      setShowFeedback(null);
-      if (currentQ < questions.length - 1) {
-        setCurrentQ(currentQ + 1);
-      } else {
-        setGameComplete(true);
-      }
-    }, 2000);
+  };
+
+  const handleNext = () => {
+    setShowFeedback(null);
+    if (currentQ < questions.length - 1) {
+      setCurrentQ(currentQ + 1);
+    } else {
+      setGameComplete(true);
+    }
   };
   if (gameComplete) {
     return <div className="text-center space-y-6 animate-in fade-in duration-500">
@@ -112,6 +113,9 @@ function HistoryUnmaskedGame({
                 <h3 className="text-4xl font-bold text-white">Wrong Answer!</h3>
                 <p className="text-2xl text-white font-semibold">Correct: {questions[currentQ].options[questions[currentQ].answer]}</p>
               </>}
+            <Button onClick={handleNext} className="bg-white text-[#8b5a2b] hover:bg-white/90 font-bold text-lg px-8 py-3 mt-4">
+              Next
+            </Button>
           </div>
         </div>}
     </div>;
@@ -144,14 +148,15 @@ function FlagTasticGame({
     const correct = selected === questions[currentQ].answer;
     setShowFeedback(correct ? 'correct' : 'wrong');
     if (correct) setScore(score + 1);
-    setTimeout(() => {
-      setShowFeedback(null);
-      if (currentQ < questions.length - 1) {
-        setCurrentQ(currentQ + 1);
-      } else {
-        setGameComplete(true);
-      }
-    }, 2000);
+  };
+
+  const handleNext = () => {
+    setShowFeedback(null);
+    if (currentQ < questions.length - 1) {
+      setCurrentQ(currentQ + 1);
+    } else {
+      setGameComplete(true);
+    }
   };
   if (gameComplete) {
     return <div className="text-center space-y-6 animate-in fade-in duration-500">
@@ -194,6 +199,9 @@ function FlagTasticGame({
                 <h3 className="text-4xl font-bold text-white">Wrong Answer!</h3>
                 <p className="text-2xl text-white font-semibold">Correct: {questions[currentQ].options[questions[currentQ].answer]}</p>
               </>}
+            <Button onClick={handleNext} className="bg-white text-[#8b5a2b] hover:bg-white/90 font-bold text-lg px-8 py-3 mt-4">
+              Next
+            </Button>
           </div>
         </div>}
     </div>;
@@ -240,15 +248,16 @@ function DecodeThePastGame({
     const correct = userAnswer.toUpperCase() === puzzles[currentQ].answer;
     setShowFeedback(correct ? 'correct' : 'wrong');
     if (correct) setScore(score + 1);
-    setTimeout(() => {
-      setShowFeedback(null);
-      setUserAnswer('');
-      if (currentQ < puzzles.length - 1) {
-        setCurrentQ(currentQ + 1);
-      } else {
-        setGameComplete(true);
-      }
-    }, 4000);
+  };
+
+  const handleNext = () => {
+    setShowFeedback(null);
+    setUserAnswer('');
+    if (currentQ < puzzles.length - 1) {
+      setCurrentQ(currentQ + 1);
+    } else {
+      setGameComplete(true);
+    }
   };
   if (gameComplete) {
     return <div className="text-center space-y-6 animate-in fade-in duration-500">
@@ -302,6 +311,9 @@ function DecodeThePastGame({
                   <p className="text-lg text-white font-medium leading-relaxed">{puzzles[currentQ].explanation}</p>
                 </div>
               </>}
+            <Button onClick={handleNext} className="bg-white text-[#8b5a2b] hover:bg-white/90 font-bold text-lg px-8 py-3 mt-4">
+              Next
+            </Button>
           </div>
         </div>}
     </div>;
@@ -495,10 +507,11 @@ function TimelineChallengeGame({
     }
     setShowFeedback(isCorrect ? 'correct' : 'wrong');
     if (isCorrect) setScore(1);
-    setTimeout(() => {
-      setShowFeedback(null);
-      setGameComplete(true);
-    }, 3000);
+  };
+
+  const handleNext = () => {
+    setShowFeedback(null);
+    setGameComplete(true);
   };
   if (gameComplete) {
     return <div className="text-center space-y-6 animate-in fade-in duration-500">
@@ -554,6 +567,9 @@ function TimelineChallengeGame({
                 <p className="text-lg text-white font-semibold">Correct Order:</p>
                 <p className="text-base text-white">{correctAnswer}</p>
               </>}
+            <Button onClick={handleNext} className="bg-white text-[#8b5a2b] hover:bg-white/90 font-bold text-lg px-8 py-3 mt-4">
+              Next
+            </Button>
           </div>
         </div>}
     </div>;
