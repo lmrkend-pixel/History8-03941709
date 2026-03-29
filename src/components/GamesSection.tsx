@@ -206,25 +206,30 @@ function DecodeThePastGame({
   onClose: () => void;
 }) {
   const puzzles = [{
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/dcd4.png',
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/ace8.png',
     answer: 'IMPERYALISMO',
-    hint: 'Patakaran ng pagkontrol sa ibang bansa'
+    hint: 'Ano ang tawag sa patakaran na ito?',
+    explanation: 'Ang imperyalismo ay isang patakaran kung saan pinalalawak ng isang makapangyarihang bansa ang kanyang teritoryo at impluwensya sa pamamagitan ng pananakop o kontrol sa ibang bansa.'
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/d31c.png',
-    answer: 'NASYONALISMO',
-    hint: 'Pagmamahal sa sariling bansa'
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/85b0.png',
+    answer: 'COLD WAR',
+    hint: 'Ano ang tawag sa panahong ito?',
+    explanation: 'Ang Cold War ay panahon ng matinding tensyon sa pagitan ng Estados Unidos at Soviet Union matapos ang Ikalawang Digmaang Pandaigdig, ngunit hindi ito humantong sa direktang digmaan.'
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/c9e4.png',
-    answer: 'HOLOCAUST',
-    hint: 'Masamang pangyayari sa WWII'
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/ed62.png',
+    answer: 'WORLD WAR',
+    hint: 'Ano ang tawag sa digmaang ito?',
+    explanation: 'Ang World War ay tumutukoy sa malalaking digmaang pandaigdig tulad ng Unang at Ikalawang Digmaang Pandaigdig na kinasangkutan ng maraming bansa sa iba\'t ibang kontinente.'
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/6f9b.png',
-    answer: 'KALAKALAN',
-    hint: 'Pagpapalitan ng produkto at serbisyo'
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/39dc.png',
+    answer: 'KAPITALISMO',
+    hint: 'Ano ang tawag sa sistemang ito?',
+    explanation: 'Ang kapitalismo ay isang sistemang pang-ekonomiya kung saan ang mga negosyo at yaman ay pagmamay-ari ng pribadong indibidwal at pinapaandar ng kompetisyon sa merkado.'
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/5a7f.png',
-    answer: 'TEKNOLOHIYA',
-    hint: 'Pag-unlad ng agham at makina'
+    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/d189.png',
+    answer: 'KOMUNISMO',
+    hint: 'Ano ang tawag sa sistemang ito?',
+    explanation: 'Ang komunismo ay isang sistemang pang-ekonomiya at pampulitika kung saan ang mga ari-arian ay pagmamay-ari ng estado o ng buong komunidad, at layuning magkaroon ng pantay-pantay na pamumuhay.'
   }];
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(0);
@@ -243,7 +248,7 @@ function DecodeThePastGame({
       } else {
         setGameComplete(true);
       }
-    }, 2000);
+    }, 4000);
   };
   if (gameComplete) {
     return <div className="text-center space-y-6 animate-in fade-in duration-500">
@@ -271,7 +276,7 @@ function DecodeThePastGame({
       </div>
 
       <div className="flex justify-center">
-        <img src="https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/visual_resources/100020512/aba5e480c7db4c5082db3a03b249a842/743046cf.png" alt="4 Pics 1 Word Clue" className="w-full max-w-md rounded-xl border-4 border-[#8b5a2b] shadow-2xl" crossOrigin="anonymous" />
+        <img src={puzzles[currentQ].image} alt="4 Pics 1 Word Clue" className="w-full max-w-md rounded-xl border-4 border-[#8b5a2b] shadow-2xl" crossOrigin="anonymous" />
       </div>
 
       <div className="space-y-4">
@@ -282,14 +287,20 @@ function DecodeThePastGame({
       </div>
 
       {showFeedback && <div className={`fixed inset-0 flex items-center justify-center bg-black/50 z-50 animate-in fade-in zoom-in duration-300`}>
-          <div className={`p-12 rounded-3xl shadow-2xl text-center space-y-4 ${showFeedback === 'correct' ? 'bg-green-500' : 'bg-red-500'}`}>
+          <div className={`p-8 rounded-3xl shadow-2xl text-center space-y-4 max-w-2xl ${showFeedback === 'correct' ? 'bg-green-500' : 'bg-red-500'}`}>
             {showFeedback === 'correct' ? <>
-                <CheckCircle2 className="w-24 h-24 mx-auto text-white animate-bounce" />
-                <h3 className="text-4xl font-bold text-white">Correct Answer!</h3>
+                <CheckCircle2 className="w-20 h-20 mx-auto text-white animate-bounce" />
+                <h3 className="text-3xl font-bold text-white">Correct Answer!</h3>
+                <div className="bg-white/20 p-4 rounded-xl">
+                  <p className="text-lg text-white font-medium leading-relaxed">{puzzles[currentQ].explanation}</p>
+                </div>
               </> : <>
-                <XCircle className="w-24 h-24 mx-auto text-white animate-bounce" />
-                <h3 className="text-4xl font-bold text-white">Wrong Answer!</h3>
+                <XCircle className="w-20 h-20 mx-auto text-white animate-bounce" />
+                <h3 className="text-3xl font-bold text-white">Wrong Answer!</h3>
                 <p className="text-2xl text-white font-semibold">Correct: {puzzles[currentQ].answer}</p>
+                <div className="bg-white/20 p-4 rounded-xl">
+                  <p className="text-lg text-white font-medium leading-relaxed">{puzzles[currentQ].explanation}</p>
+                </div>
               </>}
           </div>
         </div>}
