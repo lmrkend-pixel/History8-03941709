@@ -370,27 +370,27 @@ function MatchingGameComponent({
 }) {
   const pairs = [{
     term: 'Nasyonalismo',
-    definition: 'Patakaran ng pagkontrol sa ibang bansa'
-  }, {
-    term: 'Holocaust',
-    definition: 'Pag-aangkin ng lupain at pag-settle'
-  }, {
-    term: 'Triple Alliance',
     definition: 'Pagmamahal sa sariling bansa'
   }, {
-    term: 'United Nations',
-    definition: 'Alemanya, Austria-Hungary, Italy'
-  }, {
     term: 'Kolonyalismo',
-    definition: 'France, Russia, Great Britain'
+    definition: 'Pag-aangkin ng lupain at pag-settle'
   }, {
     term: 'Imperyalismo',
-    definition: 'Kasunduan na nagtapos sa WWI'
+    definition: 'Patakaran ng pagkontrol sa ibang bansa'
+  }, {
+    term: 'Triple Alliance',
+    definition: 'Alemanya, Austria-Hungary, Italy'
   }, {
     term: 'Triple Entente',
-    definition: 'Genocide ng mga Hudyo'
+    definition: 'France, Russia, Great Britain'
   }, {
     term: 'Treaty of Versailles',
+    definition: 'Kasunduan na nagtapos sa WWI'
+  }, {
+    term: 'Holocaust',
+    definition: 'Genocide ng mga Hudyo'
+  }, {
+    term: 'United Nations',
     definition: 'Organisasyong pandaigdig para sa kapayapaan'
   }];
   
@@ -457,68 +457,96 @@ function MatchingGameComponent({
         </Button>
       </div>
 
-      <div className="text-center">
-        <h3 className="text-2xl font-bold text-[#8b5a2b] mb-2">Match the Terms!</h3>
-        <p className="text-[#5a3618]">Select a term then its matching definition</p>
+      <div className="text-center bg-[#e8f5e9] p-4 rounded-xl border-2 border-[#81c784]">
+        <h3 className="text-xl font-bold text-[#2e7d32]">🎯 Match each term with its definition.</h3>
       </div>
 
-      <div className="relative grid grid-cols-[1fr_80px_1fr] gap-0">
-        {/* Terms Column */}
-        <div className="space-y-2">
-          <h4 className="font-bold text-[#8b5a2b] text-center mb-4">Terms</h4>
-          {terms.map((term, idx) => {
-            const connection = connections.find(c => c.term === idx);
-            const isConnected = !!connection;
-            const isSelected = selectedTerm === idx;
-            return <div key={idx} id={`term-${idx}`} className="relative">
-                <Button onClick={() => handleTermClick(idx)} disabled={isConnected} className={`w-full p-4 text-base font-semibold transition-all ${isConnected ? 'bg-green-200 border-2 border-green-500 text-green-800 cursor-not-allowed' : isSelected ? 'bg-[#c77d3a] border-2 border-[#8b5a2b] text-white scale-105' : 'bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3]'}`}>
-                  {term}
-                </Button>
-              </div>;
-          })}
-        </div>
-
-        {/* Arrow Column - SVG connections */}
-        <div className="relative" style={{pointerEvents: 'none'}}>
-          <svg className="absolute inset-0 w-full h-full" style={{overflow: 'visible'}}>
-            {connections.map((conn, idx) => {
-              const termEl = document.getElementById(`term-${conn.term}`);
-              const defEl = document.getElementById(`def-${conn.def}`);
-              if (!termEl || !defEl) return null;
-              
-              const termRect = termEl.getBoundingClientRect();
-              const defRect = defEl.getBoundingClientRect();
-              const svgRect = termEl.closest('svg')?.parentElement?.getBoundingClientRect();
-              
-              if (!svgRect) return null;
-              
-              const x1 = termRect.right - svgRect.left - 80;
-              const y1 = termRect.top + termRect.height / 2 - svgRect.top;
-              const x2 = defRect.left - svgRect.left + 80;
-              const y2 = defRect.top + defRect.height / 2 - svgRect.top;
-              
-              return <line key={idx} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#8b5a2b" strokeWidth="3" markerEnd="url(#arrowhead)" className="animate-in fade-in duration-300" />;
+      <div className="relative">
+        <div className="grid grid-cols-[1fr_60px_1fr] gap-4 items-start">
+          {/* Terms Column */}
+          <div className="space-y-3">
+            {terms.map((term, idx) => {
+              const connection = connections.find(c => c.term === idx);
+              const isConnected = !!connection;
+              const isSelected = selectedTerm === idx;
+              return <div key={idx} className="flex items-center gap-2">
+                  <button
+                    id={`term-${idx}`}
+                    onClick={() => handleTermClick(idx)}
+                    disabled={isConnected}
+                    className={`flex-1 px-4 py-3 rounded-full text-sm font-semibold transition-all text-left ${
+                      isConnected 
+                        ? 'bg-[#c8e6c9] text-[#2e7d32] cursor-not-allowed' 
+                        : isSelected 
+                          ? 'bg-[#81c784] text-white shadow-lg scale-105' 
+                          : 'bg-[#e8f5e9] text-[#2e7d32] hover:bg-[#c8e6c9] hover:shadow-md'
+                    }`}
+                  >
+                    {term}
+                  </button>
+                  <div className="w-3 h-3 rounded-full bg-black flex-shrink-0"></div>
+                </div>;
             })}
-            <defs>
-              <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                <polygon points="0 0, 10 3, 0 6" fill="#8b5a2b" />
-              </marker>
-            </defs>
-          </svg>
-        </div>
+          </div>
 
-        {/* Definitions Column */}
-        <div className="space-y-2">
-          <h4 className="font-bold text-[#8b5a2b] text-center mb-4">Definitions</h4>
-          {definitions.map((def, idx) => {
-            const connection = connections.find(c => c.def === idx);
-            const isConnected = !!connection;
-            return <div key={idx} id={`def-${idx}`} className="relative">
-                <Button onClick={() => handleDefClick(idx)} disabled={isConnected} className={`w-full p-4 text-sm font-semibold transition-all text-left ${isConnected ? 'bg-green-200 border-2 border-green-500 text-green-800 cursor-not-allowed' : 'bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3]'}`}>
-                  {def}
-                </Button>
-              </div>;
-          })}
+          {/* Arrow SVG Column */}
+          <div className="relative h-full">
+            <svg className="absolute inset-0 w-full h-full" style={{overflow: 'visible', pointerEvents: 'none'}}>
+              {connections.map((conn) => {
+                const termEl = document.getElementById(`term-${conn.term}`);
+                const defEl = document.getElementById(`def-${conn.def}`);
+                if (!termEl || !defEl) return null;
+                
+                const container = termEl.closest('.relative');
+                if (!container) return null;
+                
+                const containerRect = container.getBoundingClientRect();
+                const termRect = termEl.getBoundingClientRect();
+                const defRect = defEl.getBoundingClientRect();
+                
+                const x1 = termRect.right - containerRect.left - 4;
+                const y1 = termRect.top + termRect.height / 2 - containerRect.top;
+                const x2 = defRect.left - containerRect.left + 4;
+                const y2 = defRect.top + defRect.height / 2 - containerRect.top;
+                
+                const midX = (x1 + x2) / 2;
+                const curve = Math.abs(y2 - y1) * 0.3;
+                
+                return <path
+                    key={`arrow-${conn.term}-${conn.def}`}
+                    d={`M ${x1} ${y1} Q ${midX} ${y1 - curve}, ${x2} ${y2}`}
+                    stroke="#2e7d32"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeDasharray="5,5"
+                    className="animate-in fade-in duration-300"
+                  />;
+              })}
+            </svg>
+          </div>
+
+          {/* Definitions Column */}
+          <div className="space-y-3">
+            {definitions.map((def, idx) => {
+              const connection = connections.find(c => c.def === idx);
+              const isConnected = !!connection;
+              return <div key={idx} className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-black flex-shrink-0"></div>
+                  <button
+                    id={`def-${idx}`}
+                    onClick={() => handleDefClick(idx)}
+                    disabled={isConnected}
+                    className={`flex-1 px-4 py-3 rounded-full text-sm font-semibold transition-all text-left ${
+                      isConnected 
+                        ? 'bg-[#c8e6c9] text-[#2e7d32] cursor-not-allowed' 
+                        : 'bg-[#e8f5e9] text-[#2e7d32] hover:bg-[#c8e6c9] hover:shadow-md'
+                    }`}
+                  >
+                    {def}
+                  </button>
+                </div>;
+            })}
+          </div>
         </div>
       </div>
 
