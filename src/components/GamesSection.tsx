@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { Trophy, Flag, Lightbulb, Shuffle, Clock, X, CheckCircle2, XCircle } from 'lucide-react';
+import { Trophy, Flag, Lightbulb, Shuffle, Clock, CheckCircle2, XCircle } from 'lucide-react';
 
 // Game card data
 const gameCards = [
@@ -79,7 +79,7 @@ function HistoryUnmaskedGame({ onClose }: { onClose: () => void }) {
       } else {
         setGameComplete(true);
       }
-    }, 1500);
+    }, 2000);
   };
 
   if (gameComplete) {
@@ -97,13 +97,10 @@ function HistoryUnmaskedGame({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <div className="bg-[#8b5a2b] text-white px-4 py-2 rounded-full font-bold">
-          Score: {score}/{currentQ + 1}
+      <div className="flex justify-center items-center">
+        <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
+          Score: {score}/{questions.length}
         </div>
-        <Button onClick={onClose} variant="ghost" size="icon">
-          <X className="w-6 h-6" />
-        </Button>
       </div>
 
       <div className="text-center space-y-4">
@@ -143,6 +140,7 @@ function HistoryUnmaskedGame({ onClose }: { onClose: () => void }) {
               <>
                 <XCircle className="w-24 h-24 mx-auto text-white animate-bounce" />
                 <h3 className="text-4xl font-bold text-white">Wrong Answer!</h3>
+                <p className="text-2xl text-white font-semibold">Correct: {questions[currentQ].options[questions[currentQ].answer]}</p>
               </>
             )}
           </div>
@@ -190,7 +188,7 @@ function FlagTasticGame({ onClose }: { onClose: () => void }) {
       } else {
         setGameComplete(true);
       }
-    }, 1500);
+    }, 2000);
   };
 
   if (gameComplete) {
@@ -208,13 +206,10 @@ function FlagTasticGame({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <div className="bg-[#8b5a2b] text-white px-4 py-2 rounded-full font-bold">
-          Score: {score}/{currentQ + 1}
+      <div className="flex justify-center items-center">
+        <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
+          Score: {score}/{questions.length}
         </div>
-        <Button onClick={onClose} variant="ghost" size="icon">
-          <X className="w-6 h-6" />
-        </Button>
       </div>
 
       <div className="text-center space-y-4">
@@ -254,6 +249,455 @@ function FlagTasticGame({ onClose }: { onClose: () => void }) {
               <>
                 <XCircle className="w-24 h-24 mx-auto text-white animate-bounce" />
                 <h3 className="text-4xl font-bold text-white">Wrong Answer!</h3>
+                <p className="text-2xl text-white font-semibold">Correct: {questions[currentQ].options[questions[currentQ].answer]}</p>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Decode the Past (4 Pics 1 Word) Game Component
+function DecodeThePastGame({ onClose }: { onClose: () => void }) {
+  const puzzles = [
+    {
+      images: [
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/dcd4.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/5d86.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/9f53.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/9f40.png'
+      ],
+      answer: 'IMPERYALISMO',
+      hint: 'Patakaran ng pagkontrol sa ibang bansa'
+    },
+    {
+      images: [
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/d31c.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/a2b0.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/5ce1.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/1a24.png'
+      ],
+      answer: 'NASYONALISMO',
+      hint: 'Pagmamahal sa sariling bansa'
+    },
+    {
+      images: [
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/c9e4.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/6486.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/fc15.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/0a35.png'
+      ],
+      answer: 'HOLOCAUST',
+      hint: 'Masamang pangyayari sa WWII'
+    },
+    {
+      images: [
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/6f9b.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/92b8.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/e36a.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/e33d.png'
+      ],
+      answer: 'KALAKALAN',
+      hint: 'Pagpapalitan ng produkto at serbisyo'
+    },
+    {
+      images: [
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/5a7f.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/a54d.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/8b2f.png',
+        'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/3fc6.png'
+      ],
+      answer: 'TEKNOLOHIYA',
+      hint: 'Pag-unlad ng agham at makina'
+    }
+  ];
+
+  const [currentQ, setCurrentQ] = useState(0);
+  const [score, setScore] = useState(0);
+  const [userAnswer, setUserAnswer] = useState('');
+  const [showFeedback, setShowFeedback] = useState<'correct' | 'wrong' | null>(null);
+  const [gameComplete, setGameComplete] = useState(false);
+
+  const handleSubmit = () => {
+    const correct = userAnswer.toUpperCase() === puzzles[currentQ].answer;
+    setShowFeedback(correct ? 'correct' : 'wrong');
+    
+    if (correct) setScore(score + 1);
+
+    setTimeout(() => {
+      setShowFeedback(null);
+      setUserAnswer('');
+      if (currentQ < puzzles.length - 1) {
+        setCurrentQ(currentQ + 1);
+      } else {
+        setGameComplete(true);
+      }
+    }, 2000);
+  };
+
+  if (gameComplete) {
+    return (
+      <div className="text-center space-y-6 animate-in fade-in duration-500">
+        <div className="text-6xl">🏆</div>
+        <h3 className="text-3xl font-bold text-[#8b5a2b]">Game Complete!</h3>
+        <p className="text-5xl font-bold text-[#d49240]">{score}/{puzzles.length}</p>
+        <Button onClick={onClose} className="bg-gradient-to-r from-[#d49240] to-[#c77d3a] text-white px-8 py-6 text-lg">
+          Close Game
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-center items-center">
+        <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
+          Score: {score}/{puzzles.length}
+        </div>
+      </div>
+
+      <div className="text-center">
+        <h3 className="text-2xl font-bold text-[#8b5a2b] mb-2">4 Pics 1 Word</h3>
+        <p className="text-[#5a3618]">{puzzles[currentQ].hint}</p>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        {puzzles[currentQ].images.map((img, idx) => (
+          <img 
+            key={idx}
+            src={img} 
+            alt={`Clue ${idx + 1}`}
+            className="w-full h-40 object-cover rounded-lg border-4 border-[#8b5a2b] shadow-lg"
+            crossOrigin="anonymous"
+          />
+        ))}
+      </div>
+
+      <div className="space-y-4">
+        <input
+          type="text"
+          value={userAnswer}
+          onChange={(e) => setUserAnswer(e.target.value)}
+          placeholder="Type your answer..."
+          className="w-full p-4 text-xl text-center border-4 border-[#d49240] rounded-xl font-bold text-[#8b5a2b] uppercase focus:outline-none focus:border-[#8b5a2b]"
+          disabled={showFeedback !== null}
+        />
+        <Button 
+          onClick={handleSubmit}
+          disabled={!userAnswer.trim() || showFeedback !== null}
+          className="w-full bg-[#d49240] hover:bg-[#c77d3a] text-white py-6 text-lg font-bold"
+        >
+          Submit Answer
+        </Button>
+      </div>
+
+      {showFeedback && (
+        <div className={`fixed inset-0 flex items-center justify-center bg-black/50 z-50 animate-in fade-in zoom-in duration-300`}>
+          <div className={`p-12 rounded-3xl shadow-2xl text-center space-y-4 ${
+            showFeedback === 'correct' ? 'bg-green-500' : 'bg-red-500'
+          }`}>
+            {showFeedback === 'correct' ? (
+              <>
+                <CheckCircle2 className="w-24 h-24 mx-auto text-white animate-bounce" />
+                <h3 className="text-4xl font-bold text-white">Correct Answer!</h3>
+              </>
+            ) : (
+              <>
+                <XCircle className="w-24 h-24 mx-auto text-white animate-bounce" />
+                <h3 className="text-4xl font-bold text-white">Wrong Answer!</h3>
+                <p className="text-2xl text-white font-semibold">Correct: {puzzles[currentQ].answer}</p>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Matching Game Component
+function MatchingGameComponent({ onClose }: { onClose: () => void }) {
+  const pairs = [
+    { term: 'Imperyalismo', definition: 'Patakaran ng pagkontrol sa ibang bansa' },
+    { term: 'Kolonyalismo', definition: 'Pag-aangkin ng lupain at pag-settle' },
+    { term: 'Nasyonalismo', definition: 'Pagmamahal sa sariling bansa' },
+    { term: 'Triple Alliance', definition: 'Alemanya, Austria-Hungary, Italy' },
+    { term: 'Triple Entente', definition: 'France, Russia, Great Britain' },
+    { term: 'Treaty of Versailles', definition: 'Kasunduan na nagtapos sa WWI' },
+    { term: 'Holocaust', definition: 'Genocide ng mga Hudyo' },
+    { term: 'United Nations', definition: 'Organisasyong pandaigdig para sa kapayapaan' }
+  ];
+
+  const [terms] = useState(pairs.map(p => p.term).sort(() => Math.random() - 0.5));
+  const [definitions] = useState(pairs.map(p => ({ text: p.definition, matched: false })));
+  const [selectedTerm, setSelectedTerm] = useState<number | null>(null);
+  const [selectedDef, setSelectedDef] = useState<number | null>(null);
+  const [matches, setMatches] = useState<number[]>([]);
+  const [score, setScore] = useState(0);
+  const [showFeedback, setShowFeedback] = useState<'correct' | 'wrong' | null>(null);
+  const [gameComplete, setGameComplete] = useState(false);
+
+  const handleTermClick = (idx: number) => {
+    if (matches.includes(idx)) return;
+    setSelectedTerm(idx);
+  };
+
+  const handleDefClick = (idx: number) => {
+    if (definitions[idx].matched) return;
+    setSelectedDef(idx);
+    
+    if (selectedTerm !== null) {
+      const term = terms[selectedTerm];
+      const def = definitions[idx].text;
+      const correctPair = pairs.find(p => p.term === term && p.definition === def);
+      
+      if (correctPair) {
+        setShowFeedback('correct');
+        setScore(score + 1);
+        setMatches([...matches, selectedTerm]);
+        const newDefs = [...definitions];
+        newDefs[idx].matched = true;
+        
+        setTimeout(() => {
+          setShowFeedback(null);
+          setSelectedTerm(null);
+          setSelectedDef(null);
+          if (matches.length + 1 === pairs.length) {
+            setGameComplete(true);
+          }
+        }, 1000);
+      } else {
+        setShowFeedback('wrong');
+        setTimeout(() => {
+          setShowFeedback(null);
+          setSelectedTerm(null);
+          setSelectedDef(null);
+        }, 1500);
+      }
+    }
+  };
+
+  if (gameComplete) {
+    return (
+      <div className="text-center space-y-6 animate-in fade-in duration-500">
+        <div className="text-6xl">🏆</div>
+        <h3 className="text-3xl font-bold text-[#8b5a2b]">Game Complete!</h3>
+        <p className="text-5xl font-bold text-[#d49240]">{score}/{pairs.length}</p>
+        <Button onClick={onClose} className="bg-gradient-to-r from-[#d49240] to-[#c77d3a] text-white px-8 py-6 text-lg">
+          Close Game
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-center items-center">
+        <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
+          Score: {score}/{pairs.length}
+        </div>
+      </div>
+
+      <div className="text-center">
+        <h3 className="text-2xl font-bold text-[#8b5a2b] mb-2">Match the Terms!</h3>
+        <p className="text-[#5a3618]">Select a term then its matching definition</p>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <h4 className="font-bold text-[#8b5a2b] text-center">Terms</h4>
+          {terms.map((term, idx) => (
+            <Button
+              key={idx}
+              onClick={() => handleTermClick(idx)}
+              disabled={matches.includes(idx)}
+              className={`w-full p-4 text-base font-semibold transition-all ${
+                matches.includes(idx)
+                  ? 'bg-green-200 border-2 border-green-500 text-green-800'
+                  : selectedTerm === idx
+                  ? 'bg-[#d49240] border-2 border-[#8b5a2b] text-white'
+                  : 'bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3]'
+              }`}
+            >
+              {term}
+            </Button>
+          ))}
+        </div>
+
+        <div className="space-y-2">
+          <h4 className="font-bold text-[#8b5a2b] text-center">Definitions</h4>
+          {definitions.map((def, idx) => (
+            <Button
+              key={idx}
+              onClick={() => handleDefClick(idx)}
+              disabled={def.matched}
+              className={`w-full p-4 text-base font-semibold transition-all ${
+                def.matched
+                  ? 'bg-green-200 border-2 border-green-500 text-green-800'
+                  : selectedDef === idx
+                  ? 'bg-[#d49240] border-2 border-[#8b5a2b] text-white'
+                  : 'bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3]'
+              }`}
+            >
+              {def.text}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {showFeedback && (
+        <div className={`fixed inset-0 flex items-center justify-center bg-black/50 z-50 animate-in fade-in zoom-in duration-300`}>
+          <div className={`p-12 rounded-3xl shadow-2xl text-center space-y-4 ${
+            showFeedback === 'correct' ? 'bg-green-500' : 'bg-red-500'
+          }`}>
+            {showFeedback === 'correct' ? (
+              <>
+                <CheckCircle2 className="w-24 h-24 mx-auto text-white animate-bounce" />
+                <h3 className="text-4xl font-bold text-white">Correct Match!</h3>
+              </>
+            ) : (
+              <>
+                <XCircle className="w-24 h-24 mx-auto text-white animate-bounce" />
+                <h3 className="text-4xl font-bold text-white">Wrong Match!</h3>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Timeline Challenge Game Component
+function TimelineChallengeGame({ onClose }: { onClose: () => void }) {
+  const events = [
+    { event: 'Unang Digmaang Pandaigdig', year: 1914 },
+    { event: 'Treaty of Versailles', year: 1919 },
+    { event: 'Great Depression', year: 1929 },
+    { event: 'Ikalawang Digmaang Pandaigdig nagsimula', year: 1939 },
+    { event: 'Pearl Harbor Attack', year: 1941 },
+    { event: 'D-Day Invasion', year: 1944 },
+    { event: 'Ikalawang Digmaang Pandaigdig nagtapos', year: 1945 },
+    { event: 'United Nations itinatag', year: 1945 }
+  ];
+
+  const [shuffledEvents] = useState(
+    [...events].sort(() => Math.random() - 0.5).slice(0, 5)
+  );
+  const [userOrder, setUserOrder] = useState<number[]>([]);
+  const [score, setScore] = useState(0);
+  const [showFeedback, setShowFeedback] = useState<'correct' | 'wrong' | null>(null);
+  const [gameComplete, setGameComplete] = useState(false);
+  const [correctAnswer, setCorrectAnswer] = useState<string>('');
+
+  const handleEventClick = (idx: number) => {
+    if (userOrder.includes(idx)) {
+      setUserOrder(userOrder.filter(i => i !== idx));
+    } else {
+      setUserOrder([...userOrder, idx]);
+    }
+  };
+
+  const handleSubmit = () => {
+    const correctOrder = shuffledEvents
+      .map((e, idx) => ({ ...e, idx }))
+      .sort((a, b) => a.year - b.year)
+      .map(e => e.idx);
+    
+    const isCorrect = JSON.stringify(userOrder) === JSON.stringify(correctOrder);
+    
+    if (!isCorrect) {
+      const correctSequence = correctOrder.map(idx => shuffledEvents[idx].event).join(' → ');
+      setCorrectAnswer(correctSequence);
+    }
+    
+    setShowFeedback(isCorrect ? 'correct' : 'wrong');
+    if (isCorrect) setScore(1);
+
+    setTimeout(() => {
+      setShowFeedback(null);
+      setGameComplete(true);
+    }, 3000);
+  };
+
+  if (gameComplete) {
+    return (
+      <div className="text-center space-y-6 animate-in fade-in duration-500">
+        <div className="text-6xl">🏆</div>
+        <h3 className="text-3xl font-bold text-[#8b5a2b]">Game Complete!</h3>
+        <p className="text-5xl font-bold text-[#d49240]">{score}/1</p>
+        <Button onClick={onClose} className="bg-gradient-to-r from-[#d49240] to-[#c77d3a] text-white px-8 py-6 text-lg">
+          Close Game
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-center items-center">
+        <div className="bg-[#8b5a2b] text-white px-6 py-3 rounded-full font-bold text-lg">
+          Score: {score}/1
+        </div>
+      </div>
+
+      <div className="text-center space-y-2">
+        <h3 className="text-2xl font-bold text-[#8b5a2b]">Timeline Challenge</h3>
+        <p className="text-[#5a3618]">Arrange the events from earliest to latest</p>
+      </div>
+
+      <div className="space-y-3">
+        {shuffledEvents.map((event, idx) => {
+          const position = userOrder.indexOf(idx);
+          return (
+            <Button
+              key={idx}
+              onClick={() => handleEventClick(idx)}
+              className={`w-full p-6 text-left transition-all ${
+                position >= 0
+                  ? 'bg-[#d49240] border-2 border-[#8b5a2b] text-white'
+                  : 'bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3]'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-semibold">{event.event}</span>
+                {position >= 0 && (
+                  <span className="bg-white text-[#8b5a2b] px-3 py-1 rounded-full font-bold">
+                    #{position + 1}
+                  </span>
+                )}
+              </div>
+            </Button>
+          );
+        })}
+      </div>
+
+      <Button 
+        onClick={handleSubmit}
+        disabled={userOrder.length !== shuffledEvents.length || showFeedback !== null}
+        className="w-full bg-[#8b5a2b] hover:bg-[#6d4522] text-white py-6 text-lg font-bold"
+      >
+        Submit Timeline
+      </Button>
+
+      {showFeedback && (
+        <div className={`fixed inset-0 flex items-center justify-center bg-black/50 z-50 animate-in fade-in zoom-in duration-300`}>
+          <div className={`p-12 rounded-3xl shadow-2xl text-center space-y-4 max-w-2xl ${
+            showFeedback === 'correct' ? 'bg-green-500' : 'bg-red-500'
+          }`}>
+            {showFeedback === 'correct' ? (
+              <>
+                <CheckCircle2 className="w-24 h-24 mx-auto text-white animate-bounce" />
+                <h3 className="text-4xl font-bold text-white">Perfect Timeline!</h3>
+              </>
+            ) : (
+              <>
+                <XCircle className="w-24 h-24 mx-auto text-white animate-bounce" />
+                <h3 className="text-4xl font-bold text-white">Wrong Order!</h3>
+                <p className="text-lg text-white font-semibold">Correct Order:</p>
+                <p className="text-base text-white">{correctAnswer}</p>
               </>
             )}
           </div>
@@ -329,41 +773,20 @@ export default function GamesSection() {
       </Dialog>
 
       <Dialog open={selectedGame === 'decode-past'} onOpenChange={() => setSelectedGame(null)}>
-        <DialogContent className="max-w-3xl">
-          <div className="text-center space-y-4 py-12">
-            <div className="text-6xl">🚧</div>
-            <h3 className="text-2xl font-bold text-[#8b5a2b]">Coming Soon!</h3>
-            <p className="text-[#5a3618]">This game is under development.</p>
-            <Button onClick={() => setSelectedGame(null)} className="bg-[#d49240] hover:bg-[#c77d3a]">
-              Close
-            </Button>
-          </div>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DecodeThePastGame onClose={() => setSelectedGame(null)} />
         </DialogContent>
       </Dialog>
 
       <Dialog open={selectedGame === 'matching'} onOpenChange={() => setSelectedGame(null)}>
-        <DialogContent className="max-w-3xl">
-          <div className="text-center space-y-4 py-12">
-            <div className="text-6xl">🚧</div>
-            <h3 className="text-2xl font-bold text-[#8b5a2b]">Coming Soon!</h3>
-            <p className="text-[#5a3618]">This game is under development.</p>
-            <Button onClick={() => setSelectedGame(null)} className="bg-[#d49240] hover:bg-[#c77d3a]">
-              Close
-            </Button>
-          </div>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <MatchingGameComponent onClose={() => setSelectedGame(null)} />
         </DialogContent>
       </Dialog>
 
       <Dialog open={selectedGame === 'timeline'} onOpenChange={() => setSelectedGame(null)}>
-        <DialogContent className="max-w-3xl">
-          <div className="text-center space-y-4 py-12">
-            <div className="text-6xl">🚧</div>
-            <h3 className="text-2xl font-bold text-[#8b5a2b]">Coming Soon!</h3>
-            <p className="text-[#5a3618]">This game is under development.</p>
-            <Button onClick={() => setSelectedGame(null)} className="bg-[#d49240] hover:bg-[#c77d3a]">
-              Close
-            </Button>
-          </div>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <TimelineChallengeGame onClose={() => setSelectedGame(null)} />
         </DialogContent>
       </Dialog>
     </div>
