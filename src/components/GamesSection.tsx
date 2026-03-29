@@ -708,13 +708,10 @@ export default function GamesSection() {
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
   return <div className="space-y-8">
       {/* Header Card */}
-      <Card className="border-4 border-[#c77d3a] bg-[#f5e6d3] p-8 shadow-xl rounded-xl">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="text-5xl">🎮</div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b]">
-            Interactive Games
-          </h2>
-        </div>
+      <Card className="border-4 border-[#c77d3a] bg-white p-8 shadow-xl rounded-xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4 flex items-center gap-3">
+          <span className="text-5xl">🎮</span> Interactive Games
+        </h2>
         <p className="text-xl text-[#5a3618]">
           Choose a game and start learning!
         </p>

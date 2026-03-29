@@ -150,6 +150,46 @@ export default function AboutSection() {
           Grade 8 students and beyond!
         </p>
       </Card>
+
+      {/* YouTube Channel & QR Code */}
+      <Card className="border-4 border-[#8b5a2b] bg-white p-8 shadow-xl rounded-xl">
+        <div className="flex items-start gap-4 mb-6">
+          <div className="text-5xl">📺</div>
+          <div>
+            <h3 className="text-3xl font-bold text-[#8b5a2b] mb-2">Connect With Us</h3>
+            <div className="h-1 w-32 bg-gradient-to-r from-[#8b5a2b] to-[#d49240] rounded-full"></div>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+          {/* QR Code */}
+          <div className="flex flex-col items-center">
+            <img 
+              src="https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/68e7.png" 
+              alt="YouTube Channel QR Code" 
+              className="w-48 h-48 border-4 border-[#8b5a2b] rounded-xl shadow-lg"
+              crossOrigin="anonymous"
+            />
+            <p className="text-sm text-[#5a3618] mt-3 font-semibold">Scan to Visit</p>
+          </div>
+
+          {/* YouTube Link */}
+          <div className="flex-1 text-center md:text-left">
+            <h4 className="text-2xl font-bold text-[#8b5a2b] mb-3">Visit Our YouTube Channel</h4>
+            <p className="text-lg text-[#5a3618] mb-4 leading-relaxed">
+              Subscribe to our channel for more educational videos, tutorials, and social studies content!
+            </p>
+            <a 
+              href="https://www.youtube.com/channel/UCTeLqBwslx1n1UX8sEVZPoA" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg transition-all hover:scale-105"
+            >
+              🎥 Visit YouTube Channel
+            </a>
+          </div>
+        </div>
+      </Card>
     </div>
   );
 }

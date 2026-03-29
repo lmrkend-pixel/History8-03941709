@@ -169,61 +169,73 @@ function HomeSection({ onNavigate }: { onNavigate: (section: string) => void }) 
         {/* Interactive Games */}
         <Card
           onClick={() => onNavigate('games')}
-          className="group border-4 border-[#c77d3a] bg-gradient-to-b from-white to-[#f5e6d3] p-6 cursor-pointer transition-transform hover:scale-105 shadow-xl rounded-xl"
+          className="group border-4 border-[#c77d3a] bg-gradient-to-b from-white to-[#f5e6d3] cursor-pointer transition-transform hover:scale-105 shadow-xl rounded-xl flex flex-col h-full"
         >
-          <div className="border-b-4 border-[#c77d3a] pb-3 mb-4">
+          <div className="border-b-4 border-[#c77d3a] pb-3 mb-4 p-6">
             <h3 className="text-2xl font-bold text-[#c77d3a] text-center">Interactive Games</h3>
           </div>
-          <p className="text-center text-[#5a3618] font-semibold mb-6 text-lg">
-            Learn through fun activities!
-          </p>
-          <div className="flex justify-center mb-6">
-            <div className="text-8xl">🗺️</div>
+          <div className="flex-1 flex flex-col justify-between p-6 pt-0">
+            <div>
+              <p className="text-center text-[#5a3618] font-semibold mb-6 text-lg">
+                Learn through fun activities!
+              </p>
+              <div className="flex justify-center mb-6">
+                <div className="text-8xl">🗺️</div>
+              </div>
+            </div>
+            <Button className="w-full bg-gradient-to-r from-[#c77d3a] to-[#a0642e] hover:from-[#b36e31] hover:to-[#8f5626] text-white font-bold text-lg py-6 rounded-xl shadow-lg border-2 border-[#8b5a2b]">
+              Play Now
+            </Button>
           </div>
-          <Button className="w-full bg-gradient-to-r from-[#c77d3a] to-[#a0642e] hover:from-[#b36e31] hover:to-[#8f5626] text-white font-bold text-lg py-6 rounded-xl shadow-lg border-2 border-[#8b5a2b]">
-            Play Now
-          </Button>
         </Card>
 
         {/* Quizzes */}
         <Card
           onClick={() => onNavigate('quizzes')}
-          className="group border-4 border-[#d49240] bg-gradient-to-b from-white to-[#f5e6d3] p-6 cursor-pointer transition-transform hover:scale-105 shadow-xl rounded-xl"
+          className="group border-4 border-[#d49240] bg-gradient-to-b from-white to-[#f5e6d3] cursor-pointer transition-transform hover:scale-105 shadow-xl rounded-xl flex flex-col h-full"
         >
-          <div className="border-b-4 border-[#d49240] pb-3 mb-4">
+          <div className="border-b-4 border-[#d49240] pb-3 mb-4 p-6">
             <h3 className="text-2xl font-bold text-[#d49240] text-center">Quizzes & Challenges</h3>
           </div>
-          <p className="text-center text-[#5a3618] font-semibold mb-6 text-lg">
-            Test Your Social Studies Knowledge!
-          </p>
-          <div className="flex justify-center mb-6">
-            <div className="text-8xl">📋</div>
+          <div className="flex-1 flex flex-col justify-between p-6 pt-0">
+            <div>
+              <p className="text-center text-[#5a3618] font-semibold mb-6 text-lg">
+                Test Your Social Studies Knowledge!
+              </p>
+              <div className="flex justify-center mb-6">
+                <div className="text-8xl">📋</div>
+              </div>
+            </div>
+            <Button className="w-full bg-gradient-to-r from-[#d49240] to-[#b87835] hover:from-[#c28437] hover:to-[#a66c2f] text-white font-bold text-lg py-6 rounded-xl shadow-lg border-2 border-[#8b5a2b]">
+              Take a Quiz
+            </Button>
           </div>
-          <Button className="w-full bg-gradient-to-r from-[#d49240] to-[#b87835] hover:from-[#c28437] hover:to-[#a66c2f] text-white font-bold text-lg py-6 rounded-xl shadow-lg border-2 border-[#8b5a2b]">
-            Take a Quiz
-          </Button>
         </Card>
 
         {/* Trivia Corner */}
         <Card
           onClick={() => onNavigate('trivia')}
-          className="group border-4 border-[#7e9f4d] bg-gradient-to-b from-white to-[#f5e6d3] p-6 cursor-pointer transition-transform hover:scale-105 shadow-xl rounded-xl"
+          className="group border-4 border-[#7e9f4d] bg-gradient-to-b from-white to-[#f5e6d3] cursor-pointer transition-transform hover:scale-105 shadow-xl rounded-xl flex flex-col h-full"
         >
-          <div className="border-b-4 border-[#7e9f4d] pb-3 mb-4">
+          <div className="border-b-4 border-[#7e9f4d] pb-3 mb-4 p-6">
             <h3 className="text-2xl font-bold text-[#7e9f4d] text-center">Trivia Corner</h3>
           </div>
-          <p className="text-center text-[#5a3618] font-semibold mb-6 text-lg">
-            Fun Facts & History Challenges!
-          </p>
-          <div className="flex justify-center mb-6">
-            <div className="relative">
-              <div className="text-7xl">🌍</div>
-              <GraduationCap className="absolute -top-2 -right-2 h-10 w-10 text-[#7e9f4d]" />
+          <div className="flex-1 flex flex-col justify-between p-6 pt-0">
+            <div>
+              <p className="text-center text-[#5a3618] font-semibold mb-6 text-lg">
+                Fun Facts & History Challenges!
+              </p>
+              <div className="flex justify-center mb-6">
+                <div className="relative">
+                  <div className="text-7xl">🌍</div>
+                  <GraduationCap className="absolute -top-2 -right-2 h-10 w-10 text-[#7e9f4d]" />
+                </div>
+              </div>
             </div>
+            <Button className="w-full bg-gradient-to-r from-[#7e9f4d] to-[#6a8742] hover:from-[#708f44] hover:to-[#5d7639] text-white font-bold text-lg py-6 rounded-xl shadow-lg border-2 border-[#5a7036]">
+              Explore Trivia
+            </Button>
           </div>
-          <Button className="w-full bg-gradient-to-r from-[#7e9f4d] to-[#6a8742] hover:from-[#708f44] hover:to-[#5d7639] text-white font-bold text-lg py-6 rounded-xl shadow-lg border-2 border-[#5a7036]">
-            Explore Trivia
-          </Button>
         </Card>
       </div>
 
@@ -253,26 +265,20 @@ function HomeSection({ onNavigate }: { onNavigate: (section: string) => void }) 
 function VideosSection() {
   const videos = [
     { 
-      topic: 'Ancient Civilization', 
-      description: 'Discover the foundations of early human societies and cultures.',
-      emoji: '🏺',
-      color: 'from-amber-600 to-orange-700',
+      topic: 'Imperyalismo at Kolonyalismo', 
+      description: 'Understand causes, methods of control, and effects on colonies.',
+      emoji: '🏛️',
+      color: 'from-amber-300 to-yellow-500',
       videoUrl: 'https://youtu.be/CsVxR3Rsso0?si=LyapKh3MhCIjTAHk'
     },
     { 
-      topic: 'Imperialism and Colonialism', 
-      description: 'Understand causes, methods of control, and effects on colonies.',
-      emoji: '🏛️',
-      color: 'from-amber-300 to-yellow-500'
-    },
-    { 
-      topic: 'World War I', 
+      topic: 'Unang Digmaang Pandaigdig', 
       description: 'Learn MAIN causes, trench warfare, and Treaty of Versailles impacts.',
       emoji: '⚔️',
       color: 'from-red-400 to-orange-500'
     },
     { 
-      topic: 'World War II', 
+      topic: 'Ikalawang Digmaang Pandaigdig', 
       description: 'Explore totalitarianism, major battles, and post-war world order.',
       emoji: '🪖',
       color: 'from-gray-500 to-slate-600'
@@ -282,6 +288,12 @@ function VideosSection() {
       description: 'Study proxy wars, nuclear tension, and the fall of the Soviet Union.',
       emoji: '❄️',
       color: 'from-blue-400 to-indigo-500'
+    },
+    { 
+      topic: 'Globalisasyon', 
+      description: 'Discover the foundations of interconnected global trade and cultures.',
+      emoji: '🌐',
+      color: 'from-green-400 to-teal-500'
     }
   ];
 
