@@ -6,7 +6,7 @@ import GamesSection from '@/components/GamesSection';
 import QuizzesSection from '@/components/QuizzesSection';
 import TriviaSection from '@/components/TriviaSection';
 import AboutSection from '@/components/AboutSection';
-import { BookOpen, GraduationCap, Landmark, Video, Play } from 'lucide-react';
+import { BookOpen, GraduationCap, Video, Play } from 'lucide-react';
 
 export default function Index() {
   const [activeSection, setActiveSection] = useState('home');
@@ -38,16 +38,13 @@ export default function Index() {
           <div className="flex items-center justify-between gap-4">
             {/* Left side - Logo and Title */}
             <div className="flex items-center gap-3">
-              {/* Logo - Books and Globe */}
-              <div className="flex items-center gap-2">
-                <div className="relative">
-                  <BookOpen className="h-10 w-10 md:h-12 md:w-12 text-[#8b5a2b] transform -rotate-12" />
-                  <div className="absolute -top-1 -right-1 h-8 w-8 md:h-10 md:w-10 rounded-full bg-gradient-to-br from-green-600 to-blue-600 flex items-center justify-center text-white text-lg md:text-xl">
-                    🌍
-                  </div>
-                </div>
-                <Landmark className="h-8 w-8 md:h-10 md:w-10 text-[#c77d3a]" />
-              </div>
+              {/* Logo - Custom Image */}
+              <img 
+                src="https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/4abf.png" 
+                alt="Social Studies Explorers Hub Logo" 
+                className="h-16 w-auto md:h-20 object-contain"
+                crossOrigin="anonymous"
+              />
               <div>
                 <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-[#8b5a2b] tracking-wide whitespace-nowrap">
                   SOCIAL STUDIES EXPLORERS <span className="text-[#c77d3a]">HUB</span>
