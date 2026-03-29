@@ -139,20 +139,24 @@ function HomeSection({ onNavigate }: { onNavigate: (section: string) => void }) 
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {[
-            { title: 'Imperyalismo at Kolonyalismo', emoji: '🏛️', bg: 'from-amber-300 to-yellow-500', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5M1ts6gNSL2dLtdiyvulul&si=rxg0iz1VMmoaWPv0' },
-            { title: 'Unang Digmaang Pandaigdig', emoji: '⚔️', bg: 'from-red-400 to-orange-500', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5XL10eNOxLIM69zxAL-ev6&si=p0wV6K_rZV_Lw-aF' },
-            { title: 'Ikalawang Digmaang Pandaigdig', emoji: '🪖', bg: 'from-gray-500 to-slate-600', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5XL10eNOxLIM69zxAL-ev6&si=p0wV6K_rZV_Lw-aF' },
-            { title: 'Cold War', emoji: '❄️', bg: 'from-blue-400 to-indigo-500', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5FL-qFuaS6HktVD_LLkDzI&si=U09XqlzIl3j8Nd1Q' },
-            { title: 'Globalisasyon', emoji: '🌐', bg: 'from-green-400 to-teal-500', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY4VLTEZg_MDjOOfLy6Nf8BQ&si=32Iknoip44Mub6cO' },
+            { title: 'Imperyalismo at Kolonyalismo', thumbnail: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/8204.jpg', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5M1ts6gNSL2dLtdiyvulul&si=rxg0iz1VMmoaWPv0' },
+            { title: 'Unang Digmaang Pandaigdig', thumbnail: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/f9cd.jpg', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5XL10eNOxLIM69zxAL-ev6&si=p0wV6K_rZV_Lw-aF' },
+            { title: 'Ikalawang Digmaang Pandaigdig', thumbnail: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/761e.jpg', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5XL10eNOxLIM69zxAL-ev6&si=p0wV6K_rZV_Lw-aF' },
+            { title: 'Cold War', thumbnail: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/4ff0.jpg', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5FL-qFuaS6HktVD_LLkDzI&si=U09XqlzIl3j8Nd1Q' },
+            { title: 'Globalisasyon', thumbnail: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/27e2.jpg', link: 'https://youtube.com/playlist?list=PLVqSLMJqMNY4VLTEZg_MDjOOfLy6Nf8BQ&si=32Iknoip44Mub6cO' },
           ].map((video) => (
             <div
               key={video.title}
               onClick={() => window.open(video.link, '_blank')}
-              className={`group relative h-52 overflow-hidden rounded-xl border-4 border-[#f5e6d3] shadow-lg cursor-pointer transition-transform hover:scale-105 bg-gradient-to-br ${video.bg}`}
+              className="group relative h-52 overflow-hidden rounded-xl border-4 border-[#f5e6d3] shadow-lg cursor-pointer transition-transform hover:scale-105"
             >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-7xl opacity-30">{video.emoji}</div>
-              </div>
+              <img 
+                src={video.thumbnail} 
+                alt={video.title}
+                crossOrigin="anonymous"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="h-20 w-20 rounded-full bg-black/70 border-4 border-white flex items-center justify-center text-4xl text-white group-hover:scale-110 transition-transform">
                   ▶
@@ -269,33 +273,32 @@ function VideosSection() {
     { 
       topic: 'Imperyalismo at Kolonyalismo', 
       description: 'Understand causes, methods of control, and effects on colonies.',
-      emoji: '🏛️',
-      color: 'from-amber-300 to-yellow-500',
-      videoUrl: 'https://youtu.be/CsVxR3Rsso0?si=LyapKh3MhCIjTAHk'
+      thumbnail: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/8204.jpg',
+      videoUrl: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5M1ts6gNSL2dLtdiyvulul&si=rxg0iz1VMmoaWPv0'
     },
     { 
       topic: 'Unang Digmaang Pandaigdig', 
       description: 'Learn MAIN causes, trench warfare, and Treaty of Versailles impacts.',
-      emoji: '⚔️',
-      color: 'from-red-400 to-orange-500'
+      thumbnail: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/f9cd.jpg',
+      videoUrl: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5XL10eNOxLIM69zxAL-ev6&si=p0wV6K_rZV_Lw-aF'
     },
     { 
       topic: 'Ikalawang Digmaang Pandaigdig', 
       description: 'Explore totalitarianism, major battles, and post-war world order.',
-      emoji: '🪖',
-      color: 'from-gray-500 to-slate-600'
+      thumbnail: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/761e.jpg',
+      videoUrl: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5XL10eNOxLIM69zxAL-ev6&si=p0wV6K_rZV_Lw-aF'
     },
     { 
       topic: 'Cold War', 
       description: 'Study proxy wars, nuclear tension, and the fall of the Soviet Union.',
-      emoji: '❄️',
-      color: 'from-blue-400 to-indigo-500'
+      thumbnail: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/4ff0.jpg',
+      videoUrl: 'https://youtube.com/playlist?list=PLVqSLMJqMNY5FL-qFuaS6HktVD_LLkDzI&si=U09XqlzIl3j8Nd1Q'
     },
     { 
       topic: 'Globalisasyon', 
       description: 'Discover the foundations of interconnected global trade and cultures.',
-      emoji: '🌐',
-      color: 'from-green-400 to-teal-500'
+      thumbnail: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/27e2.jpg',
+      videoUrl: 'https://youtube.com/playlist?list=PLVqSLMJqMNY4VLTEZg_MDjOOfLy6Nf8BQ&si=32Iknoip44Mub6cO'
     }
   ];
 
@@ -315,17 +318,23 @@ function VideosSection() {
           <Card 
             key={video.topic} 
             onClick={() => video.videoUrl && window.open(video.videoUrl, '_blank')}
-            className={`group border-4 border-[#8b5a2b] bg-white p-6 hover:shadow-2xl transition-all hover:scale-105 rounded-xl ${video.videoUrl ? 'cursor-pointer' : ''}`}
+            className={`group border-4 border-[#8b5a2b] bg-white overflow-hidden hover:shadow-2xl transition-all hover:scale-105 rounded-xl ${video.videoUrl ? 'cursor-pointer' : ''}`}
           >
-            <div className={`h-48 bg-gradient-to-br ${video.color} rounded-xl mb-4 flex flex-col items-center justify-center relative overflow-hidden shadow-lg`}>
-              <div className="absolute inset-0 flex items-center justify-center opacity-30 text-8xl">
-                {video.emoji}
-              </div>
-              <div className="relative z-10 h-20 w-20 rounded-full bg-black/70 border-4 border-white flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-xl">
-                <Play className="h-10 w-10 ml-1" fill="white" />
+            <div className="h-48 relative overflow-hidden">
+              <img 
+                src={video.thumbnail} 
+                alt={video.topic}
+                crossOrigin="anonymous"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="h-20 w-20 rounded-full bg-black/70 border-4 border-white flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-xl">
+                  <Play className="h-10 w-10 ml-1" fill="white" />
+                </div>
               </div>
             </div>
-            <div className="space-y-2">
+            <div className="p-6 space-y-2">
               <h3 className="font-bold text-[#8b5a2b] text-xl group-hover:text-[#c77d3a] transition-colors">
                 {video.topic}
               </h3>
