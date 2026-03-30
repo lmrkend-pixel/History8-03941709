@@ -222,12 +222,25 @@ function FlagTasticGame({
       </div>
 
       <div className="text-center space-y-4">
-        <p className="text-xl font-bold text-[#8b5a2b]">Which country is this?</p>
-        <img src={questions[currentQ].image} alt="Flag" className="w-64 h-40 mx-auto rounded-xl border-4 border-[#8b5a2b] shadow-xl" crossOrigin="anonymous" />
+        <p className="text-xl font-bold text-[#8b5a2b]">Question {currentQ + 1} of {questions.length}</p>
+        <p className="text-lg font-semibold text-[#6d4522]">Which country does this flag belong to?</p>
+        <div className="relative w-full max-w-md mx-auto">
+          <img 
+            src={questions[currentQ].image} 
+            alt={`Flag ${currentQ + 1}`}
+            className="w-full h-48 object-contain mx-auto rounded-xl border-4 border-[#8b5a2b] shadow-xl bg-white p-2" 
+            crossOrigin="anonymous"
+            loading="eager"
+            onError={(e) => {
+              console.error('Flag image failed to load:', questions[currentQ].image);
+              e.currentTarget.style.display = 'block';
+            }}
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        {questions[currentQ].options.map((option, idx) => <Button key={idx} onClick={() => handleAnswer(idx)} disabled={showFeedback !== null} className="p-6 text-lg font-semibold bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3] hover:scale-105 transition-all duration-300">
+        {questions[currentQ].options.map((option, idx) => <Button key={idx} onClick={() => handleAnswer(idx)} disabled={showFeedback !== null} className="p-6 text-lg font-semibold bg-white border-2 border-[#d49240] text-[#8b5a2b] hover:bg-[#f5e6d3] hover:scale-105 transition-all duration-300 disabled:opacity-50">
             {option}
           </Button>)}
       </div>
