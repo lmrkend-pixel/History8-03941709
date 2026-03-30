@@ -734,42 +734,144 @@ function TimelineChallengeGame({
 // Main Games Section
 export default function GamesSection() {
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
-  return <div className="space-y-8">
-      {/* Header Card */}
-      <Card className="border-4 border-[#c77d3a] bg-white p-8 shadow-xl rounded-xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4 flex items-center gap-3">
-          <span className="text-5xl">🎮</span> Interactive Games
-        </h2>
-        <p className="text-xl text-[#5a3618]">
-          Choose a game and start learning!
-        </p>
-      </Card>
+  const [flippedCard, setFlippedCard] = useState<string | null>(null);
 
-      {/* Game Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {gameCards.map(game => {
-        const Icon = game.icon;
-        return <Card key={game.id} onClick={() => setSelectedGame(game.id)} className="group relative overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-4 border-[#c77d3a] bg-white">
-              <div className="absolute inset-0 bg-[#f5e6d3] opacity-0 group-hover:opacity-20 transition-opacity" />
-              
-              <div className="relative p-8 space-y-6">
-                <div className="w-20 h-20 rounded-full bg-[#8b5a2b] flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-10 h-10 text-white" />
-                </div>
-                
-                <div className="text-center space-y-2">
-                  <h3 className="text-2xl font-bold text-[#8b5a2b] group-hover:text-[#d49240] transition-colors">
-                    {game.title}
-                  </h3>
-                  <p className="text-[#5a3618]">{game.description}</p>
-                </div>
+  return (
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Animated Gaming Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 opacity-20 animate-pulse" />
+      
+      {/* Floating Game Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 left-10 text-6xl animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }}>🎮</div>
+        <div className="absolute top-20 right-20 text-5xl animate-bounce" style={{ animationDelay: '1s', animationDuration: '2.5s' }}>🎯</div>
+        <div className="absolute bottom-20 left-20 text-6xl animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '2.8s' }}>🏆</div>
+        <div className="absolute bottom-10 right-10 text-5xl animate-bounce" style={{ animationDelay: '1.5s', animationDuration: '3.2s' }}>⭐</div>
+        <div className="absolute top-1/2 left-1/4 text-4xl animate-spin" style={{ animationDuration: '10s' }}>🎪</div>
+        <div className="absolute top-1/3 right-1/4 text-4xl animate-spin" style={{ animationDuration: '8s' }}>🎨</div>
+      </div>
 
-                <Button className="w-full bg-[#d49240] hover:bg-[#c77d3a] text-white py-6 text-lg font-bold transition-all">
-                  Play Now!
-                </Button>
+      <div className="relative z-10 space-y-8">
+        {/* Epic Header Card */}
+        <div className="relative">
+          <Card className="border-4 border-yellow-400 bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 p-8 shadow-2xl rounded-3xl animate-in slide-in-from-top duration-700">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <span className="text-6xl animate-bounce">🎮</span>
+              <h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 animate-pulse">
+                INTERACTIVE GAMES
+              </h2>
+              <span className="text-6xl animate-bounce" style={{ animationDelay: '0.2s' }}>🎯</span>
+            </div>
+            <p className="text-2xl font-bold text-center text-purple-800 animate-pulse">
+              🌟 Flip the cards and start your adventure! 🌟
+            </p>
+          </Card>
+        </div>
+
+        {/* Flashcard Game Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+          {gameCards.map((game, index) => {
+            const Icon = game.icon;
+            const isFlipped = flippedCard === game.id;
+            
+            return (
+              <div
+                key={game.id}
+                className="perspective-1000 h-80 animate-in zoom-in duration-500"
+                style={{ animationDelay: `${index * 100}ms` }}
+                onMouseEnter={() => setFlippedCard(game.id)}
+                onMouseLeave={() => setFlippedCard(null)}
+              >
+                <div className={`relative w-full h-full transition-transform duration-700 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
+                  {/* Front of Card */}
+                  <Card className={`absolute inset-0 backface-hidden border-4 shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ${
+                    index % 5 === 0 ? 'border-pink-400 bg-gradient-to-br from-pink-100 to-pink-200' :
+                    index % 5 === 1 ? 'border-blue-400 bg-gradient-to-br from-blue-100 to-blue-200' :
+                    index % 5 === 2 ? 'border-yellow-400 bg-gradient-to-br from-yellow-100 to-yellow-200' :
+                    index % 5 === 3 ? 'border-green-400 bg-gradient-to-br from-green-100 to-green-200' :
+                    'border-purple-400 bg-gradient-to-br from-purple-100 to-purple-200'
+                  }`}>
+                    <div className="h-full flex flex-col items-center justify-center p-6 space-y-4">
+                      {/* Animated Icon */}
+                      <div className="relative">
+                        <div className={`w-24 h-24 rounded-full flex items-center justify-center shadow-2xl animate-bounce ${
+                          index % 5 === 0 ? 'bg-gradient-to-br from-pink-500 to-pink-700' :
+                          index % 5 === 1 ? 'bg-gradient-to-br from-blue-500 to-blue-700' :
+                          index % 5 === 2 ? 'bg-gradient-to-br from-yellow-500 to-yellow-700' :
+                          index % 5 === 3 ? 'bg-gradient-to-br from-green-500 to-green-700' :
+                          'bg-gradient-to-br from-purple-500 to-purple-700'
+                        }`}>
+                          <Icon className="w-12 h-12 text-white" />
+                        </div>
+                        <div className="absolute -top-2 -right-2 text-3xl animate-spin" style={{ animationDuration: '3s' }}>⭐</div>
+                      </div>
+                      
+                      <h3 className={`text-3xl font-black text-center ${
+                        index % 5 === 0 ? 'text-pink-700' :
+                        index % 5 === 1 ? 'text-blue-700' :
+                        index % 5 === 2 ? 'text-yellow-700' :
+                        index % 5 === 3 ? 'text-green-700' :
+                        'text-purple-700'
+                      }`}>
+                        {game.title}
+                      </h3>
+                      
+                      <div className="text-5xl animate-pulse">🎲</div>
+                      
+                      <p className="text-center text-gray-600 font-semibold text-sm">
+                        Hover to flip! 🔄
+                      </p>
+                    </div>
+                  </Card>
+
+                  {/* Back of Card */}
+                  <Card className={`absolute inset-0 backface-hidden rotate-y-180 border-4 shadow-2xl ${
+                    index % 5 === 0 ? 'border-pink-400 bg-gradient-to-br from-pink-500 to-pink-700' :
+                    index % 5 === 1 ? 'border-blue-400 bg-gradient-to-br from-blue-500 to-blue-700' :
+                    index % 5 === 2 ? 'border-yellow-400 bg-gradient-to-br from-yellow-500 to-yellow-700' :
+                    index % 5 === 3 ? 'border-green-400 bg-gradient-to-br from-green-500 to-green-700' :
+                    'border-purple-400 bg-gradient-to-br from-purple-500 to-purple-700'
+                  }`}>
+                    <div className="h-full flex flex-col items-center justify-center p-6 space-y-4">
+                      <div className="text-5xl mb-2">🎯</div>
+                      <p className="text-white text-center text-lg font-bold leading-relaxed">
+                        {game.description}
+                      </p>
+                      
+                      <Button 
+                        onClick={() => setSelectedGame(game.id)}
+                        className={`w-full text-white py-6 text-xl font-black shadow-xl transform hover:scale-110 transition-all animate-pulse ${
+                          index % 5 === 0 ? 'bg-pink-800 hover:bg-pink-900' :
+                          index % 5 === 1 ? 'bg-blue-800 hover:bg-blue-900' :
+                          index % 5 === 2 ? 'bg-yellow-800 hover:bg-yellow-900' :
+                          index % 5 === 3 ? 'bg-green-800 hover:bg-green-900' :
+                          'bg-purple-800 hover:bg-purple-900'
+                        }`}
+                      >
+                        🎮 PLAY NOW! 🎮
+                      </Button>
+                      
+                      <div className="flex gap-2 text-2xl">
+                        <span className="animate-bounce">🏆</span>
+                        <span className="animate-bounce" style={{ animationDelay: '0.1s' }}>⭐</span>
+                        <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>🎉</span>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
               </div>
-            </Card>;
-      })}
+            );
+          })}
+        </div>
+
+        {/* Fun Footer Banner */}
+        <Card className="border-4 border-green-400 bg-gradient-to-r from-green-300 via-blue-300 to-purple-300 p-6 shadow-2xl rounded-3xl">
+          <div className="flex items-center justify-center gap-4 text-2xl font-black text-green-800">
+            <span className="animate-spin text-4xl">🎪</span>
+            <span>READY TO BECOME A HISTORY CHAMPION?</span>
+            <span className="animate-spin text-4xl" style={{ animationDirection: 'reverse' }}>🎪</span>
+          </div>
+        </Card>
       </div>
 
       {/* Game Modals */}
@@ -802,5 +904,6 @@ export default function GamesSection() {
           <TimelineChallengeGame onClose={() => setSelectedGame(null)} />
         </DialogContent>
       </Dialog>
-    </div>;
+    </div>
+  );
 }
