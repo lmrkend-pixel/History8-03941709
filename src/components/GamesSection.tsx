@@ -108,7 +108,7 @@ function HistoryUnmaskedGame({
       </div>
 
       <div className="text-center space-y-4">
-        <img src={questions[currentQ].image} alt="Historical Figure" className="w-48 h-48 mx-auto rounded-2xl object-cover border-4 border-[#8b5a2b] shadow-2xl" crossOrigin="anonymous" />
+        <img src={questions[currentQ].image} alt="Historical Figure" className="w-48 h-48 mx-auto rounded-2xl object-cover border-4 border-[#8b5a2b] shadow-2xl" />
         <p className="text-lg text-[#5a3618] font-medium">{questions[currentQ].question}</p>
       </div>
 
@@ -224,17 +224,12 @@ function FlagTasticGame({
       <div className="text-center space-y-4">
         <p className="text-xl font-bold text-[#8b5a2b]">Question {currentQ + 1} of {questions.length}</p>
         <p className="text-lg font-semibold text-[#6d4522]">Which country does this flag belong to?</p>
-        <div className="relative w-full max-w-md mx-auto">
+        <div className="relative w-full max-w-md mx-auto bg-white rounded-xl border-4 border-[#8b5a2b] shadow-xl p-4">
           <img 
             src={questions[currentQ].image} 
-            alt={`Flag ${currentQ + 1}`}
-            className="w-full h-48 object-contain mx-auto rounded-xl border-4 border-[#8b5a2b] shadow-xl bg-white p-2" 
-            crossOrigin="anonymous"
-            loading="eager"
-            onError={(e) => {
-              console.error('Flag image failed to load:', questions[currentQ].image);
-              e.currentTarget.style.display = 'block';
-            }}
+            alt="Country Flag"
+            className="w-full h-48 object-contain mx-auto" 
+            style={{ imageRendering: 'crisp-edges' }}
           />
         </div>
       </div>
@@ -341,7 +336,7 @@ function DecodeThePastGame({
       </div>
 
       <div className="flex justify-center">
-        <img src={puzzles[currentQ].image} alt="4 Pics 1 Word Clue" className="w-full max-w-md rounded-xl border-4 border-[#8b5a2b] shadow-2xl" crossOrigin="anonymous" />
+        <img src={puzzles[currentQ].image} alt="4 Pics 1 Word Clue" className="w-full max-w-md rounded-xl border-4 border-[#8b5a2b] shadow-2xl" />
       </div>
 
       <div className="space-y-4">
