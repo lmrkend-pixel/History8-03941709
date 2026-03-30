@@ -724,23 +724,29 @@ export default function QuizzesSection() {
   if (!selectedTopic) {
     return (
       <div className="relative min-h-screen overflow-hidden">
-        {/* Educational Background with Chalkboard Texture */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 opacity-10" />
+        {/* Educational Brown Theme Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f5e6d3] via-[#faf3e8] to-[#f5e6d3]" />
         
-        {/* Floating Educational Elements */}
+        {/* Floating Educational Elements - Brown Theme */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-10 left-10 text-6xl opacity-30 animate-bounce" style={{ animationDelay: '0s', animationDuration: '4s' }}>📚</div>
-          <div className="absolute top-20 right-20 text-5xl opacity-30 animate-bounce" style={{ animationDelay: '1s', animationDuration: '3.5s' }}>✏️</div>
-          <div className="absolute bottom-20 left-20 text-6xl opacity-30 animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '4.2s' }}>🎓</div>
-          <div className="absolute bottom-10 right-10 text-5xl opacity-30 animate-bounce" style={{ animationDelay: '1.5s', animationDuration: '3.8s' }}>📖</div>
-          <div className="absolute top-1/2 left-1/4 text-4xl opacity-20" style={{ animation: 'float 6s ease-in-out infinite' }}>🔖</div>
-          <div className="absolute top-1/3 right-1/4 text-4xl opacity-20" style={{ animation: 'float 5s ease-in-out infinite', animationDelay: '2s' }}>📐</div>
+          <div className="absolute top-10 left-10 text-6xl opacity-20 animate-bounce" style={{ animationDelay: '0s', animationDuration: '4s', color: '#8b5a2b' }}>📚</div>
+          <div className="absolute top-20 right-20 text-5xl opacity-20 animate-bounce" style={{ animationDelay: '1s', animationDuration: '3.5s', color: '#d49240' }}>✏️</div>
+          <div className="absolute bottom-20 left-20 text-6xl opacity-20 animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '4.2s', color: '#c77d3a' }}>🎓</div>
+          <div className="absolute bottom-10 right-10 text-5xl opacity-20 animate-bounce" style={{ animationDelay: '1.5s', animationDuration: '3.8s', color: '#b87835' }}>📖</div>
+          <div className="absolute top-1/2 left-1/4 text-4xl opacity-15" style={{ animation: 'float 6s ease-in-out infinite', color: '#8b5a2b' }}>🔖</div>
+          <div className="absolute top-1/3 right-1/4 text-4xl opacity-15" style={{ animation: 'float 5s ease-in-out infinite', animationDelay: '2s', color: '#d49240' }}>📐</div>
         </div>
 
+        {/* Decorative corner patterns */}
+        <div className="absolute top-0 left-0 w-32 h-32 border-l-8 border-t-8 border-[#c77d3a] opacity-40 rounded-tl-3xl" />
+        <div className="absolute top-0 right-0 w-32 h-32 border-r-8 border-t-8 border-[#c77d3a] opacity-40 rounded-tr-3xl" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 border-l-8 border-b-8 border-[#c77d3a] opacity-40 rounded-bl-3xl" />
+        <div className="absolute bottom-0 right-0 w-32 h-32 border-r-8 border-b-8 border-[#c77d3a] opacity-40 rounded-br-3xl" />
+
         <div className="relative z-10 space-y-8">
-          {/* Academic Header with Chalkboard Style */}
+          {/* Academic Header - Brown Theme */}
           <div className="relative">
-            <Card className="border-4 border-amber-600 bg-gradient-to-br from-slate-800 to-slate-700 p-8 shadow-2xl rounded-xl relative overflow-hidden">
+            <Card className="border-4 border-[#c77d3a] bg-gradient-to-r from-[#8b5a2b] to-[#b87835] p-8 shadow-2xl rounded-xl relative overflow-hidden transform hover:scale-105 transition-all">
               {/* Chalkboard texture overlay */}
               <div className="absolute inset-0 opacity-10" style={{ 
                 backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px)',
@@ -749,24 +755,21 @@ export default function QuizzesSection() {
               <div className="relative">
                 <div className="flex items-center justify-center gap-4 mb-4">
                   <span className="text-6xl animate-bounce">📚</span>
-                  <h2 className="text-4xl md:text-6xl font-black text-white text-center drop-shadow-lg" style={{ 
-                    fontFamily: 'cursive',
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
-                  }}>
+                  <h2 className="text-4xl md:text-6xl font-black text-[#f5e6d3] text-center drop-shadow-xl animate-pulse">
                     Test Your Knowledge
                   </h2>
                   <span className="text-6xl animate-bounce" style={{ animationDelay: '0.2s' }}>🎓</span>
                 </div>
-                <div className="flex items-center justify-center gap-2 text-xl text-amber-200 font-semibold">
+                <div className="flex items-center justify-center gap-2 text-xl text-[#f5e6d3] font-semibold">
                   <span>✏️</span>
-                  <p className="text-center">
+                  <p className="text-center drop-shadow-md">
                     Answer topic-based quizzes with instant feedback and clear explanations
                   </p>
                   <span>✏️</span>
                 </div>
                 
-                {/* Decorative chalk line */}
-                <div className="mt-4 h-1 bg-white opacity-50 mx-auto" style={{ width: '80%' }} />
+                {/* Decorative line */}
+                <div className="mt-4 h-1 bg-[#f5e6d3] opacity-50 mx-auto rounded-full" style={{ width: '80%' }} />
               </div>
             </Card>
           </div>
@@ -780,53 +783,41 @@ export default function QuizzesSection() {
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => handleTopicSelect(topic.id)}
               >
-                {/* Book Cover Design */}
+                {/* Book Cover Design - Brown Theme */}
                 <Card className={`relative cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-4 overflow-hidden h-80 ${
-                  index % 5 === 0 ? 'border-red-600 bg-gradient-to-br from-red-50 to-red-100' :
-                  index % 5 === 1 ? 'border-blue-600 bg-gradient-to-br from-blue-50 to-blue-100' :
-                  index % 5 === 2 ? 'border-green-600 bg-gradient-to-br from-green-50 to-green-100' :
-                  index % 5 === 3 ? 'border-amber-600 bg-gradient-to-br from-amber-50 to-amber-100' :
-                  'border-purple-600 bg-gradient-to-br from-purple-50 to-purple-100'
+                  index % 5 === 0 ? 'border-[#c77d3a] bg-gradient-to-br from-[#f5e6d3] to-[#e8d4b8]' :
+                  index % 5 === 1 ? 'border-[#d49240] bg-gradient-to-br from-[#faf3e8] to-[#f5e6d3]' :
+                  index % 5 === 2 ? 'border-[#b87835] bg-gradient-to-br from-[#f5e6d3] to-[#e8d4b8]' :
+                  index % 5 === 3 ? 'border-[#c77d3a] bg-gradient-to-br from-[#faf3e8] to-[#f5e6d3]' :
+                  'border-[#d49240] bg-gradient-to-br from-[#f5e6d3] to-[#e8d4b8]'
                 }`}>
                   {/* Book spine shadow */}
-                  <div className="absolute left-0 top-0 bottom-0 w-8 bg-black opacity-10" />
+                  <div className="absolute left-0 top-0 bottom-0 w-8 bg-[#8b5a2b] opacity-20" />
                   
                   {/* Page lines effect */}
                   <div className="absolute inset-0 opacity-5" style={{
-                    backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(0,0,0,.1) 30px, rgba(0,0,0,.1) 31px)'
+                    backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(139,90,43,.1) 30px, rgba(139,90,43,.1) 31px)'
                   }} />
 
                   <div className="relative h-full flex flex-col p-8">
-                    {/* Topic Number Badge */}
+                    {/* Topic Number Badge - Brown Theme */}
                     <div className="flex items-start justify-between mb-6">
-                      <div className={`h-16 w-16 rounded-full text-white flex items-center justify-center font-black text-2xl shadow-lg ring-4 ring-white ${
-                        index % 5 === 0 ? 'bg-gradient-to-br from-red-600 to-red-800' :
-                        index % 5 === 1 ? 'bg-gradient-to-br from-blue-600 to-blue-800' :
-                        index % 5 === 2 ? 'bg-gradient-to-br from-green-600 to-green-800' :
-                        index % 5 === 3 ? 'bg-gradient-to-br from-amber-600 to-amber-800' :
-                        'bg-gradient-to-br from-purple-600 to-purple-800'
+                      <div className={`h-16 w-16 rounded-full text-[#f5e6d3] flex items-center justify-center font-black text-2xl shadow-lg ring-4 ring-white ${
+                        index % 5 === 0 ? 'bg-gradient-to-br from-[#8b5a2b] to-[#6d4522]' :
+                        index % 5 === 1 ? 'bg-gradient-to-br from-[#c77d3a] to-[#b87835]' :
+                        index % 5 === 2 ? 'bg-gradient-to-br from-[#d49240] to-[#c28437]' :
+                        index % 5 === 3 ? 'bg-gradient-to-br from-[#8b5a2b] to-[#6d4522]' :
+                        'bg-gradient-to-br from-[#c77d3a] to-[#b87835]'
                       }`}>
                         {topic.index}
                       </div>
-                      <Badge className={`text-xs font-bold shadow-md ${
-                        index % 5 === 0 ? 'bg-red-100 text-red-800 border-2 border-red-600' :
-                        index % 5 === 1 ? 'bg-blue-100 text-blue-800 border-2 border-blue-600' :
-                        index % 5 === 2 ? 'bg-green-100 text-green-800 border-2 border-green-600' :
-                        index % 5 === 3 ? 'bg-amber-100 text-amber-800 border-2 border-amber-600' :
-                        'bg-purple-100 text-purple-800 border-2 border-purple-600'
-                      }`}>
+                      <Badge className="text-xs font-bold shadow-md bg-[#f5e6d3] text-[#8b5a2b] border-2 border-[#c77d3a]">
                         📖 AVAILABLE
                       </Badge>
                     </div>
 
-                    {/* Topic Title */}
-                    <h3 className={`text-2xl font-black mb-4 leading-tight group-hover:scale-105 transition-transform ${
-                      index % 5 === 0 ? 'text-red-900' :
-                      index % 5 === 1 ? 'text-blue-900' :
-                      index % 5 === 2 ? 'text-green-900' :
-                      index % 5 === 3 ? 'text-amber-900' :
-                      'text-purple-900'
-                    }`} style={{ fontFamily: 'Georgia, serif' }}>
+                    {/* Topic Title - Brown Theme */}
+                    <h3 className="text-2xl font-black mb-4 leading-tight group-hover:scale-105 transition-transform text-[#8b5a2b]" style={{ fontFamily: 'Georgia, serif' }}>
                       {topic.title}
                     </h3>
 
@@ -835,14 +826,8 @@ export default function QuizzesSection() {
                       <div className="text-6xl opacity-30 group-hover:opacity-50 transition-opacity">✏️</div>
                     </div>
 
-                    {/* Start Button */}
-                    <Button className={`w-full text-white font-black text-lg py-6 shadow-xl transform group-hover:scale-105 transition-all ${
-                      index % 5 === 0 ? 'bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900' :
-                      index % 5 === 1 ? 'bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900' :
-                      index % 5 === 2 ? 'bg-gradient-to-r from-green-600 to-green-800 hover:from-green-700 hover:to-green-900' :
-                      index % 5 === 3 ? 'bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900' :
-                      'bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900'
-                    }`}>
+                    {/* Start Button - Brown Theme */}
+                    <Button className="w-full bg-gradient-to-r from-[#8b5a2b] to-[#6d4522] hover:from-[#6d4522] hover:to-[#5a3618] text-[#f5e6d3] font-black text-lg py-6 shadow-xl transform group-hover:scale-105 transition-all">
                       📚 START QUIZ
                     </Button>
                   </div>
@@ -851,12 +836,12 @@ export default function QuizzesSection() {
             ))}
           </div>
 
-          {/* Motivational Footer */}
-          <Card className="border-4 border-amber-600 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-6 shadow-2xl rounded-xl">
-            <div className="flex items-center justify-center gap-4 text-2xl font-black text-slate-800">
-              <span className="text-4xl">🎓</span>
+          {/* Motivational Footer - Brown Theme */}
+          <Card className="border-4 border-[#c77d3a] bg-gradient-to-r from-[#8b5a2b] via-[#c77d3a] to-[#d49240] p-6 shadow-2xl rounded-xl">
+            <div className="flex items-center justify-center gap-4 text-2xl font-black text-[#f5e6d3]">
+              <span className="text-4xl animate-bounce">🎓</span>
               <span>KNOWLEDGE IS POWER - START YOUR LEARNING JOURNEY!</span>
-              <span className="text-4xl">📚</span>
+              <span className="text-4xl animate-bounce" style={{ animationDelay: '0.2s' }}>📚</span>
             </div>
           </Card>
         </div>
