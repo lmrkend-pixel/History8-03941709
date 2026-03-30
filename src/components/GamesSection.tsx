@@ -155,31 +155,31 @@ function FlagTasticGame({
     options: ['Italy', 'Ireland', 'France', 'Belgium'],
     answer: 2
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/c5a3.png',
+    image: 'https://flagcdn.com/w320/jp.png',
     options: ['China', 'Japan', 'South Korea', 'North Korea'],
     answer: 1
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/5e57.png',
+    image: 'https://flagcdn.com/w320/pl.png',
     options: ['Poland', 'Austria', 'Netherlands', 'Czech Republic'],
     answer: 0
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/8e98.png',
+    image: 'https://flagcdn.com/w320/br.png',
     options: ['Brazil', 'Argentina', 'Chile', 'Uruguay'],
     answer: 0
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/ce2f.png',
+    image: 'https://flagcdn.com/w320/eg.png',
     options: ['Egypt', 'Saudi Arabia', 'UAE', 'Jordan'],
     answer: 0
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/bfc9.png',
+    image: 'https://flagcdn.com/w320/ca.png',
     options: ['Canada', 'Australia', 'New Zealand', 'United States'],
     answer: 0
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/3c8e.png',
+    image: 'https://flagcdn.com/w320/mx.png',
     options: ['Spain', 'Portugal', 'Mexico', 'Colombia'],
     answer: 2
   }, {
-    image: 'https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100020512/8a41.png',
+    image: 'https://flagcdn.com/w320/za.png',
     options: ['South Africa', 'Kenya', 'Nigeria', 'Ghana'],
     answer: 0
   }];
