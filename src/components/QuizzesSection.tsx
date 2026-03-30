@@ -723,40 +723,142 @@ export default function QuizzesSection() {
 
   if (!selectedTopic) {
     return (
-      <div className="space-y-8">
-        <Card className="border-4 border-[#d49240] bg-white p-8 shadow-xl rounded-xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#8b5a2b] mb-4">
-            📝 Test Your Knowledge
-          </h2>
-          <p className="text-xl text-[#5a3618]">
-            Answer topic-based quizzes with instant feedback and clear explanations.
-          </p>
-        </Card>
+      <div className="relative min-h-screen overflow-hidden">
+        {/* Educational Background with Chalkboard Texture */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 opacity-10" />
+        
+        {/* Floating Educational Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 text-6xl opacity-30 animate-bounce" style={{ animationDelay: '0s', animationDuration: '4s' }}>📚</div>
+          <div className="absolute top-20 right-20 text-5xl opacity-30 animate-bounce" style={{ animationDelay: '1s', animationDuration: '3.5s' }}>✏️</div>
+          <div className="absolute bottom-20 left-20 text-6xl opacity-30 animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '4.2s' }}>🎓</div>
+          <div className="absolute bottom-10 right-10 text-5xl opacity-30 animate-bounce" style={{ animationDelay: '1.5s', animationDuration: '3.8s' }}>📖</div>
+          <div className="absolute top-1/2 left-1/4 text-4xl opacity-20" style={{ animation: 'float 6s ease-in-out infinite' }}>🔖</div>
+          <div className="absolute top-1/3 right-1/4 text-4xl opacity-20" style={{ animation: 'float 5s ease-in-out infinite', animationDelay: '2s' }}>📐</div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {quizTopics.map((topic) => (
-            <Card
-              key={topic.id}
-              onClick={() => handleTopicSelect(topic.id)}
-              className="group border-4 border-[#d49240] bg-gradient-to-b from-white to-[#f5e6d3] p-6 cursor-pointer transition-all hover:scale-105 hover:shadow-2xl rounded-xl"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="h-16 w-16 rounded-full bg-gradient-to-br from-[#d49240] to-[#b87835] text-white flex items-center justify-center font-bold text-2xl shadow-lg">
-                  {topic.index}
+        <div className="relative z-10 space-y-8">
+          {/* Academic Header with Chalkboard Style */}
+          <div className="relative">
+            <Card className="border-4 border-amber-600 bg-gradient-to-br from-slate-800 to-slate-700 p-8 shadow-2xl rounded-xl relative overflow-hidden">
+              {/* Chalkboard texture overlay */}
+              <div className="absolute inset-0 opacity-10" style={{ 
+                backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px)',
+              }} />
+              
+              <div className="relative">
+                <div className="flex items-center justify-center gap-4 mb-4">
+                  <span className="text-6xl animate-bounce">📚</span>
+                  <h2 className="text-4xl md:text-6xl font-black text-white text-center drop-shadow-lg" style={{ 
+                    fontFamily: 'cursive',
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
+                  }}>
+                    Test Your Knowledge
+                  </h2>
+                  <span className="text-6xl animate-bounce" style={{ animationDelay: '0.2s' }}>🎓</span>
                 </div>
-                <Badge className="bg-[#f5e6d3] text-[#8b5a2b] border-2 border-[#d49240] font-bold">
-                  AVAILABLE
-                </Badge>
+                <div className="flex items-center justify-center gap-2 text-xl text-amber-200 font-semibold">
+                  <span>✏️</span>
+                  <p className="text-center">
+                    Answer topic-based quizzes with instant feedback and clear explanations
+                  </p>
+                  <span>✏️</span>
+                </div>
+                
+                {/* Decorative chalk line */}
+                <div className="mt-4 h-1 bg-white opacity-50 mx-auto" style={{ width: '80%' }} />
               </div>
-              <h3 className="text-2xl font-bold text-[#5a3618] mb-3 group-hover:text-[#d49240] transition-colors">
-                {topic.title}
-              </h3>
-              <p className="text-[#8b5a2b] mb-6">Start this module</p>
-              <Button className="w-full bg-gradient-to-r from-[#d49240] to-[#b87835] hover:from-[#c28437] hover:to-[#a66c2f] text-white font-bold text-lg py-6 rounded-xl shadow-lg">
-                Start Quiz
-              </Button>
             </Card>
-          ))}
+          </div>
+
+          {/* Book-style Topic Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+            {quizTopics.map((topic, index) => (
+              <div
+                key={topic.id}
+                className="animate-in zoom-in duration-500 group"
+                style={{ animationDelay: `${index * 100}ms` }}
+                onClick={() => handleTopicSelect(topic.id)}
+              >
+                {/* Book Cover Design */}
+                <Card className={`relative cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-4 overflow-hidden h-80 ${
+                  index % 5 === 0 ? 'border-red-600 bg-gradient-to-br from-red-50 to-red-100' :
+                  index % 5 === 1 ? 'border-blue-600 bg-gradient-to-br from-blue-50 to-blue-100' :
+                  index % 5 === 2 ? 'border-green-600 bg-gradient-to-br from-green-50 to-green-100' :
+                  index % 5 === 3 ? 'border-amber-600 bg-gradient-to-br from-amber-50 to-amber-100' :
+                  'border-purple-600 bg-gradient-to-br from-purple-50 to-purple-100'
+                }`}>
+                  {/* Book spine shadow */}
+                  <div className="absolute left-0 top-0 bottom-0 w-8 bg-black opacity-10" />
+                  
+                  {/* Page lines effect */}
+                  <div className="absolute inset-0 opacity-5" style={{
+                    backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(0,0,0,.1) 30px, rgba(0,0,0,.1) 31px)'
+                  }} />
+
+                  <div className="relative h-full flex flex-col p-8">
+                    {/* Topic Number Badge */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div className={`h-16 w-16 rounded-full text-white flex items-center justify-center font-black text-2xl shadow-lg ring-4 ring-white ${
+                        index % 5 === 0 ? 'bg-gradient-to-br from-red-600 to-red-800' :
+                        index % 5 === 1 ? 'bg-gradient-to-br from-blue-600 to-blue-800' :
+                        index % 5 === 2 ? 'bg-gradient-to-br from-green-600 to-green-800' :
+                        index % 5 === 3 ? 'bg-gradient-to-br from-amber-600 to-amber-800' :
+                        'bg-gradient-to-br from-purple-600 to-purple-800'
+                      }`}>
+                        {topic.index}
+                      </div>
+                      <Badge className={`text-xs font-bold shadow-md ${
+                        index % 5 === 0 ? 'bg-red-100 text-red-800 border-2 border-red-600' :
+                        index % 5 === 1 ? 'bg-blue-100 text-blue-800 border-2 border-blue-600' :
+                        index % 5 === 2 ? 'bg-green-100 text-green-800 border-2 border-green-600' :
+                        index % 5 === 3 ? 'bg-amber-100 text-amber-800 border-2 border-amber-600' :
+                        'bg-purple-100 text-purple-800 border-2 border-purple-600'
+                      }`}>
+                        📖 AVAILABLE
+                      </Badge>
+                    </div>
+
+                    {/* Topic Title */}
+                    <h3 className={`text-2xl font-black mb-4 leading-tight group-hover:scale-105 transition-transform ${
+                      index % 5 === 0 ? 'text-red-900' :
+                      index % 5 === 1 ? 'text-blue-900' :
+                      index % 5 === 2 ? 'text-green-900' :
+                      index % 5 === 3 ? 'text-amber-900' :
+                      'text-purple-900'
+                    }`} style={{ fontFamily: 'Georgia, serif' }}>
+                      {topic.title}
+                    </h3>
+
+                    {/* Decorative pencil icon */}
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="text-6xl opacity-30 group-hover:opacity-50 transition-opacity">✏️</div>
+                    </div>
+
+                    {/* Start Button */}
+                    <Button className={`w-full text-white font-black text-lg py-6 shadow-xl transform group-hover:scale-105 transition-all ${
+                      index % 5 === 0 ? 'bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900' :
+                      index % 5 === 1 ? 'bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900' :
+                      index % 5 === 2 ? 'bg-gradient-to-r from-green-600 to-green-800 hover:from-green-700 hover:to-green-900' :
+                      index % 5 === 3 ? 'bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900' :
+                      'bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900'
+                    }`}>
+                      📚 START QUIZ
+                    </Button>
+                  </div>
+                </Card>
+              </div>
+            ))}
+          </div>
+
+          {/* Motivational Footer */}
+          <Card className="border-4 border-amber-600 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-6 shadow-2xl rounded-xl">
+            <div className="flex items-center justify-center gap-4 text-2xl font-black text-slate-800">
+              <span className="text-4xl">🎓</span>
+              <span>KNOWLEDGE IS POWER - START YOUR LEARNING JOURNEY!</span>
+              <span className="text-4xl">📚</span>
+            </div>
+          </Card>
         </div>
       </div>
     );
